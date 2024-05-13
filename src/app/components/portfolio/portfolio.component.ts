@@ -17,10 +17,7 @@ export class PortfolioComponent {
 
   constructor(private dataService:DataService)
   {
-    dataService.onGotCsvData = () => {
-      console.log("csv event completed!");
-      console.log(dataService.dataObj);
-    }
+    
   }
   
 }
