@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Chart } from '../../Chart';
 
 @Component({
@@ -11,5 +11,10 @@ import { Chart } from '../../Chart';
 export class ChartElementComponent {
   @Input() chart!:Chart;
   constructor(){
+  }
+
+  ngOnInit()
+  {
+    console.log("I was created!");
   }
 }
