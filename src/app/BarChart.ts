@@ -1,3 +1,0 @@
-// class BarChart extends Chart {
-    
-// }

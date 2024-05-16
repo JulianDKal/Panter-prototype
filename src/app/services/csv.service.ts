@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CSVService {
-
-  public onGotCsvData?: (results:Papa.ParseResult<unknown>) => void;
+  
+  public onGotCsvData?: CsvParsedEventHandler;
 
   constructor(private http: HttpClient) { }
 
