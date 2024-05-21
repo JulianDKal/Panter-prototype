@@ -16,13 +16,18 @@ export class CSVService {
     return this.http.get(filePath, { responseType: 'text' });
   }
 
-  async loadCsvFile() {
-    const filePath = 'assets/sn_deal_2020_2022_journal_list_2019-12-31.CSV'; 
-    this.getCsvFile(filePath).subscribe(
-      csvData => { 
-        this.parseCsv(csvData);
-        //console.log(csvData);
-      })
+  async loadCsvFiles() {
+    const filePaths = ['assets/sn_deal_2020_2022_journal_list_2019-12-31.CSV', 
+    'assets/sn_deal_2020_2022_journal_list_2020-04-17.CSV',
+    'assets/sn_deal_2020_2022_journal_list_2022-04-04.CSV',
+    'assets/sn_deal_2020_2023_journal_list_2023-05-04.CSV']; 
+    for (let index = 0; index < filePaths.length; index++) {
+      this.getCsvFile(filePaths[index]).subscribe(
+        (csvData) => {
+          this.parseCsv(csvData);
+        }
+      )
+    }
 }
 
 parseCsv(csvData: string): void {

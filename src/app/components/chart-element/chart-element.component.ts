@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, AfterViewInit } from '@angular/core';
 import { Chart } from '../../Chart';
 import * as Plotly from 'plotly.js-dist-min';
 import { PlotlyModule } from 'angular-plotly.js';
@@ -17,7 +17,13 @@ export class ChartElementComponent {
   ngOnInit()
   {
     console.log("the chart element was created! " + this.chart.layout.title);
+    //TO-DO: das dynamisch machen falls mehrere Plots in einem Diagramm vorkommen
     this.chart.data[0].type = this.chartType;
-    console.log(this.chart.data, this.chart.layout)
+    //console.log(this.chart.data, this.chart.layout)
+  }
+
+  ngAfterViewInit()
+  {
+
   }
 }
