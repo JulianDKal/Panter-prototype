@@ -1,14 +1,11 @@
 export class Chart {
-    title:string = '';
-    layout:object = {};
-    data:object[] = [{}];
-    width: number;
-    height: number;
+    //title:string = '';
+    layout:plotLayout;
+    data:plotData[];
 
-    constructor(titleName:string, Width:number, Height:number) {
+    constructor(layout:plotLayout, data:plotData[]) {
         console.log("Chart was created!");
-        this.title = titleName;
-        this.width = Width;
-        this.height = Height;
+        this.layout = layout;
+        this.data = data;
     }
 }

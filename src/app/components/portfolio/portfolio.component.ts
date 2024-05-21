@@ -14,10 +14,22 @@ import { DataService } from '../../services/data.service';
 export class PortfolioComponent {
   charts:Chart[] = [];
   //dataService:DataService = Inject(DataService);
+  chart:Chart;
+  chartData:plotData[];
+  chartLayout:plotLayout;
 
   constructor(private dataService:DataService)
   {
-    
+    this.chartData = [{
+      x: [1, 2, 3], 
+      y: [2, 5, 3], 
+      type: 'bar',
+      marker: {color: 'lightblue'} 
+    }]
+    this.chartLayout = {
+      width: 400, height: 290, title: 'example plot'
+    }
+    this.chart = new Chart(this.chartLayout, this.chartData);
   }
   
 }

@@ -6,10 +6,13 @@ import * as Papa from 'papaparse';
   providedIn: 'root'
 })
 export class DataService {
+  //Springer Datensatz 1:
   dataObj?:Papa.ParseResult<snDealRows>;
   journalIDs:number[] = [];
   journalTitles:string[] = [];
-  //...
+  mainDisciplines:string[] = [];
+  
+  //Springer Datensatz 2:
 
   constructor(private csvService:CSVService) 
   {
@@ -20,6 +23,7 @@ export class DataService {
         for (let i = 0; i < this.dataObj.data.length; i++) {
           this.journalIDs[i] = this.dataObj.data[i]["SN Journals ID"];
           this.journalTitles[i] = this.dataObj.data[i]["Journal Title"];
+          this.mainDisciplines[i] = this.dataObj.data[i]["Main Discipline"];
         }
       }
       console.log(this.journalTitles);

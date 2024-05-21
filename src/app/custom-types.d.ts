@@ -1,8 +1,9 @@
+//der typ enthält alle Spalten einer csv Datei die dann von PapaParse geparsed wird
 type snDealRows =  {
     "SN Journals ID": number,
     "Journal Title": string,
     imprint: string,
-    mainDiscipline: string, 
+    "Main Discipline": string, 
     homepageURL: string, 
     pISSN: string, 
     eISSN: string,
@@ -19,3 +20,22 @@ type snDealRows =  {
 }
 
 type CsvParsedEventHandler = (results: ParseResult<snRowsData>) => void;
+
+//typen die Plotly für einen Graphen erwartet:
+type plotMarkerObj = {
+    color:string
+}
+
+type plotData = {
+    type:string,
+    x: number[],
+    y?:number[],
+    labels?:string[],
+    marker:plotMarkerObj
+}
+
+type plotLayout = {
+    width:number,
+    height:number,
+    title:string
+}

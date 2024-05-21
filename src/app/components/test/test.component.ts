@@ -21,7 +21,7 @@ export class TestComponent {
         //{ x: [1, 2, 3], y: [2, 6, 3], type: 'scatter', mode: 'lines+points', marker: {color: 'lightblue'} },
         { x: [1, 2, 3], 
           y: [2, 5, 3], 
-          type: 'scatter' , 
+          type: 'bar' , 
           marker: {color: 'lightblue'} 
         },
     ],
