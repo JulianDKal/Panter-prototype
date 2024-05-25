@@ -20,14 +20,18 @@ export class PortfolioComponent {
 
   constructor(private dataService:DataService)
   {
+    const mainDisciplines:CountMap = dataService.countsOfDisciplines!;
+    const keysArray = Object.keys(mainDisciplines);
+    const valuesArray = Object.values(mainDisciplines);
+
     this.chartData = [{
-      x: [1, 2, 3], 
-      y: [2, 5, 3], 
-      type: 'bar',
-      marker: {color: 'lightblue'} 
+      labels: keysArray,
+      values: valuesArray,
+      type: 'pie',
+      //marker: {color: 'lightblue'} 
     }]
     this.chartLayout = {
-      width: 400, height: 290, title: 'example plot'
+      width: 400, height: 290, title: 'Main Disciplines in Portfolio'
     }
     this.chart = new Chart(this.chartLayout, this.chartData);
   }

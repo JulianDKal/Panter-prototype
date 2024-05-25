@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TestComponent } from '../test/test.component';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  constructor(private router: Router){}
+  constructor(private router: Router, private dataService:DataService){}
 
   routeToPortfolio(){
     console.log("clicked");

@@ -28,10 +28,11 @@ type plotMarkerObj = {
 
 type plotData = {
     type:string,
-    x: number[],
+    x?: number[],
     y?:number[],
+    values?:number[],
     labels?:string[],
-    marker:plotMarkerObj
+    marker?:plotMarkerObj
 }
 
 type plotLayout = {
@@ -39,3 +40,5 @@ type plotLayout = {
     height:number,
     title:string
 }
+
+type CountMap = Record<string, number>;

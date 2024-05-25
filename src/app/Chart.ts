@@ -4,8 +4,9 @@ export class Chart {
     data:plotData[];
 
     constructor(layout:plotLayout, data:plotData[]) {
-        console.log("Chart was created!");
         this.layout = layout;
         this.data = data;
+        console.log("Chart was created: " + this.layout.title);
     }
 }
+
