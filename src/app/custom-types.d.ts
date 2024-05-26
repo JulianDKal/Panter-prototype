@@ -38,7 +38,8 @@ type plotData = {
 type plotLayout = {
     width:number,
     height:number,
-    title:string
+    title:string,
+    margin: object
 }
 
 type CountMap = Record<string, number>;

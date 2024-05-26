@@ -14,7 +14,7 @@ import { DataService } from '../../services/data.service';
 export class PortfolioComponent {
   charts:Chart[] = [];
   //dataService:DataService = Inject(DataService);
-  chart:Chart;
+  //chart:Chart;
   chartData:plotData[];
   chartLayout:plotLayout;
 
@@ -31,9 +31,14 @@ export class PortfolioComponent {
       //marker: {color: 'lightblue'} 
     }]
     this.chartLayout = {
-      width: 400, height: 290, title: 'Main Disciplines in Portfolio'
+      width: 400, height: 290, title: 'Main Disciplines in Portfolio', margin: {
+        t: 40,
+        r: 10, 
+        b: 10, 
+        l: 10  
+      }
     }
-    this.chart = new Chart(this.chartLayout, this.chartData);
+    this.charts[0] = new Chart(this.chartLayout, this.chartData);
   }
   
 }
