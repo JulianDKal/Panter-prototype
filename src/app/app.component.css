@@ -1,0 +1,8 @@
+  .main-content {
+    margin-top: 150px; 
+    padding: 0 30px; /* Same left and right padding as header */
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
