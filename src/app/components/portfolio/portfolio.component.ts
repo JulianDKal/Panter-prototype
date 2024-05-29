@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { ChartElementComponent } from '../chart-element/chart-element.component';
-import { Chart } from '../../Chart';
+import { Chart, PieChart } from '../../Chart';
 import { DataService } from '../../services/data.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class PortfolioComponent {
   charts:Chart[] = [];
   //dataService:DataService = Inject(DataService);
   //chart:Chart;
-  chartData:plotData[];
+  chartData:pieData[];
   chartLayout:plotLayout;
 
   constructor(private dataService:DataService)
@@ -38,7 +38,7 @@ export class PortfolioComponent {
         l: 10  
       }
     }
-    this.charts[0] = new Chart(this.chartLayout, this.chartData);
+    this.charts[0] = new PieChart(this.chartLayout, this.chartData);
   }
   
 }

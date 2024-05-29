@@ -10,3 +10,21 @@ export class Chart {
     }
 }
 
+export class ScatterChart extends Chart {
+    constructor(layout:plotLayout, data: scatterData[]){
+        super(layout, data);
+    }
+}
+
+export class PieChart extends Chart {
+    constructor(layout:plotLayout, data: pieData[]){
+        super(layout, data);
+    }
+}
+
+export class BarChart extends Chart {
+    constructor(layout:plotLayout, data: barData[]){
+        super(layout, data);
+    }
+}
+

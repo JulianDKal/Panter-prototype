@@ -26,6 +26,13 @@ type plotMarkerObj = {
     color:string
 }
 
+type plotLayout = {
+    width:number,
+    height:number,
+    title:string,
+    margin: object
+}
+
 type plotData = {
     type:string,
     x?: number[],
@@ -35,11 +42,25 @@ type plotData = {
     marker?:plotMarkerObj
 }
 
-type plotLayout = {
-    width:number,
-    height:number,
-    title:string,
-    margin: object
+type scatterData = {
+    type: 'scatter',
+    x: number[],
+    y: number[],
+    marker?:plotMarkerObj
+}
+
+type pieData = {
+    type: 'pie',
+    values: number[],
+    labels: string[],
+    marker?:plotMarkerObj
+}
+
+type barData = {
+    type: 'bar',
+    x: number[],
+    y: number[],
+    marker?:plotMarkerObj
 }
 
 type CountMap = Record<string, number>;
