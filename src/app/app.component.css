@@ -1,8 +1,22 @@
   .main-content {
-    margin-top: 150px; 
-    padding: 0 30px; /* Same left and right padding as header */
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-top: 133px; 
+    /* padding: 0 30px; Same left and right padding as header */
+    /* max-width: 1200px; */
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    background-color:  rgb(37, 86, 142);
   }
+
+  body{
+    background-color: rgb(37, 86, 142);
+  }
+
+  html{
+    background-color: rgb(37, 86, 142);
+  }
+
+
+
+
+  
   
