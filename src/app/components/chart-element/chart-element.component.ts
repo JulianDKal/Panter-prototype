@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, AfterViewInit } from '@angular/core';
+import { Component, Input, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 import { Chart } from '../../Chart';
 import * as Plotly from 'plotly.js-dist-min';
 import { PlotlyModule } from 'angular-plotly.js';
@@ -13,6 +13,8 @@ import { PlotlyModule } from 'angular-plotly.js';
 export class ChartElementComponent {
   @Input() chart!:Chart;
 
+  constructor(private elRef: ElementRef){}
+
   ngOnInit()
   {
     console.log("the chart element was created! " + this.chart.layout.title);
@@ -21,6 +23,8 @@ export class ChartElementComponent {
 
   ngAfterViewInit()
   {
-    
+    const parent = this.elRef.nativeElement.parentElement;
+    this.chart.layout.height = parent.clientHeight;
+    this.chart.layout.width = parent.clientWidth;
   }
 }
