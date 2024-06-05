@@ -1,17 +1,17 @@
-<div class="container">
+<body>
+    <div class="container">
         <app-navbar></app-navbar>
-    
-    <div class="main">
-        <h1>Portfolio</h1>
-        <div class="dashboard">
-            <div id="graph1">
-                <app-chart-element
-                [chart]="charts[0]">
-            </app-chart-element>
+        <div class="main">
+            <h1>Portfolio</h1>
+            <div class="dashboard">
+                <div id="graph1">
+                    <app-chart-element
+                    [chart]="charts[0]">
+                </app-chart-element>
+                </div>
+                <div id="graph2" style="background-color: lightblue;"></div>
+                <div id="graph3" style="background-color: lightblue; border: 5px; border-color: rgb(43, 140, 188); border-style: solid;"></div>
             </div>
-            <div id="graph2" style="background-color: lightblue;"></div>
-            <div id="graph3" style="background-color: lightblue; border: 5px; border-color: rgb(43, 140, 188); border-style: solid;"></div>
         </div>
     </div>
-
-</div>
+</body>
