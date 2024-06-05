@@ -7,11 +7,13 @@ body {
     background-color: rgb(37, 86, 142);
     color: #333;
     max-width: fit-content;
+    left: 0;
 }
 
 main {
     display: flex;
     min-height: 100vh;
+    left: 0;
 }
 
 aside {
