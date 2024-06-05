@@ -70,7 +70,7 @@ aside {
     display: block;
 }
 
-section.content {
+section.kostenanalyse {
     flex: 1;
     padding: 20px;
     background-color:  rgb(37, 86, 142);
@@ -85,7 +85,11 @@ h2 {
     margin: -5px auto 0px 20px;
 }
 
-.responsive-img {
+h2.title-dashboard{
+    margin-top: 15px;
+}
+
+.kostenanalyse-chart {
     max-width: 70%;
     width: auto; 
     height: auto;
@@ -93,5 +97,15 @@ h2 {
     background-color:  rgb(37, 86, 142);
     display: block;
     margin: 20px auto 20px 20px;
-    
 }
+
+.dashboard-chart {
+    max-width: 70%;
+    width: auto; 
+    height: auto;
+    border-radius: 10px;
+    background-color:  rgb(37, 86, 142);
+    display: block;
+    margin: 20px auto 20px 20px;
+}
+
