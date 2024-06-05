@@ -19,3 +19,24 @@ export class HomeComponent {
     this.router.navigate(['../portfolio']);
   }
 }
+
+function toggleMenu(): void {
+  const menu: HTMLElement | null = document.getElementById('menu');
+  if (menu) {
+      if (menu.classList.contains('hidden')) {
+          menu.classList.remove('hidden');
+          menu.classList.add('visible');
+      } else {
+          menu.classList.remove('visible');
+          menu.classList.add('hidden');
+      }
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const menuButton = document.querySelector('.menu-btn');
+  if (menuButton) {
+      menuButton.addEventListener('click', toggleMenu);
+  }
+});
+
