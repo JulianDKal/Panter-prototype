@@ -1,49 +1,48 @@
-<div class="container">
-        <app-navbar></app-navbar>
-    
-    <div class="main">
-        <h1> Mein Portfolio</h1>
-        <div class="dashboard">
-            <div id="graph1" style="background-color: lightblue; border: 5px; border-color: rgb(43, 140, 188); border-style: solid;"></div>
-            <section>
-                <h2>Portfolio Performance</h2>
-                <div class="portfolio-column">
-                    <div *ngFor="let project of projectsPart1" class="portfolio-item">
-                        <h3>Graph</h3>
-                        <img src="../../../assets/example_graph.jpeg" alt="Graph" style="max-width: 75%;">
-                    </div>
+
+<body>
+  <main>
+    <aside>
+      <button class="menu-btn" (click)="toggleMenu()">☰</button>
+      <nav id="menu" [class.hidden]="isMenuHidden" [class.visible]="!isMenuHidden">
+        <ul>
+            <li><a routerLink="meinportfolio" routerLinkActive="active">Mein Portfolio</a></li>
+            <li><a routerLink="neuesportfolio" routerLinkActive="active">Neues Portfolio erstellen</a></li>
+            <li><a routerLink="analyse" routerLinkActive="active">Analyse</a></li>
+            <li><a routerLink="portfolio" routerLinkActive="active">Portfolio</a></li>
+        </ul>
+      </nav>
+    </aside> 
+    <h1>Mein Portfolio</h1>
+    <div class="dashboard">
+            <div id="graph1" style="background-color: lightblue; border-color: rgb(43, 140, 188); border-style: solid;"></div>
+    <section class="portfolio-column">
+    <h2>Portfolio Performance</h2>
+              <div class="portfolio-column">
+                <div *ngFor="let project of projectsPart1" class="portfolio-item">
+                  <h2>Graph</h2>
+                  <img src="../../../assets/example_graph.jpeg" alt="Graph" style="max-width: 75%;">
+                </div>
+              </div>
+            </section>
+            <section class="portfolio-column">
+                <div *ngFor="let project of projectsPart2" class="portfolio-item">
+                  <h2>Darstellung 2</h2>
+                  <img src="../../../assets/example_graph.jpeg" alt="Graph" style="max-width: 75%;">
+                  <p>Beschreibung zum Portfolio</p>
                 </div>
             </section>
-            <section>
-                <div class="portfolio-column">
-                    <div *ngFor="let project of projectsPart2" class="portfolio-item">
-                        <h3>Darstellung 2</h3>
-                        <img src="../../../assets/example_graph.jpeg" alt="Graph" style="max-width: 75%;">
-                        <p>Beschreibung zum Portfolio</p>
-                    </div>
-                </div>
-            </section>
+            <div id="graph2" style="background-color: lightblue; border-color: rgb(43, 140, 188); border-style: solid;"></div>
+            <h1>Darstellung 3</h1>
+            <div id="graph3" style="background-color: lightblue; border-color: rgb(43, 140, 188); border-style: solid;"></div>
+          </div>
+  </main>  
+</body>
 
-            <div id="graph2" style="background-color: lightblue;"></div>
-            <h4>Darstellung 3</h4>
-            <div id="graph3" style="background-color: lightblue; border: 5px; border-color: rgb(43, 140, 188); border-style: solid;"></div>
-        </div>
-    </div>
 
-</div>
-
-<style>
-    /* CSS-Styling? für Portfolio-Spalten */
-    .portfolio-column {
-        width: 50%;
-        float: left;
-    }
-
-    /* Um Clearfix für Floats zu erreichen */
-    .portfolio-column::after {
-        content: "";
-        display: table;
-        clear: both;
-    }
-</style>
+          
+          
     
+              
+            
+            
+     
