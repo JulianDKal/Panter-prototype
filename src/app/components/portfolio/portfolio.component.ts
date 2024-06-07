@@ -9,5 +9,10 @@ import { NavbarComponent } from '../navbar/navbar.component';
   styleUrl: './portfolio.component.css'
 })
 export class PortfolioComponent {
+  isMenuHidden = false;
+
+  toggleMenu() {
+    this.isMenuHidden = !this.isMenuHidden;
+  }
 
 }
