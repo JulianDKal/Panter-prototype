@@ -1,21 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-* {
-    font-family: "Poppins", sans-serif;
-}
-
-.dashboard {
-    display: grid;
-    grid-template-columns: 12% 12% 12% 12% 12% 12% 12% 12%;
-    grid-template-rows: 12% 12% 12% 12% 12% 12% 12% 12%;
-    background-color: lightgray;
-    border: 5px;
-    border-color: black;
-    width: 75vw;
-    height: 72vh;
-    margin-left: 0px;
-}
-
 .container {
     display: flex;
     margin-top: 10px;
@@ -23,15 +7,31 @@
     justify-content: flex-start;
 }
 
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color:rgb(223, 238, 255);
+    color: #333;
+    margin-left: 0px;
+}
+
 .main {
     display: flex;
     flex-direction: column;
     margin-left: 20px;
+    margin-right: -20px;
 }
 
-h1 {
-    margin-left: 0px;
-    margin-bottom: 0px;
+.dashboard {
+    display: grid;
+    grid-template-columns: 12% 12% 12% 12% 12% 12% 12% 12%;
+    grid-template-rows: 12% 12% 12% 12% 12% 12% 12% 12%;
+    background-color:rgb(223, 238, 255);
+    /*border: 5px;
+    border-color: black;
+    width: 75vw;
+    height: 72vh;*/
+    margin-top: 15%;
+    justify-content: center;
 }
 
 #graph1{
@@ -43,9 +43,80 @@ h1 {
     grid-row: span 4;
     grid-column: span 3;
     margin: 7px;
+    margin-left: 10%;
 }
 #graph3{
     grid-row: 5 / 10;
     grid-column: 1 / 10;
     margin: 7px;
+}
+
+main {
+    display: flex;
+    min-height: 100vh;
+}
+
+aside {
+    background-color:  rgb(37, 86, 142);
+    color: #F0F6FE;
+    max-width: fit-content;
+    padding: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.menu-btn {
+    background: none;
+    border: none;
+    color: #F0F6FE;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.menu {
+    width: 100%;
+    text-align: center;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu ul li {
+    margin: 10px 0;
+}
+
+.menu ul li a {
+    color: #F0F6FE;
+    text-decoration: none;
+    font-size: 14px;
+    display: block;
+    padding: 8px 0;
+}
+
+.menu ul li a:hover {
+    background-color: #2b4771;
+    border-radius: 5px;
+    padding: 5px
+}
+
+.menu.hidden {
+    display: none;
+}
+
+.menu.visible {
+    display: block;
+}
+
+h1 {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+h2 {
+    font-size: 24px;
+    margin: auto;
 }
