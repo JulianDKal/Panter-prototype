@@ -16,3 +16,19 @@ export class PortfolioComponent {
   }
 
 }
+export class AppComponent {
+  projectsPart2 = [
+    {
+      id: 1,
+      name: 'Project 1',
+      imageUrl: 'assets/images/project1.png', 
+      description: 'Description for Project 1'
+    },
+    {
+      id: 2,
+      name: 'Project 2',
+      imageUrl: 'assets/images/project2.png',
+      description: 'Description for Project 2'
+    },
+  ]
+}
