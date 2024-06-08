@@ -9,7 +9,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color:rgb(223, 238, 255);
+    background-color:lightgrey;
     color: #333;
     margin-left: 0px;
 }
@@ -25,7 +25,7 @@ body {
     display: grid;
     grid-template-columns: 12% 12% 12% 12% 12% 12% 12% 12%;
     grid-template-rows: 12% 12% 12% 12% 12% 12% 12% 12%;
-    background-color:rgb(223, 238, 255);
+    background-color: lightgrey;
     /*border: 5px;
     border-color: black;
     width: 75vw;
@@ -85,11 +85,11 @@ aside {
 .menu ul {
     list-style-type: none;
     padding: 0;
-    margin: 5px;
+    margin: 25px;
 }
 
 .menu ul li {
-    margin: 10px 0;
+    margin: 20px 0;
 }
 
 .menu ul li a {
@@ -117,10 +117,7 @@ aside {
 h1 {
     grid-row: 1 / 2;
     grid-column: 1 / 5;
-    margin-top: 10px;
     margin-left: 10px;
-    margin-bottom: 50%;
-
 }
 
 h2 {
@@ -128,6 +125,7 @@ h2 {
     grid-column: 1 / 4;
     font-size: 24px;
     margin: auto;
+    margin-top: 12%;
 }
 
 h3 {
@@ -135,16 +133,32 @@ h3 {
     grid-column: 5 / 7;
     font-size: 24px;
     margin: auto;
+    margin-top: 20%;
 }
 
 h4 {
     font-size: 12px;
     margin: auto;
+    margin-top: 10px;
 }
 
-section.portfolio-column {
-    grid-row: 2 / 3;
-    grid-column: 1 / 5;
-    margin: auto;
-
-}
+/*
+.portfolio-item {
+    border: 1px solid #ddd;
+    margin: 15px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .portfolio-image {
+    width: 100%;
+    height: auto;
+    max-width: 300px; /* oder eine andere Größe nach Bedarf
+    margin-bottom: 10px;
+  }
+  
+  .portfolio-content {
+    padding: 10px;
+  }*/
+  
