@@ -2,13 +2,12 @@
 <body>
   <main>
     <aside>
-      <button class="menu-btn" (click)="toggleMenu()">☰</button>
+      <button class="menu-btn" (click)="toggleMenu()">Mein Portfolio</button>
       <nav id="menu" [class.hidden]="isMenuHidden" [class.visible]="!isMenuHidden">
         <ul>
-            <li><a routerLink="meinportfolio" routerLinkActive="active">Mein Portfolio</a></li>
             <li><a routerLink="neuesportfolio" routerLinkActive="active">Neues Portfolio erstellen</a></li>
             <li><a routerLink="analyse" routerLinkActive="active">Analyse</a></li>
-            <li><a routerLink="portfolio" routerLinkActive="active">Portfolio</a></li>
+            <li><a routerLink="portfolio" routerLinkActive="active">Portfoliosammlung</a></li>
         </ul>
       </nav>
     </aside> 
@@ -16,21 +15,18 @@
     <div class="dashboard">
       <h1>Mein Portfolio</h1>
       <h2>Portfolio Performance</h2>
-            <div id="graph1" style="background-color: lightblue; border-color: rgb(43, 140, 188); border-style: solid;"></div>
-            <h3>Darstellung 3</h3>
-            <div id="graph2" style="background-color: lightblue; border-color: rgb(43, 140, 188); border-style: solid;"></div>
-            <div id="graph3" style="background-color: lightblue; border-color: rgb(43, 140, 188); border-style: solid;"></div>
-            <h4>Graph</h4>
-                  <img src="../../../assets/example_graph.jpeg" alt="Graph" style="max-width: 75%;"></div>
-                  
-            <section class="portfolio-column">
-                <div *ngFor="let project of projectsPart2" class="portfolio-item">
-                  <h2>Darstellung 2</h2>
-                  <img src="../../../assets/example_graph.jpeg" alt="Graph" style="max-width: 75%;">
-                  <p>Beschreibung zum Portfolio</p>
-                </div>
-            </section>
-        
+            <div id="graph1" style="background-color: rgb(223, 238, 255); border-color: rgb(43, 140, 188); border-style: solid; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+              <div>
+                <h4>Graph</h4>
+              </div>
+              <div style="flex-grow: 1; display: flex; align-items: center;">
+                <img src="../../../assets/example_graph.jpeg" alt="Graph" style="max-width: 90%; max-height: 90%;">
+              </div>
+            </div>
+      <h3>Darstellung 3</h3>
+            <div id="graph2" style="background-color: rgb(223, 238, 255); border-color: rgb(43, 140, 188); border-style: solid;"></div>
+            <div id="graph3" style="background-color: rgb(223, 238, 255); border-color: rgb(43, 140, 188); border-style: solid;"></div>
+      </div>    
   </main>  
 </body>
            
