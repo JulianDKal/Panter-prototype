@@ -12,18 +12,17 @@
         </ul>
       </nav>
     </aside> 
-    <h1>Mein Portfolio</h1>
+    
     <div class="dashboard">
+      <h1>Mein Portfolio</h1>
+      <h2>Portfolio Performance</h2>
             <div id="graph1" style="background-color: lightblue; border-color: rgb(43, 140, 188); border-style: solid;"></div>
-    <section class="portfolio-column">
-    <h2>Portfolio Performance</h2>
-              <div class="portfolio-column">
-                <div *ngFor="let project of projectsPart1" class="portfolio-item">
-                  <h2>Graph</h2>
-                  <img src="../../../assets/example_graph.jpeg" alt="Graph" style="max-width: 75%;">
-                </div>
-              </div>
-            </section>
+            <h3>Darstellung 3</h3>
+            <div id="graph2" style="background-color: lightblue; border-color: rgb(43, 140, 188); border-style: solid;"></div>
+            <div id="graph3" style="background-color: lightblue; border-color: rgb(43, 140, 188); border-style: solid;"></div>
+            <h4>Graph</h4>
+                  <img src="../../../assets/example_graph.jpeg" alt="Graph" style="max-width: 75%;"></div>
+                  
             <section class="portfolio-column">
                 <div *ngFor="let project of projectsPart2" class="portfolio-item">
                   <h2>Darstellung 2</h2>
@@ -31,18 +30,7 @@
                   <p>Beschreibung zum Portfolio</p>
                 </div>
             </section>
-            <div id="graph2" style="background-color: lightblue; border-color: rgb(43, 140, 188); border-style: solid;"></div>
-            <h1>Darstellung 3</h1>
-            <div id="graph3" style="background-color: lightblue; border-color: rgb(43, 140, 188); border-style: solid;"></div>
-          </div>
+        
   </main>  
 </body>
-
-
-          
-          
-    
-              
-            
-            
-     
+           
