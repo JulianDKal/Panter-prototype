@@ -29,5 +29,7 @@ export class ChartElementComponent {
     const parent = this.elRef.nativeElement.parentElement;
     this.chart.layout.height = parent.clientHeight;
     this.chart.layout.width = parent.clientWidth;
+    
   }
+
 }

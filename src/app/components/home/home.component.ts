@@ -12,7 +12,7 @@ import { DataService } from '../../services/data.service';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  constructor(private router: Router, private dataService:DataService){}
+  constructor(private router: Router){}
 
   routeToPortfolio(){
     console.log("clicked");

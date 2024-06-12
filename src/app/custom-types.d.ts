@@ -23,20 +23,37 @@ type CsvParsedEventHandler = (results: ParseResult<snRowsData>) => void;
 
 //typen die Plotly für einen Graphen erwartet:
 type plotMarkerObj = {
-    color:string
+    color:string,
+    opacity?:number,
+    line?: {
+        color:string,
+        width:number
+    }
 }
 
 type plotLayout = {
     width:number,
     height:number,
     title:string,
-    margin: object
+    margin: object,
+    xaxis?: {
+        autorange?: string | boolean,
+        dtick?: number, //An jedem wievielten Datenpunkt steht ein label
+        title?: object,
+        tickangle?: number | string, //in welchem winkel steht ein label?
+        tickfont?: {
+            size:number,
+            color:string
+        }
+    }
 }
 
 type plotData = {
     type:string,
     x?: number[] | string[],
     y?:number[],
+    text?, //can display text on individual datapoints e.g. columns of bar chart
+    hoverinfo?, //determines which trace information appears on hover
     values?:number[],
     labels?:string[],
     marker?:plotMarkerObj
@@ -60,6 +77,7 @@ type barData = {
     type: 'bar',
     x: string[],
     y: number[],
+    text?,
     marker?:plotMarkerObj
 }
 

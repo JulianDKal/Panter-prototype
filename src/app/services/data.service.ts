@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, Inject, EventEmitter } from '@angular/core';
 import { CSVService } from './csv.service';
 import * as Papa from 'papaparse';
 
@@ -8,6 +8,8 @@ import * as Papa from 'papaparse';
 })
 
 export class DataService {
+  dataReady: EventEmitter<void> = new EventEmitter<void>();
+
   //Springer Datensatz 2019-12-31:
   firstDataObj?:Papa.ParseResult<snDealRows>;
   journalIDs:number[] = [];
@@ -42,6 +44,7 @@ export class DataService {
             //counts of Discpiplines are reduced here!!
             this.reduceOccurrences(this.countsOfDisciplines);
             console.log(this.countsOfDisciplines);
+
           }
           //console.log(this.firstDataObj);
           this.eventCount++;
@@ -59,11 +62,16 @@ export class DataService {
         case 3:
           this.fourthDataObj = results;
           //console.log(this.fourthDataObj);
+
+          this.dataReady.emit(); //event is sent to the portfolio component so the charts etc. can get rendered
+
           break;
         default:
           break;
       }
-    }
+
+      }
+    //this.dataReady.emit();
   }
 
   generateCountMap(keys:string[], values:string[]):CountMap {
@@ -94,7 +102,6 @@ export class DataService {
     
     return counts;
   }
-
   //gibt die Häufigkeiten der Einträge als oben definierter CountMap typ zurück
   //z.B. result = {"Mathematik": 345, "Physics":  124, ...}
   countOccurrences(arr: string[]): CountMap {
