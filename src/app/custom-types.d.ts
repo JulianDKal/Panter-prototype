@@ -10,7 +10,7 @@ type snDealRows =  {
     publishingModel: string, 
     activeFrom: string, 
     fachArztZeitschrift: string, 
-    apc: number,
+    "APC": string,
     bmcDiscount: string, 
     oaLicenseType: string,
     standardWorkflow: string, 
@@ -35,7 +35,7 @@ type plotLayout = {
 
 type plotData = {
     type:string,
-    x?: number[],
+    x?: number[] | string[],
     y?:number[],
     values?:number[],
     labels?:string[],
@@ -58,7 +58,7 @@ type pieData = {
 
 type barData = {
     type: 'bar',
-    x: number[],
+    x: string[],
     y: number[],
     marker?:plotMarkerObj
 }

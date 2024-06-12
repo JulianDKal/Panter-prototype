@@ -13,6 +13,7 @@ export class DataService {
   journalIDs:number[] = [];
   journalTitles:string[] = [];
   mainDisciplines:string[] = [];
+  apcPrices:string[] = [];
   countsOfDisciplines?:CountMap;
   
   //Springer Datensatz 2020-04-17:
@@ -35,6 +36,7 @@ export class DataService {
               this.journalIDs[i] = this.firstDataObj.data[i]["SN Journals ID"];
               this.journalTitles[i] = this.firstDataObj.data[i]["Journal Title"];
               this.mainDisciplines[i] = this.firstDataObj.data[i]["Main Discipline"];
+              this.apcPrices[i] = this.firstDataObj.data[i]["APC"];
             }
             this.countsOfDisciplines = this.countOccurrences(this.mainDisciplines);
             //counts of Discpiplines are reduced here!!
@@ -64,6 +66,35 @@ export class DataService {
     }
   }
 
+  generateCountMap(keys:string[], values:string[]):CountMap {
+    const cumulativeMap: { [key: string]: { sum: number; count: number } } = {};
+    const counts: CountMap = {};
+    let price;
+
+    for (let index = 0; index < keys.length; index++) {
+      if(!cumulativeMap[keys[index]]){
+        cumulativeMap[keys[index]] = { sum: 0, count: 0 };
+      }
+
+      price = parseInt(values[index]);
+
+      if(!isNaN(price)){
+        cumulativeMap[keys[index]].sum += price;
+        cumulativeMap[keys[index]].count += 1;
+      }
+      
+    }
+
+    for (const str in cumulativeMap){
+      if (cumulativeMap.hasOwnProperty(str) && cumulativeMap[str].count >= 10 ) {
+        const { sum, count } = cumulativeMap[str];
+        counts[str] = sum / count;
+      }
+    }
+    
+    return counts;
+  }
+
   //gibt die Häufigkeiten der Einträge als oben definierter CountMap typ zurück
   //z.B. result = {"Mathematik": 345, "Physics":  124, ...}
   countOccurrences(arr: string[]): CountMap {
@@ -77,7 +108,7 @@ export class DataService {
     }
     return counts;
   }
-
+  //Nur wichtig für das zählen der Häufigkeiten von Disziplinen
   reduceOccurrences(obj:CountMap) {
     for (let key in obj) {
       if(obj[key] < 100) delete obj[key];

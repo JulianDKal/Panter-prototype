@@ -7,13 +7,16 @@ import { PlotlyModule } from 'angular-plotly.js';
   selector: 'app-chart-element',
   standalone: true,
   imports: [PlotlyModule],
-  template: '<plotly-plot [data]="chart.data" [layout]="chart.layout"></plotly-plot>',
+  template: '<plotly-plot [data]="chart.data" [layout]="chart.layout" [config]="{displayModeBar: false}"></plotly-plot>',
   styleUrl: './chart-element.component.css'
 })
 export class ChartElementComponent {
   @Input() chart!:Chart;
 
   constructor(private elRef: ElementRef){}
+  configObj:any = {
+    staticPlot: true
+  }
 
   ngOnInit()
   {
