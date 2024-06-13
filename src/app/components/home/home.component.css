@@ -1,7 +1,7 @@
 /* .clickableImg {
     cursor: pointer;
 } */
-body {
+/* body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     background-color: rgb(37, 86, 142);
@@ -107,5 +107,106 @@ h2.title-dashboard{
     background-color:  rgb(37, 86, 142);
     display: block;
     margin: 20px auto 20px 20px;
+}
+ */
+
+ body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #E9E9E9;
+    color: #333;
+}
+
+header {
+    position: relative;
+    height: 300px; /* Adjust height as needed */
+    width: 100%;
+    overflow: hidden; /* Ensures no scrollbars appear */
+}
+
+.main-background {
+    position: relative;
+    width: 100vw; /* Setzt die Breite auf die volle Breite der Ansicht */
+    margin-left: calc(-50vw + 50%); /* Zentriert den Block */
+    overflow: hidden;
+    background-image: url('../../../assets/background-img.jpg'); /* Setze hier den Pfad zu deinem Bild */
+    background-size: cover;
+    background-position: center;
+    height: auto; /* Stelle die Höhe ein, je nach Bedarf */
+}
+
+.main-content {
+    position: relative;
+    max-width: 1200px; /* Oder die maximale Breite deines Inhalts */
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../assets/background-img.jpg'); /* Add the appropriate image URL */
+    background-size: cover;
+    background-position: center;
+    filter: blur(6px); /* Adjust the blur level as needed */
+    z-index: 1; /* Ensures the blur effect is behind the text */
+}
+
+
+header h1 {
+    position: relative;
+    z-index: 3; /* Ensures the text is above the blur and overlay */
+    font-size: 2em;
+    margin: 0;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.29); /* Optional: Adds a translucent background to the text for better readability */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+main {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+section {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 45%;
+}
+
+.welcome-section {
+    margin-right: 40px; /* Increase the margin to create more space between the sections */
+}
+
+.welcome-section .welcome-text h2,
+.topics-section .topics-text h2 {
+    color: #5884DA;
+    font-size: 1.5em;
+}
+
+.topics-button {
+    background-color: #5884DA;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.topics-button:hover {
+    background-color: #5883dab5;
 }
 
