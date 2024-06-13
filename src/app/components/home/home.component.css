@@ -109,13 +109,13 @@ h2.title-dashboard{
     margin: 20px auto 20px 20px;
 }
  */
-
  body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #E9E9E9;
     color: #333;
+
 }
 
 header {
@@ -150,12 +150,10 @@ header::before {
     width: 100%;
     height: 100%;
     background-image: url('../../../assets/background-img.jpg'); /* Add the appropriate image URL */
-    background-size: cover;
     background-position: center;
     filter: blur(6px); /* Adjust the blur level as needed */
     z-index: 1; /* Ensures the blur effect is behind the text */
 }
-
 
 header h1 {
     position: relative;
@@ -163,9 +161,9 @@ header h1 {
     font-size: 2em;
     margin: 0;
     padding: 20px;
-    color: white;
+    color: #5884DA;
     text-align: center;
-    background: rgba(255, 255, 255, 0.29); /* Optional: Adds a translucent background to the text for better readability */
+    background: rgba(255, 255, 255, 0.521); /* Optional: Adds a translucent background to the text for better readability */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -173,9 +171,15 @@ header h1 {
 }
 
 main {
-    display: flex;
-    justify-content: space-around;
+    display: block; /* Stellt sicher, dass der Hauptcontainer als Blockelement dargestellt wird */
     padding: 20px;
+}
+
+.section-container {
+    display: flex;
+    justify-content: space-between; /* Fügt Platz zwischen den Sektionen hinzu */
+    gap: 20px; /* Fügt Abstand zwischen den Sektionen hinzu */
+    margin-bottom: 20px; /* Fügt Abstand unterhalb der Sektionen hinzu */
 }
 
 section {
@@ -183,15 +187,13 @@ section {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 45%;
-}
-
-.welcome-section {
-    margin-right: 40px; /* Increase the margin to create more space between the sections */
+    width: 48%; /* Setzt die Breite der Sektionen auf 48% */
 }
 
 .welcome-section .welcome-text h2,
-.topics-section .topics-text h2 {
+.topics-section .topics-text h2,
+.dashboard-section .dashboard-text h2,
+.portfolio-section .portfolio-text h2 {
     color: #5884DA;
     font-size: 1.5em;
 }
@@ -210,3 +212,26 @@ section {
     background-color: #5883dab5;
 }
 
+.dashboard-section {
+    width: 100%;
+    margin: 0 auto; 
+    margin-top: 20px; /* Fügt einen Abstand nach oben hinzu */
+    box-sizing: border-box;
+}
+
+.dashboard-section img {
+    width: 100%; /* Sorgt dafür, dass das Bild nicht breiter als sein Container wird */
+    height: auto; /* Behält das ursprüngliche Seitenverhältnis des Bildes bei */
+}
+
+.portfolio-section {
+    width: 100%;
+    margin: 0 auto; 
+    margin-top: 20px; /* Fügt einen Abstand nach oben hinzu */
+    box-sizing: border-box;
+}
+
+.portfolio-section img {
+    width: 100%; /* Sorgt dafür, dass das Bild nicht breiter als sein Container wird */
+    height: auto; /* Behält das ursprüngliche Seitenverhältnis des Bildes bei */
+}
