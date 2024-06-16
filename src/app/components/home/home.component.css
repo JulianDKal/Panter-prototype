@@ -1,7 +1,7 @@
 /* .clickableImg {
     cursor: pointer;
 } */
-body {
+/* body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     background-color: rgb(37, 86, 142);
@@ -111,4 +111,119 @@ h2.title-dashboard{
     display: block;
     margin: 20px auto 20px 20px;
 }
+ */
+ body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #E9E9E9;
+    color: #333;
 
+}
+
+header {
+    position: relative;
+    height: 300px; /* Adjust height as needed */
+    width: 100%;
+    overflow: hidden; /* Ensures no scrollbars appear */
+}
+
+.main-background {
+    position: relative;
+    width: 100vw; /* Setzt die Breite auf die volle Breite der Ansicht */
+    margin-left: calc(-50vw + 50%); /* Zentriert den Block */
+    overflow: hidden;
+    background-image: url('../../../assets/backgroundimg2.png'); /* Setze hier den Pfad zu deinem Bild */
+    background-size: cover;
+    background-position: center;
+    height: auto; /* Stelle die Höhe ein, je nach Bedarf */
+}
+
+.main-content {
+    position: relative;
+    max-width: 1200px; /* Oder die maximale Breite deines Inhalts */
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+header h1 {
+    position: relative;
+    z-index: 3; 
+    font-size: 2em;
+    margin: 0;
+    padding: 20px;
+    color: #002264;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+main {
+    display: block; /* Stellt sicher, dass der Hauptcontainer als Blockelement dargestellt wird */
+    padding: 20px;
+}
+
+.section-container {
+    display: flex;
+    justify-content: space-between; /* Fügt Platz zwischen den Sektionen hinzu */
+    gap: 20px; /* Fügt Abstand zwischen den Sektionen hinzu */
+    margin-bottom: 20px; /* Fügt Abstand unterhalb der Sektionen hinzu */
+}
+
+section {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 48%; /* Setzt die Breite der Sektionen auf 48% */
+}
+
+.welcome-section .welcome-text h2,
+.topics-section .topics-text h2,
+.dashboard-section .dashboard-text h2,
+.portfolio-section .portfolio-text h2 {
+    color: #5884DA;
+    font-size: 1.5em;
+}
+
+.topics-button {
+    background-color: #5884DA;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.topics-button:hover {
+    background-color: #5883dab5;
+}
+
+.dashboard-section {
+    width: 100%;
+    margin: 0 auto; 
+    margin-top: 20px; /* Fügt einen Abstand nach oben hinzu */
+    box-sizing: border-box;
+}
+
+.dashboard-section img {
+    width: 100%; /* Sorgt dafür, dass das Bild nicht breiter als sein Container wird */
+    height: auto; /* Behält das ursprüngliche Seitenverhältnis des Bildes bei */
+}
+
+.portfolio-section {
+    width: 100%;
+    margin: 0 auto; 
+    margin-top: 20px; /* Fügt einen Abstand nach oben hinzu */
+    box-sizing: border-box;
+}
+
+.portfolio-section img {
+    width: 100%; /* Sorgt dafür, dass das Bild nicht breiter als sein Container wird */
+    height: auto; /* Behält das ursprüngliche Seitenverhältnis des Bildes bei */
+}
