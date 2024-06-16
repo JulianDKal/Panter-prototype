@@ -9,6 +9,7 @@ import * as Papa from 'papaparse';
 
 export class DataService {
   dataReady: EventEmitter<void> = new EventEmitter<void>();
+  public isProcessing:boolean = true;
 
   //Springer Datensatz 2019-12-31:
   firstDataObj?:Papa.ParseResult<snDealRows>;
@@ -64,6 +65,7 @@ export class DataService {
           //console.log(this.fourthDataObj);
 
           this.dataReady.emit(); //event is sent to the portfolio component so the charts etc. can get rendered
+          this.isProcessing = false;
 
           break;
         default:
