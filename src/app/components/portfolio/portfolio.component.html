@@ -10,7 +10,9 @@
                 <div id="graph1">
                     <app-chart-element *ngIf="!isLoading" [chart]="charts[0]"></app-chart-element>
                 </div>
-                <div id="graph2" style="background-color: lightblue;"></div>
+                <div id="graph2">
+                    <app-chart-element [chart]="charts[2]"></app-chart-element>
+                </div>
                 <div id="graph3">
                     <app-chart-element *ngIf="!isLoading" [chart]="charts[1]"></app-chart-element>
                 </div>
