@@ -6,6 +6,7 @@
     width: 100%;
     z-index: 1000;
     left: 0;
+    transition: all 0.3s ease; /* Füge Übergang hinzu */
   }
   
   .header-container {
@@ -16,6 +17,20 @@
     justify-content: space-between;
     align-items: center;
     height: 100%;
+    transition: all 0.3s ease; /* Füge Übergang hinzu */
+  }
+
+  .header-container.shrink {
+    padding: 10px 30px; /* Verringere die Höhe des Headers */
+  }
+
+  .header-title {
+      font-size: 1.5em;
+      transition: font-size 0.3s ease;
+  }
+
+  .header-container.shrink .header-title {
+      font-size: 1.2em; /* Verkleinere die Schriftgröße */
   }
   
   .branding {
@@ -29,6 +44,10 @@
     transition: transform 0.2s ease;
   }
   
+  .header-container.shrink .logo {
+    width: 90px; /* Verkleinere das Logo */
+  }
+
   .logo:hover {
     transform: scale(1.1);
   }
