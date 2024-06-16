@@ -130,7 +130,7 @@ header {
     width: 100vw; /* Setzt die Breite auf die volle Breite der Ansicht */
     margin-left: calc(-50vw + 50%); /* Zentriert den Block */
     overflow: hidden;
-    background-image: url('../../../assets/background-img.jpg'); /* Setze hier den Pfad zu deinem Bild */
+    background-image: url('../../../assets/backgroundimg2.png'); /* Setze hier den Pfad zu deinem Bild */
     background-size: cover;
     background-position: center;
     height: auto; /* Stelle die Höhe ein, je nach Bedarf */
@@ -144,26 +144,15 @@ header {
     box-sizing: border-box;
 }
 
-header::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image: url('../../../assets/background-img.jpg'); /* Add the appropriate image URL */
-    background-position: center;
-    filter: blur(6px); /* Adjust the blur level as needed */
-    z-index: 1; /* Ensures the blur effect is behind the text */
-}
 
 header h1 {
     position: relative;
-    z-index: 3; /* Ensures the text is above the blur and overlay */
+    z-index: 3; 
     font-size: 2em;
     margin: 0;
     padding: 20px;
-    color: #5884DA;
+    color: #002264;
     text-align: center;
-    background: rgba(255, 255, 255, 0.521); /* Optional: Adds a translucent background to the text for better readability */
     display: flex;
     justify-content: center;
     align-items: center;
