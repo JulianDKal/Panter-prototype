@@ -28,3 +28,10 @@ export class BarChart extends Chart {
     }
 }
 
+export class BoxPlot extends Chart {
+    constructor(layout:plotLayout, data: boxData[])
+    {
+        super(layout, data);
+    }
+}
+

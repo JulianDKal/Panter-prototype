@@ -74,6 +74,13 @@ type pieData = {
     marker?:plotMarkerObj
 }
 
+type boxData = {
+    type: 'box',
+    y: number[],
+    name?: string,
+    marker?:plotMarkerObj
+}
+
 type barData = {
     type: 'bar',
     x: string[],
