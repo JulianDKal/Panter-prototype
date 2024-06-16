@@ -1,12 +1,4 @@
-<!-- <p>
-    <a routerLink="portfolio" routerLinkActive="active">Learn More</a>
-</p>
-<div (click)="routeToPortfolio()" class="clickableImg">
-    <img src="./../../../assets/example_graph.jpeg" width="400px">
-</div>
-<app-test></app-test> -->
-
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -30,7 +22,9 @@
         </aside>
         <section class="kostenanalyse">
             <h2>Kostenanalyse</h2>
-            <img src="assets/chart.jpg" alt="Abonnierte Newsletter nach Kanal" class="kostenanalyse-chart">
+            <div (click)="routeToPortfolio()" >
+                <img src="assets/chart.jpg" alt="Abonnierte Newsletter nach Kanal" class="kostenanalyse-chart">
+            </div>
             <h2 class="title-dashboard">Dashboard</h2>
             <img src="assets/dashboard.avif" alt="Dashboard" class="dashboard-chart">
         </section>
@@ -74,14 +68,6 @@
                 </div>
             </section>
         </div>
-        <!-- <section class="dashboard-section">
-            <div class="dashboard-text">
-                <h2>Zum Dashboard</h2>
-                <a href="https://example.com/ziel-seite">
-                    <img src="../../../assets/dashboard.jpg" alt="dashboard" style="width: 100%; height: auto;">
-                </a>
-            </div>
-        </section> -->
         <section class="portfolio-section">
             <div class="portfolio-text">    
                 <h2>Zum Portfolio</h2>

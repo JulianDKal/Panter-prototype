@@ -1,1 +1,20 @@
-<p>portfolio works!</p>
+<body>
+    <div class="container">
+        <app-navbar></app-navbar>
+        <div *ngIf="isLoading">
+            Loading...
+        </div>
+        <div *ngIf="!isLoading" class="main">
+            <h1>Portfolio</h1>
+            <div class="dashboard">
+                <div id="graph1">
+                    <app-chart-element *ngIf="!isLoading" [chart]="charts[0]"></app-chart-element>
+                </div>
+                <div id="graph2" style="background-color: lightblue;"></div>
+                <div id="graph3">
+                    <app-chart-element *ngIf="!isLoading" [chart]="charts[1]"></app-chart-element>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

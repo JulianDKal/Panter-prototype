@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TestComponent } from '../test/test.component';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-home',

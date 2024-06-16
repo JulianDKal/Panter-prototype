@@ -7,11 +7,13 @@
     background-color: rgb(37, 86, 142);
     color: #333;
     max-width: fit-content;
+    left: 0;
 }
 
 main {
     display: flex;
     min-height: 100vh;
+    left: 0;
 }
 
 aside {
@@ -97,6 +99,7 @@ h2.title-dashboard{
     background-color:  rgb(37, 86, 142);
     display: block;
     margin: 20px auto 20px 20px;
+    cursor: pointer;
 }
 
 .dashboard-chart {
