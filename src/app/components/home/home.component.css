@@ -64,7 +64,7 @@ main {
 }
 
 section {
-    background-color: white;
+    background-color: #dfeeff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -75,13 +75,13 @@ section {
 .topics-section .topics-text h2,
 .dashboard-section .dashboard-text h2,
 .portfolio-section .portfolio-text h2 {
-    color: #5884DA;
+    color: #25568e;
     font-size: 1.5em;
     font-weight: 500;
 }
 
 .topics-button {
-    background-color: #5884DA;
+    background-color: #25568e;
     color: white;
     border: none;
     border-radius: 5px;
@@ -91,7 +91,7 @@ section {
 }
 
 .topics-button:hover {
-    background-color: #5883dab5;
+    background-color: #002264;
 }
 
 .dashboard-section {
