@@ -21,7 +21,7 @@
   }
 
   .header-container.shrink {
-    padding: 10px 30px; /* Verringere die Höhe des Headers */
+    padding: 5px 10px; /* Verringere die Höhe des Headers */
   }
 
   .header-title {
