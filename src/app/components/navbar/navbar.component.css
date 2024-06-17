@@ -8,12 +8,11 @@
 }
 
 .navbar {
-    width: 170px;
+    width: 12vw;
     height: 100vh;
     position:fixed;
     background-color: gray;
     margin-left: 0px;
-    margin-right: 20px;
     left: 0px;
     top: 0px;
 }
