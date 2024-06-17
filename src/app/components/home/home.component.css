@@ -150,3 +150,46 @@ section {
 .secondary-nav .nav-link:hover {
     color: #e0e0e0;
 }
+
+footer {
+    background-color: #25568e;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    width: 99vw;
+    margin-left: calc(-50vw + 50.6%);
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.footer-section {
+    flex: 1;
+    padding: 10px;
+}
+
+.footer-section h4 {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+}
+
+.footer-section p {
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+
+.footer-section a {
+    color: #e0e0e0;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
