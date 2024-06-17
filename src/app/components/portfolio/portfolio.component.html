@@ -27,12 +27,23 @@
         <div class="portfolio-performance">
           <h5>Portfolio Performance</h5> 
         </div>
+        <section class="dashboard-section">
+            <div class="db">
+                <h3>Kategorie der Themen</h3>
+              <div id="graph3" class="graph">
+              <!-- (mouseover)="hoverGraph(true)" (mouseleave)="hoverGraph(false)" [class.hovered]="isGraphHovered" -->
+                <div class="graph-content">
+                  <img src="../../../assets/example_graph.jpeg" alt="Graph" style="max-width: 90%; max-height: 90%;">
+                </div>
+              </div>
+            </div>
+        </section>
         <div class="section-container">
             <section class="wertverteilung-section">
               <div> 
                 <h2> Wertverteilung</h2>
               </div>
-            <div id="graph1" class="graph" (mouseover)="hoverGraph(true)" (mouseleave)="hoverGraph(false)" [class.hovered]="isGraphHovered">
+            <div id="graph1" class="graph">
                 <div>
                   <h4>Wertverteilung der letzten 3 Jahre</h4>
                 </div>
@@ -45,7 +56,7 @@
             <div>
              <h2>Lizensen</h2> 
             </div>
-            <div id="graph2" class="graph" (mouseover)="hoverGraph(true)" (mouseleave)="hoverGraph(false)" [class.hovered]="isGraphHovered">
+            <div id="graph2" class="graph">
               <div class="graph-content">
                 <img src="../../../assets/example_graph.jpeg" alt="Graph" style="max-width: 90%; max-height: 90%;">
               </div>
@@ -53,16 +64,7 @@
             </section>
         </div> 
            
-        <section class="dashboard-section">
-            <div class="db">
-                <h3>Kategorie der Themen</h3>
-              <div id="graph3" class="graph" (mouseover)="hoverGraph(true)" (mouseleave)="hoverGraph(false)" [class.hovered]="isGraphHovered">
-                <div class="graph-content">
-                  <img src="../../../assets/example_graph.jpeg" alt="Graph" style="max-width: 90%; max-height: 90%;">
-                </div>
-              </div>
-            </div>
-        </section>
+        
         
       </div>    
     </div>
