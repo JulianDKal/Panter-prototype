@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
+import { Chart } from '../../Chart';
 import { ChartElementComponent } from '../chart-element/chart-element.component';
 
 @Component({
@@ -9,5 +10,6 @@ import { ChartElementComponent } from '../chart-element/chart-element.component'
   styleUrl: './overview-component.component.css'
 })
 export class OverviewComponentComponent {
+@Input() chartForGraph!:Chart;
 
 }

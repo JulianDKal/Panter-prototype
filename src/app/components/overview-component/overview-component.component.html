@@ -12,10 +12,10 @@
           <div id="graph3" class="graph">
           <!-- (mouseover)="hoverGraph(true)" (mouseleave)="hoverGraph(false)" [class.hovered]="isGraphHovered" -->
             <div class="graph-content">
-                <app-chart-element>
-                    
+                <app-chart-element [chart]="chartForGraph">
+
                 </app-chart-element>
-              <img src="../../../assets/example_graph.jpeg" alt="Graph" style="max-width: 90%; max-height: 90%;">
+                
             </div>
           </div>
         </div>
