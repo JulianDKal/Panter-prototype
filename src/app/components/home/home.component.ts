@@ -3,11 +3,12 @@ import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
 import { HeaderComponent } from '../header/header.component';
+import { TestComponent } from '../test/test.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterModule, HeaderComponent],
+  imports: [RouterModule, HeaderComponent, TestComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
