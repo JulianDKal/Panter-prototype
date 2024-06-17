@@ -1,4 +1,36 @@
-<div class="wrapper">
+<!-- <div class="wrapper">
     <nav class="navbar"></nav>
 
-</div>
+</div> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="navbar.component.css">
+</head>
+<body>
+    <div class="sidebar">
+        <nav class="navbar">
+            <div class="sidebar-header">
+                <img src="../../../assets/panter-logo.svg" alt="Portal Logo" class="logo">
+                <h2>Publishing Analytics Tracker</h2>
+                <div class="dropdown" (click)="toggleDropdown()">
+                    <button class="dropdown-btn">Mein Portfolio  ▼</button>
+                    <div class="dropdown-content" [class.show]="dropdownOpen">
+                        <a href="#">Portfolio 1</a>
+                        <a href="#">Portfolio 2</a>
+                        <a href="#">Portfolio 3</a>
+                    </div>
+                </div>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Kostenanalyse</a></li>
+                <li><a href="#">Filterung</a></li>
+            </ul>
+        </nav>
+    </div>
+</body>
+</html>
