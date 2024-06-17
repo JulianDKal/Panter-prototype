@@ -5,11 +5,12 @@ import { BarChart, Chart, PieChart, ScatterChart } from '../../Chart';
 import { DataService } from '../../services/data.service';
 import { Subscription } from 'rxjs';
 import { NgIf } from '@angular/common';
+import { GraphContainerComponent } from '../graph-container/graph-container.component';
 
 @Component({
   selector: 'app-portfolio',
   standalone: true,
-  imports: [NavbarComponent,ChartElementComponent, NgIf],
+  imports: [NavbarComponent,ChartElementComponent, GraphContainerComponent, NgIf],
   templateUrl: './portfolio.component.html',
   styleUrl: './portfolio.component.css'
 })

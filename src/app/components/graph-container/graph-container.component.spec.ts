@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TestComponent } from './test.component';
+import { GraphContainerComponent } from './graph-container.component';
 
-describe('TestComponent', () => {
-  let component: TestComponent;
-  let fixture: ComponentFixture<TestComponent>;
+describe('GraphContainerComponent', () => {
+  let component: GraphContainerComponent;
+  let fixture: ComponentFixture<GraphContainerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TestComponent]
+      imports: [GraphContainerComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(TestComponent);
+    fixture = TestBed.createComponent(GraphContainerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

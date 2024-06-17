@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { TestComponent } from '../test/test.component';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
@@ -8,7 +7,7 @@ import { HeaderComponent } from '../header/header.component';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [TestComponent, RouterModule, HeaderComponent],
+  imports: [RouterModule, HeaderComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
