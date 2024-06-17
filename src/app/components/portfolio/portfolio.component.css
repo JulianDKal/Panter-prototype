@@ -1,55 +1,211 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-* {
-    font-family: "Poppins", sans-serif;
-}
-
 body {
-    background-color: white;
-}
-
-.dashboard {
-    display: grid;
-    grid-template-columns: 12% 12% 12% 12% 12% 12% 12% 12%;
-    grid-template-rows: 12% 12% 12% 12% 12% 12% 12% 12%;
-    background-color: lightgray;
-    border: 5px;
-    border-color: black;
-    width: 75vw;
-    height: 72vh;
-    margin-left: 0px;
-}
+    font-family: 'Poppins', sans-serif;
+    background-color: lightgrey;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .main-background {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    overflow: hidden;
+    height: auto;
+  }
+  
+  .main-content {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  header::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  
+  header h1 {
+    position: relative;
+    color: rgb(37, 86, 142);
+    text-align: center;
+    background: rgba(255, 255, 255, 0.521);
+  }
 
 .container {
     display: flex;
-    margin-top: 10px;
-    margin-left: 25px;
-    justify-content: flex-start;
-}
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  .main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin-left: 20px;
+    margin-right: -20px;
+  }
+  
+  .container {
+    display: flex;
+    flex: 1;
+  }
+  
+  .sidebar {
+    width: 200px;
+    background-color: rgb(37, 86, 142);
+    color: #F0F6FE;
+    max-width: fit-content;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .menu-btn {
+    background: none;
+    border: none;
+    color: #F0F6FE;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  
+  .menu {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 25px;
+  }
+  
+  .menu ul li {
+    margin: 20px 0;
+  }
 
-.main {
+  .menu ul li a {
+    color: #F0F6FE;
+    text-decoration: none;
+    font-size: 14px;
+    display: block;
+    padding: 8px 0;
+  }
+
+  .menu ul li:hover {
+    background-color: #2b4771; 
+  }
+
+  .menu ul li a:hover {
+    background-color: #2b4771;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  
+  .menu.hidden {
+    display: none;
+  }
+  
+  .menu.visible {
+    display: block;
+  }
+  
+  .dashboard {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     margin-left: 20px;
-}
+    margin-right: -20px;
+  }
+  
+  .portfolio-performance {
+    margin: auto;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  
+  .section-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .section-container > section {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  .section-container > section:last-child {
+    margin-right: 0;
+  }
+  
+  .graph {
+    background-color: rgb(223, 238, 255);
+    border: solid 1px rgb(43, 140, 188);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .graph-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-grow: 1;
+  }
+  
+  .graph-content img {
+    max-width: 90%;
+    max-height: 90%;
+  }
+  
+  .graph.hovered {
+    transform: scale(1.1); /* Vergrößerungseffekt */
+    box-shadow: 0 0 20px #2b4771; 
+    z-index: 1; 
+  }
 
-h1 {
-    margin-left: 0px;
-    margin-bottom: 0px;
-}
+  .dashboard-section {
+    flex-grow: 1;
+  }
+  
+  .wertverteilung-section h2,
+  .lizensen-section h2 {
+    font-size: 20px;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .wertverteilung-section #graph1,
+  .lizensen-section #graph2,
+  .dashboard-section #graph3 {
+    margin: 7px;
+  }
+  
+  .wertverteilung h4 {
+    font-size: 12px;
+    margin: auto;
+    margin-top: 5%;
+    text-align: center;
+  }
+  
+  .db h3 {
+    font-size: 20px;
+    margin: auto;
+    margin-top: 5%;
+    text-align: center;
+  }
 
-#graph1{
-    grid-row: 1 / 5;
-    grid-column: 1 / 4;
-    margin: 7px;
-}
-#graph2{
-    grid-row: span 4;
-    grid-column: span 5;
-    margin: 7px;
-}
-#graph3{
-    grid-row: 5 / 10;
-    grid-column: 1 / 10;
-    margin: 7px;
-}

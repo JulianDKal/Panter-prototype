@@ -1,22 +1,67 @@
 <body>
-    <div class="container">
-        <app-navbar></app-navbar>
-        <div *ngIf="isLoading">
-            Loading...
-        </div>
-        <div *ngIf="!isLoading" class="main">
-            <h1>Portfolio</h1>
-            <div class="dashboard">
-                <div id="graph1">
-                    <app-chart-element *ngIf="!isLoading" [chart]="charts[0]"></app-chart-element>
-                </div>
-                <div id="graph2">
-                    <app-chart-element [chart]="charts[2]"></app-chart-element>
-                </div>
-                <div id="graph3">
-                    <app-chart-element *ngIf="!isLoading" [chart]="charts[1]"></app-chart-element>
-                </div>
-            </div>
+    <div class="main-background">
+        <div class="main-content">
+            <header>
+                <h1>Meine Portfoliosammlung</h1>
+            </header>
         </div>
     </div>
+  <main class="main">
+    <div class="container">
+      <aside class="sidebar">
+        <button class="menu-btn" (click)="toggleMenu()">Mein Portfolio</button>
+        <nav id="menu" [class.hidden]="isMenuHidden" [class.visible]="!isMenuHidden">
+         <ul>
+            <li><a routerLink="neuesportfolio" routerLinkActive="active">Neues Portfolio erstellen</a></li>
+            <li><a routerLink="analyse" routerLinkActive="active">Analyse</a></li>
+            <li><a routerLink="portfolio" routerLinkActive="active">Portfoliosammlung</a></li>
+          </ul>
+        </nav>
+      </aside> 
+    
+      <div class="dashboard">
+        <div class="portfolio-performance">
+          <h5>Portfolio Performance</h5> 
+        </div>
+        <div class="section-container">
+            <section class="wertverteilung-section">
+              <div> 
+                <h2> Wertverteilung</h2>
+              </div>
+            <div id="graph1" class="graph" (mouseover)="hoverGraph(true)" (mouseleave)="hoverGraph(false)" [class.hovered]="isGraphHovered">
+                <div>
+                  <h4>Wertverteilung der letzten 3 Jahre</h4>
+                </div>
+              <div class="graph-content">
+                <img src="../../../assets/example_graph.jpeg" alt="Graph" style="max-width: 90%; max-height: 90%;">
+              </div>
+            </div>
+            </section>   
+            <section class="lizensen-section">
+            <div>
+             <h2>Lizensen</h2> 
+            </div>
+            <div id="graph2" class="graph" (mouseover)="hoverGraph(true)" (mouseleave)="hoverGraph(false)" [class.hovered]="isGraphHovered">
+              <div class="graph-content">
+                <img src="../../../assets/example_graph.jpeg" alt="Graph" style="max-width: 90%; max-height: 90%;">
+              </div>
+            </div>
+            </section>
+        </div> 
+           
+        <section class="dashboard-section">
+            <div class="db">
+                <h3>Kategorie der Themen</h3>
+              <div id="graph3" class="graph" (mouseover)="hoverGraph(true)" (mouseleave)="hoverGraph(false)" [class.hovered]="isGraphHovered">
+                <div class="graph-content">
+                  <img src="../../../assets/example_graph.jpeg" alt="Graph" style="max-width: 90%; max-height: 90%;">
+                </div>
+              </div>
+            </div>
+        </section>
+        
+      </div>    
+    </div>
+  </main>  
 </body>
+
