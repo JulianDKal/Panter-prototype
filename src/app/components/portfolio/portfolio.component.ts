@@ -6,11 +6,12 @@ import { DataService } from '../../services/data.service';
 import { Subscription } from 'rxjs';
 import { NgIf } from '@angular/common';
 import { GraphContainerComponent } from '../graph-container/graph-container.component';
+import { OverviewComponentComponent } from '../overview-component/overview-component.component';
 
 @Component({
   selector: 'app-portfolio',
   standalone: true,
-  imports: [NavbarComponent,ChartElementComponent, GraphContainerComponent, NgIf],
+  imports: [NavbarComponent,ChartElementComponent, GraphContainerComponent, NgIf, OverviewComponentComponent],
   templateUrl: './portfolio.component.html',
   styleUrl: './portfolio.component.css'
 })
