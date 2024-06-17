@@ -1,6 +1,6 @@
    header {
     border-top: 25px solid  #25568e;
-    background-color: #dfeeff;
+    background-color: #eaf3fc;
     position: fixed;
     top:0;
     width: 100%;
@@ -21,7 +21,7 @@
   }
 
   header.scrolled {
-    background-color: rgba(223, 238, 255, 0.8); /* Halbtransparente Hintergrundfarbe */
+    background-color: hsla(210, 75%, 95%, 0.8); /* Halbtransparente Hintergrundfarbe */
   }
 
   .header-container.shrink {
