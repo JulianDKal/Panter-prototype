@@ -45,7 +45,7 @@ h1 {
 }
 #graph2{
     grid-row: span 4;
-    grid-column: span 3;
+    grid-column: span 5;
     margin: 7px;
 }
 #graph3{

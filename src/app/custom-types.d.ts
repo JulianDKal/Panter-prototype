@@ -7,7 +7,7 @@ type snDealRows =  {
     homepageURL: string, 
     pISSN: string, 
     eISSN: string,
-    publishingModel: string, 
+    "Publishing Model": string, 
     activeFrom: string, 
     fachArztZeitschrift: string, 
     "APC": string,
@@ -61,8 +61,9 @@ type plotData = {
 
 type scatterData = {
     type: 'scatter',
-    x: number[],
+    x: number[] | string[],
     y: number[],
+    name?: string,
     marker?:plotMarkerObj
 }
 
@@ -70,6 +71,13 @@ type pieData = {
     type: 'pie',
     values: number[],
     labels: string[],
+    marker?:plotMarkerObj
+}
+
+type boxData = {
+    type: 'box',
+    y: number[],
+    name?: string,
     marker?:plotMarkerObj
 }
 

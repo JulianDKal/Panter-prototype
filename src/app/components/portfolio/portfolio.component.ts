@@ -23,6 +23,9 @@ export class PortfolioComponent {
   
   chartData2!:barData[];
   chartLayout2!:plotLayout;
+
+  chartData3!:scatterData[];
+  chartLayout3!:plotLayout;
   
   constructor(private dataService:DataService) { }
   
@@ -103,8 +106,59 @@ createCharts(){
     }
   }
 
+  const publishingModels19Map = this.dataService.countOccurrences(this.dataService.publishingModels19);
+  const publishingModels20Map = this.dataService.countOccurrences(this.dataService.publishingModels20);
+  const publishingModels22Map = this.dataService.countOccurrences(this.dataService.publishingModels22);
+  const publishingModels23Map = this.dataService.countOccurrences(this.dataService.publishingModels23);
+
+  delete publishingModels19Map["undefined"];
+  delete publishingModels20Map["undefined"];
+  delete publishingModels22Map["undefined"];
+  delete publishingModels23Map["undefined"];
+
+  this.chartData3 = [
+    {
+      x: Object.keys(publishingModels19Map),
+      y: Object.values(publishingModels19Map),
+      type: 'scatter',
+      name: '2019'
+    },
+    {
+      x: Object.keys(publishingModels20Map),
+      y: Object.values(publishingModels20Map),
+      type: 'scatter',
+      name: '2020'
+    },
+    {
+      x: Object.keys(publishingModels22Map),
+      y: Object.values(publishingModels22Map),
+      type: 'scatter',
+      name: '2022'
+    },
+    {
+      x: Object.keys(publishingModels23Map),
+      y: Object.values(publishingModels23Map),
+      type: 'scatter',
+      name: '2023'
+    }
+  ]
+
+  this.chartLayout3 = {
+    width: 400, height: 290, title: 'Publishing Models', 
+    margin: {
+      t: 40,
+      r: 10, 
+      b: 30, 
+      l: 45  
+    },
+    xaxis: {
+      tickangle: 0
+    }
+  }
+
   this.charts[0] = new PieChart(this.chartLayout, this.chartData);
   this.charts[1] = new BarChart(this.chartLayout2, this.chartData2);
+  this.charts[2] = new ScatterChart(this.chartLayout3, this.chartData3);
 }
 
 }
