@@ -11,6 +11,15 @@ import { NavbarComponent } from '../navbar/navbar.component';
 export class PortfolioComponent {
   isMenuHidden = false;
 
+
+ // Diese Variable speichert den aktuellen Zustand des Graphen
+  isGraphHovered = false;
+
+  // Diese Methode wird aufgerufen, wenn der Mauszeiger über den Graphen geht
+  hoverGraph(isHovering: boolean) {
+    this.isGraphHovered = isHovering;
+  }
+
   toggleMenu() {
     this.isMenuHidden = !this.isMenuHidden;
   }
