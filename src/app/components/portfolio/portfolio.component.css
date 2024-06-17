@@ -171,8 +171,8 @@ body {
   
   .graph.hovered {
     transform: scale(1.1); /* Vergrößerungseffekt */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Schatteneffekt */
-    z-index: 1; /* Optional: Bringt den Graphen nach vorne */
+    box-shadow: 0 0 20px #2b4771; 
+    z-index: 1; 
   }
 
   .dashboard-section {
