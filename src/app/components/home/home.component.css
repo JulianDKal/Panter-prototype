@@ -5,7 +5,6 @@
     padding: 0;
     background-color: #E9E9E9;
     color: #333;
-
 }
 
 header {
@@ -17,8 +16,8 @@ header {
 
 .main-background {
     position: relative;
-    width: 99vw; 
-    margin-left: calc(-50vw + 50.6%); 
+    width: 100vw; 
+    margin-left: 0; 
     overflow: hidden;
     background-image: url('../../../assets/backgroundimg2.png'); 
     background-size: cover;
@@ -30,6 +29,7 @@ header {
     position: relative;
     max-width: 1200px; 
     margin: 0 auto;
+    margin-top: 133px;
     padding: 20px;
     box-sizing: border-box;
 }
@@ -54,6 +54,9 @@ header h1 {
 main {
     display: block; 
     padding: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .section-container {
@@ -124,8 +127,8 @@ section {
     position: sticky;
     top: 0;
     margin-top: 10px;
-    width: 99vw;
-    margin-left: calc(-50vw + 50.6%); 
+    width: 100vw;
+    margin-left: 0; 
 }
 
 .secondary-nav .nav-list {
