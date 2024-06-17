@@ -3,9 +3,9 @@
     
 </app-navbar>
 <body>
-  <app-overview-component [chartForGraph]="charts[0]">
+  <!-- <app-overview-component [chartForGraph]="charts[0]">
 
-  </app-overview-component>
+  </app-overview-component> -->
   <main class="main">
     <div class="container">
       <!-- <aside class="sidebar">
@@ -30,7 +30,7 @@
                   <h4>Wertverteilung der letzten 3 Jahre</h4>
                 </div>
               <div class="graph-content">
-                <img src="../../../assets/example_graph.jpeg" alt="Graph" style="max-width: 90%; max-height: 90%;">
+                <!-- <app-chart-element *ngIf="!isLoading" [chart]="charts[0]"></app-chart-element>  -->
               </div>
             </div>
             </section>   
