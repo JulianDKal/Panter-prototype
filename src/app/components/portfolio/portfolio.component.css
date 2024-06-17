@@ -36,6 +36,9 @@ body {
     color: rgb(37, 86, 142);
     text-align: center;
     background: rgba(255, 255, 255, 0.521);
+  }
+
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -205,4 +208,4 @@ body {
     margin-top: 5%;
     text-align: center;
   }
-  
+
