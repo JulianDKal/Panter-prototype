@@ -18,6 +18,7 @@ export class DataService {
   mainDisciplines:string[] = [];
   apcPrices:string[] = [];
   publishingModels19:string[] = [];
+  licenseTypes19:string[] = [];
 
   countsOfDisciplines?:CountMap;
   
@@ -48,6 +49,7 @@ export class DataService {
               this.mainDisciplines[i] = this.firstDataObj.data[i]["Main Discipline"];
               this.apcPrices[i] = this.firstDataObj.data[i]["APC"];
               this.publishingModels19[i] = this.firstDataObj.data[i]["Publishing Model"];
+              this.licenseTypes19[i] = this.firstDataObj.data[i]["OA License Type"];
             }
             this.countsOfDisciplines = this.countOccurrences(this.mainDisciplines);
             //counts of Discpiplines are reduced here!!

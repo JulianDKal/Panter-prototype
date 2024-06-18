@@ -12,7 +12,7 @@ type snDealRows =  {
     fachArztZeitschrift: string, 
     "APC": string,
     bmcDiscount: string, 
-    oaLicenseType: string,
+    "OA License Type": string,
     standardWorkflow: string, 
     changesWithTerm: string,
     changeValidFrom: string,
