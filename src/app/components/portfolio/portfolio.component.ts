@@ -17,22 +17,17 @@ import { OverviewComponentComponent } from '../overview-component/overview-compo
 })
 export class PortfolioComponent {
   isMenuHidden = false;
-
-
  // Diese Variable speichert den aktuellen Zustand des Graphen
   isGraphHovered = false;
-
   // Diese Methode wird aufgerufen, wenn der Mauszeiger über den Graphen geht
   hoverGraph(isHovering: boolean) {
     this.isGraphHovered = isHovering;
   }
-
   toggleMenu() {
     this.isMenuHidden = !this.isMenuHidden;
   }
 
-
-
+  //Teil, in dem die Daten geholt werden
   private dataReadySubscription: Subscription | null = null;
   
   charts:Chart[] = [];
@@ -45,6 +40,9 @@ export class PortfolioComponent {
 
   chartData3!:scatterData[];
   chartLayout3!:plotLayout;
+
+  donutChartData!:pieData[];
+  donutLayout!:plotLayout;
   
   constructor(private dataService:DataService) { }
   
@@ -175,9 +173,19 @@ createCharts(){
     }
   }
 
+  this.donutChartData = [{
+    labels: keysArray,
+    values: valuesArray,
+    type: 'pie',
+    hole: 0.5
+  }]
+  this.donutLayout = this.chartLayout;
+
   this.charts[0] = new PieChart(this.chartLayout, this.chartData);
   this.charts[1] = new BarChart(this.chartLayout2, this.chartData2);
   this.charts[2] = new ScatterChart(this.chartLayout3, this.chartData3);
+  this.charts[3] = new PieChart(this.donutLayout, this.donutChartData);
+
 }
 
 }

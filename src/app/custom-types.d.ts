@@ -71,7 +71,8 @@ type pieData = {
     type: 'pie',
     values: number[],
     labels: string[],
-    marker?:plotMarkerObj
+    marker?:plotMarkerObj,
+    hole?: number
 }
 
 type boxData = {
