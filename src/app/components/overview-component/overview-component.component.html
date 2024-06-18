@@ -1,22 +1,32 @@
 <body>
-    <div class="main-background">
-        <div class="main-content">
-            <header>
-                <h1>Meine Portfoliosammlung</h1>
-            </header>
-        </div>
-    </div>
     <section class="dashboard-section">
-        <div class="db">
-            <h3>Kategorie der Themen</h3>
-          <div id="graph3" class="graph">
+        <div class="login-container">
+          <img src="../../../assets/konto-icon.png" alt="Mein Konto Icon" class="icon">
+          <button class="login-button"> Login </button>
+        </div>
+        <div id="graph3" class="graph">
           <!-- (mouseover)="hoverGraph(true)" (mouseleave)="hoverGraph(false)" [class.hovered]="isGraphHovered" -->
             <div class="graph-content">
-                <app-chart-element [chart]="chartForGraph">
-
-                </app-chart-element>
-                
+              <div class="chart">
+                <app-chart-element [chart]="chartForGraph"></app-chart-element> 
+              </div>
+              <div class="center">
+                <h3>Main Disciplines</h3>
+                <div class="inline-texts">
+                  <p>Klassen</p>
+                  <p>Öffentlich</p>
+                  <p>USD</p>
+                </div>
+                <p> Anzahl der gesamten Journals</p>
+                <p> 150.000</p>
+               </div>
             </div>
+        </div>
+        <div class="end">
+          <div class="button-container">
+            <a class="btn">Klassen</a>
+            <a class="btn">Seit Kauf</a>
+            <a class="btn">Seit Kauf</a>
           </div>
         </div>
     </section>
