@@ -8,7 +8,7 @@ import { NgIf } from '@angular/common';
   selector: 'app-chart-element',
   standalone: true,
   imports: [PlotlyModule, NgIf],
-  template: '<plotly-plot *ngIf="isReady" [data]="chart.data" [layout]="chart.layout" [config]="{displayModeBar: false}"></plotly-plot>',
+  template: '<div class="plotly-container"><plotly-plot *ngIf="isReady" [data]="chart.data" [layout]="chart.layout" [config]="{displayModeBar: false}"></plotly-plot></div>',
   styleUrl: './chart-element.component.css'
 })
 export class ChartElementComponent {
