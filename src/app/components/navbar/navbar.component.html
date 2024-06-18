@@ -16,19 +16,20 @@
             <div class="sidebar-header">
                 <img src="../../../assets/panter-logo.svg" alt="Portal Logo" class="logo">
                 <h2>Publishing Analytics Tracker</h2>
-                <div class="dropdown" (click)="toggleDropdown()">
-                    <button class="dropdown-btn">Mein Portfolio  ▼</button>
-                    <div class="dropdown-content" [class.show]="dropdownOpen">
-                        <a href="#">Portfolio 1</a>
-                        <a href="#">Portfolio 2</a>
-                        <a href="#">Portfolio 3</a>
-                    </div>
-                </div>
             </div>
             <ul class="sidebar-menu">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Kostenanalyse</a></li>
-                <li><a href="#">Filterung</a></li>
+                <div class="dropdown">
+                    <button class="dropdown-btn" (click)="toggleDropdown()">{{ selectedPortfolio }}   ▼</button>
+                    <div class="dropdown-content" [class.show]="dropdownOpen">
+                        <a routerLink="/portfolio" routerLinkActive="active" (click)="selectPortfolio('Portfolio 1')">Portfolio 1</a>
+                        <a routerLink="/portfolio" routerLinkActive="active" (click)="selectPortfolio('Portfolio 2')">Portfolio 2</a>
+                        <a routerLink="/portfolio" routerLinkActive="active" (click)="selectPortfolio('Portfolio 3')">Portfolio 3</a>
+                    </div>
+                </div>
+                    <li><a routerLink="" class="nav-link"><img src="../../../assets/home-icon.svg" alt="Home Icon" class="icon">Home</a></li>
+                    <li><a routerLink="/portfolio" routerLinkActive="active"><img src="../../../assets/dashboard-icon.png" alt="Dashboard Icon" class="icon">Dashboard</a></li>
+                    <li><a href="#kostenanalyse"><img src="../../../assets/analyse-icon.png" alt="Analyse Icon" class="icon">Kostenanalyse</a></li>
+                    <li><a href="#filterung"><img src="../../../assets/filter-icon.png" alt="Filter Icon" class="icon">Filterung</a></li>
             </ul>
         </nav>
     </div>

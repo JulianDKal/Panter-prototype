@@ -21,7 +21,7 @@
   }
 
   header.scrolled {
-    background-color: hsla(210, 75%, 95%, 0.8); /* Halbtransparente Hintergrundfarbe */
+    background-color: #eaf3fc; /* Halbtransparente Hintergrundfarbe */
   }
 
   .header-container.shrink {
