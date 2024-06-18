@@ -17,22 +17,17 @@ import { OverviewComponentComponent } from '../overview-component/overview-compo
 })
 export class PortfolioComponent {
   isMenuHidden = false;
-
-
  // Diese Variable speichert den aktuellen Zustand des Graphen
   isGraphHovered = false;
-
   // Diese Methode wird aufgerufen, wenn der Mauszeiger über den Graphen geht
   hoverGraph(isHovering: boolean) {
     this.isGraphHovered = isHovering;
   }
-
   toggleMenu() {
     this.isMenuHidden = !this.isMenuHidden;
   }
 
-
-
+  //Teil, in dem die Daten geholt werden
   private dataReadySubscription: Subscription | null = null;
   
   charts:Chart[] = [];
@@ -45,6 +40,12 @@ export class PortfolioComponent {
 
   chartData3!:scatterData[];
   chartLayout3!:plotLayout;
+
+  donutChartData!:pieData[];
+  donutLayout!:plotLayout;
+
+  licenceTypeData!:barData[];
+  licenceTypeLayout!:plotLayout;
   
   constructor(private dataService:DataService) { }
   
@@ -175,9 +176,44 @@ createCharts(){
     }
   }
 
+  this.donutChartData = [{
+    labels: keysArray,
+    values: valuesArray,
+    type: 'pie',
+    hole: 0.5
+  }]
+  this.donutLayout = this.chartLayout;
+
+  const licenseTypesMap = this.dataService.countOccurrences(this.dataService.licenseTypes19);
+  delete licenseTypesMap["undefined"];
+
+  this.licenceTypeData = [{
+    x: Object.keys(licenseTypesMap),
+    y: Object.values(licenseTypesMap),
+    type: 'bar',
+    marker: {
+      color: 'rgb(138,202,245)',
+      opacity: 0.6,
+    }
+  }]
+
+  this.licenceTypeLayout =   this.chartLayout2 = {
+    width: 400, height: 290, 
+    title: 'OA License Types', 
+    margin: {
+      t: 40,
+      r: 10, 
+      b: 45, 
+      l: 45
+    }
+  }
+
   this.charts[0] = new PieChart(this.chartLayout, this.chartData);
   this.charts[1] = new BarChart(this.chartLayout2, this.chartData2);
   this.charts[2] = new ScatterChart(this.chartLayout3, this.chartData3);
+  this.charts[3] = new PieChart(this.donutLayout, this.donutChartData);
+  this.charts[4] = new BarChart(this.licenceTypeLayout, this.licenceTypeData);
+
 }
 
 }
