@@ -65,6 +65,12 @@ body {
     font-family: Poppins, sans-serif;
     font-size: 15px;
     border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dropdown-arrow {
+    margin-left: auto;
 }
 
 .dropdown-btn:hover {

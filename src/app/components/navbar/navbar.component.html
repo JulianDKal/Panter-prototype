@@ -19,7 +19,10 @@
             </div>
             <ul class="sidebar-menu">
                 <div class="dropdown">
-                    <button class="dropdown-btn" (click)="toggleDropdown()">{{ selectedPortfolio }}   ▼</button>
+                    <button class="dropdown-btn" (click)="toggleDropdown()">
+                        {{ selectedPortfolio }} 
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
                     <div class="dropdown-content" [class.show]="dropdownOpen">
                         <a routerLink="/portfolio" routerLinkActive="active" (click)="selectPortfolio('Portfolio 1')">Portfolio 1</a>
                         <a routerLink="/portfolio" routerLinkActive="active" (click)="selectPortfolio('Portfolio 2')">Portfolio 2</a>
