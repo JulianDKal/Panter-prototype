@@ -35,6 +35,16 @@ export class DataService {
   publishingModels23:string[] = [];
   mainDisciplines23:string[] = [];
 
+  //Wiley Datensatz 2020
+  wileyFirstObj?:Papa.ParseResult<wileyDealRows>
+  //Wiley Datensatz 2021
+  wileySecondObj?:Papa.ParseResult<wileyDealRows>
+  //Wiley Datensatz 2022
+  wileyThirdObj?:Papa.ParseResult<wileyDealRows>
+  //Wiley Datensatz 2023
+  wileyFourthObj?:Papa.ParseResult<wileyDealRows>
+
+
   eventCount:number = 0;
   constructor(private csvService:CSVService) 
   {
@@ -95,9 +105,28 @@ export class DataService {
 
           this.dataReady.emit(); //event is sent to the portfolio component so the charts etc. can get rendered
           this.isProcessing = false;
+          this.eventCount++;
+          break;
 
+          //Ab hier werden wiley Datensätze gespeichert
+        case 4:
+          this.wileyFirstObj = results;
+          this.eventCount++;
+          break;
+        case 5:
+          this.wileySecondObj = results;
+          this.eventCount++;
+          break;
+        case 6:
+          this.wileyThirdObj = results;
+          this.eventCount++;
+          break;
+        case 7:
+          this.wileyFourthObj = results;
+          this.eventCount++;
           break;
         default:
+          console.log("Additional csv data that is not being processed");
           break;
       }
 

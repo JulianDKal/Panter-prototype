@@ -19,7 +19,17 @@ type snDealRows =  {
     comments: string
 }
 
-type CsvParsedEventHandler = (results: ParseResult<snRowsData>) => void;
+type wileyDealRows = {
+    "Status": string,
+    "Revenue Model": string,
+    "Ownership": string, 
+    "Owned By": string, 
+    "EUR APC": string,
+    "License Type Offered": string,
+    "General Subject Category": string
+}
+
+type CsvParsedEventHandler = (results: ParseResult<snRowsData | wileyDealRows>) => void;
 
 //typen die Plotly für einen Graphen erwartet:
 type plotMarkerObj = {

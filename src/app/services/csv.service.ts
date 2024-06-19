@@ -17,10 +17,16 @@ export class CSVService {
   }
 
   async loadCsvFiles() {
-    const filePaths = ['assets/sn_deal_2020_2022_journal_list_2019-12-31.CSV', 
+    const filePaths = [
+    'assets/sn_deal_2020_2022_journal_list_2019-12-31.CSV', 
     'assets/sn_deal_2020_2022_journal_list_2020-04-17.CSV',
     'assets/sn_deal_2020_2022_journal_list_2022-04-04.CSV',
-    'assets/sn_deal_2020_2023_journal_list_2023-05-04.CSV']; 
+    'assets/sn_deal_2020_2023_journal_list_2023-05-04.CSV',
+    'assets/wiley_deal_2019_2021_journal_list_2020-10-12.CSV',
+    'assets/wiley_deal_2019_2021_journal_list_2021-09-27.CSV',
+    'assets/wiley_deal_2019_2022_journal_list_2022-04-29.CSV',
+    'assets/wiley_deal_2019_2023_journal_list_2023-05-09.CSV'
+    ]; 
     for (let index = 0; index < filePaths.length; index++) {
       this.getCsvFile(filePaths[index]).subscribe(
         (csvData) => {
