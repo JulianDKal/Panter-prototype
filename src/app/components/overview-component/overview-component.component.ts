@@ -12,4 +12,15 @@ import { ChartElementComponent } from '../chart-element/chart-element.component'
 export class OverviewComponentComponent {
 @Input() chartForGraph!:Chart;
 
+dropdownOpen = false;
+  selectedPortfolio = 'Themen';
+
+  toggleDropdown() {
+    this.dropdownOpen = !this.dropdownOpen;
+  }
+
+selectPortfolio(portfolio: string) {
+  this.selectedPortfolio = portfolio;
+  this.dropdownOpen = false;
+}
 }
