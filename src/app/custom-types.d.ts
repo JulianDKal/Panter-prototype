@@ -87,8 +87,9 @@ type barData = {
     type: 'bar',
     x: string[],
     y: number[],
-    text?,
-    marker?:plotMarkerObj
+    text?, //Text in der Box
+    marker?:plotMarkerObj,
+    name?:string //Name in der Legende
 }
 
 type CountMap = Record<string, number>;

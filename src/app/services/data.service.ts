@@ -163,6 +163,8 @@ export class DataService {
     return countMap
     //console.log(countMap);
   }
+
+
   //gibt die Häufigkeiten der Einträge als oben definierter CountMap typ zurück
   //z.B. result = {"Mathematik": 345, "Physics":  124, ...}
   countOccurrences(arr: string[]): CountMap {

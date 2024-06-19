@@ -216,9 +216,30 @@ createCharts(){
 
   this.modelsDisciplinesData = [{
     x: Object.keys(disciplinesModelsMap),
-    y: Object.values(disciplinesModelsMap).map(subjectObj => subjectObj.sum),
+    y: Object.values(disciplinesModelsMap).map(subjectObj => subjectObj["Open Choice"]),
     type: 'bar',
-  }]
+    name: 'Open Choice'
+  },
+  {
+    x: Object.keys(disciplinesModelsMap),
+    y: Object.values(disciplinesModelsMap).map(subjectObj => subjectObj["Fully Open Access"]),
+    type: 'bar',
+    name: 'Fully Open Access'
+  },
+  {
+    x: Object.keys(disciplinesModelsMap),
+    y: Object.values(disciplinesModelsMap).map(subjectObj => subjectObj["Subscription-only"]),
+    type: 'bar',
+    name: 'Subscription Only'
+  },
+  {
+    x: Object.keys(disciplinesModelsMap),
+    y: Object.values(disciplinesModelsMap).map(subjectObj => subjectObj["Hybrid (Third Party)"]),
+    type: 'bar',
+    name: 'Hybrid (Third Party)'
+  }
+
+]
 
   this.modelsDisciplinesLayout = {
     width: 400, height: 200,
@@ -228,7 +249,8 @@ createCharts(){
       r: 10, 
       b: 45, 
       l: 45
-    }
+    },
+    barmode: 'stack'
   }
 
   this.charts[0] = new PieChart(this.chartLayout, this.chartData);
