@@ -9,29 +9,62 @@
   .button-container {
     display: flex;
     justify-content: left;
-    gap: 20px;
-    padding: 10px 0px 5px 10px;
+    align-items: center;
     width: 100%;
-    background-color: rgb(224, 224, 224);
+    height: 60px;
+    background-color: #eaf3fc;
     overflow: hidden;
-    border-top-right-radius: 7px;
-    border-top-left-radius: 7px;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
     width: 100%;
     box-sizing: border-box;
   }
   
-  .btn {
+  .btn-active {
     cursor: pointer;
-    text-decoration: underline;
+    text-decoration: none;
     border: none;
-    font-size: 20px;
+    font-size: 18px;
     cursor: pointer;
-    text-decoration-thickness: 3.5px;
+    color: #25568e;
+    position: relative;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    transition: color 0.15s ease, font-weight 0.15s ease, background-color 0.15s ease;
   }
 
-  .btn:hover{
+  .btn-active::after {
+    content: "";
+    display: inline-flex;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 3px;
+    width: 100%;
+    background-color: #25568e;
+    position: absolute;
+  }
+
+  .btn-inactive {
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #a6a6a6;
+    position: relative;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+
+  .btn-active:hover{
     color: rgb(84, 131, 202);
-    font-weight: bolder;
+    font-weight: bold;
+    background-color: rgba(228, 228, 228, 0.31);
   }
   
   .graph-container {
