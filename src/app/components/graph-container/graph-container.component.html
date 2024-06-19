@@ -1,10 +1,11 @@
 
 <div class="button-graph-box">
-    <div class="button-container">
-        <a class="btn-active"> Years</a>
-        <a class="btn-inactive">Sections</a>
+    <div class="button-container" >
+        <a *ngFor="let graphButton of buttonList, let i = index" [ngClass]="{'btn-active': graphButton.active, 'btn-inactive': !graphButton.active}" (click)="setActive(i)">
+            {{graphButton.title}}
+        </a>
     </div>
     <div class="graph-container">
-        <app-chart-element [chart]="chartForGraph"></app-chart-element> 
+        <app-chart-element [chart]="this.chartForGraph"></app-chart-element> 
     </div>
 </div>
