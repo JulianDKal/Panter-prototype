@@ -46,6 +46,9 @@ export class PortfolioComponent {
 
   licenceTypeData!:barData[];
   licenceTypeLayout!:plotLayout;
+
+  modelsDisciplinesData!:barData[];
+  modelsDisciplinesLayout!:plotLayout;
   
   constructor(private dataService:DataService) { }
   
@@ -90,7 +93,7 @@ createCharts(){
   const disciplines:string[] = this.dataService.mainDisciplines;
   const prices:string[] = this.dataService.apcPrices;
   
-  const disciplinesPricesMap = this.dataService.generateCountMap(disciplines, prices); //gibt eine CountMap zurück (string, number)
+  const disciplinesPricesMap = this.dataService.generateAvgPriceMap(disciplines, prices); //gibt eine CountMap zurück (string, number)
 
   this.chartData2 = [{
     x: Object.keys(disciplinesPricesMap),
@@ -197,9 +200,29 @@ createCharts(){
     }
   }]
 
-  this.licenceTypeLayout =   this.chartLayout2 = {
+  this.licenceTypeLayout = {
     width: 400, height: 290, 
     title: 'OA License Types', 
+    margin: {
+      t: 40,
+      r: 10, 
+      b: 45, 
+      l: 45
+    }
+  }
+
+  const disciplinesModelsMap:stringStringNumberMap = this.dataService.generateDisciplinesMap();
+
+
+  this.modelsDisciplinesData = [{
+    x: Object.keys(disciplinesModelsMap),
+    y: Object.values(disciplinesModelsMap).map(subjectObj => subjectObj.sum),
+    type: 'bar',
+  }]
+
+  this.modelsDisciplinesLayout = {
+    width: 400, height: 200,
+    title: 'Publishing Models by Subjects', 
     margin: {
       t: 40,
       r: 10, 
@@ -213,6 +236,7 @@ createCharts(){
   this.charts[2] = new ScatterChart(this.chartLayout3, this.chartData3);
   this.charts[3] = new PieChart(this.donutLayout, this.donutChartData);
   this.charts[4] = new BarChart(this.licenceTypeLayout, this.licenceTypeData);
+  this.charts[5] = new BarChart(this.modelsDisciplinesLayout, this.modelsDisciplinesData);
 
 }
 

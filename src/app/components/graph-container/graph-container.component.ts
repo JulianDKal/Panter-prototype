@@ -12,8 +12,8 @@ import { NgFor, NgClass } from '@angular/common';
 })
 
 export class GraphContainerComponent {
-  @Input() inputChart!:Chart;
 
+  @Input() inputCharts!:Chart[];
   @Input() inputTitles!:string[];
   
   chartForGraph!:Chart;
@@ -21,18 +21,24 @@ export class GraphContainerComponent {
   buttonList:btn[] = [];
 
   ngOnInit(){
-    this.chartForGraph = this.inputChart;
+    this.chartForGraph = this.inputCharts[0];
     for (let i = 0; i < this.inputTitles.length ; i++) 
     {
-      this.buttonList[i] = {title: this.inputTitles[i], active: false};
+      this.buttonList[i] = {title: this.inputTitles[i], active: false, chart: this.inputCharts[i]};
     }
 
-    if(this.inputTitles.length != 0) this.buttonList[0].active = true;
+    if(this.inputTitles.length != 0) {
+      this.buttonList[0].active = true;
+      this.chartForGraph = this.inputCharts[0];
+    }
   }
 
   setActive(index: number) {
     this.buttonList.forEach((btn, i) => {
-      if(i === index) btn.active = true;
+      if(i === index) {
+        btn.active = true;
+        this.chartForGraph = this.inputCharts[i];
+      }
       else btn.active = false;
     })
   }

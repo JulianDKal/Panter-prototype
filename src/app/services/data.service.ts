@@ -33,6 +33,7 @@ export class DataService {
   //Springer Datensatz 2023-05-04
   fourthDataObj?:Papa.ParseResult<snDealRows>;
   publishingModels23:string[] = [];
+  mainDisciplines23:string[] = [];
 
   eventCount:number = 0;
   constructor(private csvService:CSVService) 
@@ -87,7 +88,7 @@ export class DataService {
           if(this.fourthDataObj){
             for (let i = 0; i < this.fourthDataObj.data.length; i++) {
               this.publishingModels23[i] = this.fourthDataObj.data[i]["Publishing Model"];
-
+              this.mainDisciplines23[i] = this.fourthDataObj.data[i]["Main Discipline"];
             }
           }
           //console.log(this.fourthDataObj);
@@ -104,8 +105,12 @@ export class DataService {
     //this.dataReady.emit();
   }
 
+  //----------------------------------------------------------------------------------------
+  //Methoden für Datenverarbeitung
+  //----------------------------------------------------------------------------------------
+
   //rechnet Durchschnittspreis aus für z.B. die APC preise und gibt CountMap zurück
-  generateCountMap(keys:string[], values:string[]):CountMap {
+  generateAvgPriceMap(keys:string[], values:string[]):CountMap {
     const cumulativeMap: { [key: string]: { sum: number; count: number } } = {};
     const counts: CountMap = {};
     let price;
@@ -133,6 +138,31 @@ export class DataService {
     
     return counts;
   }
+  
+  generateDisciplinesMap(): stringStringNumberMap {
+    const countMap: { [subject: string]: { [license: string]: number, sum:number } } = {};
+    for(let i = 0; i < this.mainDisciplines23.length; i++) {
+      const subject = this.mainDisciplines23[i];
+      const license = this.publishingModels23[i];
+      if(!countMap[subject]){
+        countMap[subject] = {sum: 0};
+      }
+
+      if(!countMap[subject][license]){
+        countMap[subject][license] = 0;
+      }
+
+      countMap[subject][license] += 1;
+      countMap[subject].sum += 1;
+    }
+
+    Object.keys(countMap).forEach((key) => {
+      if(countMap[key].sum < 120) delete countMap[key];
+    })
+
+    return countMap
+    //console.log(countMap);
+  }
   //gibt die Häufigkeiten der Einträge als oben definierter CountMap typ zurück
   //z.B. result = {"Mathematik": 345, "Physics":  124, ...}
   countOccurrences(arr: string[]): CountMap {
@@ -154,3 +184,4 @@ export class DataService {
   }
 
 }
+

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, Input, OnInit, AfterViewInit, ElementRef, OnChanges } from '@angular/core';
 import { Chart } from '../../Chart';
 import * as Plotly from 'plotly.js-dist-min';
 import { PlotlyModule } from 'angular-plotly.js';
@@ -35,13 +35,22 @@ export class ChartElementComponent {
       const parent = this.elRef.nativeElement.parentElement;
     this.chart.layout.height = parent.clientHeight;
     this.chart.layout.width = parent.clientWidth;
-    this.logParentDetails();
+    //this.logParentDetails();
     }
     else console.log("I wasn't ready yet!");
     
     
   }
 
+  ngOnChanges() {
+    if(this.isReady){
+      const parent = this.elRef.nativeElement.parentElement;
+    this.chart.layout.height = parent.clientHeight;
+    this.chart.layout.width = parent.clientWidth;
+    }
+  }
+
+  //Nur für debugging
   private logParentDetails() {
     const parent = this.elRef.nativeElement.parentElement;
     if (parent) {

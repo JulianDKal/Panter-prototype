@@ -45,7 +45,8 @@ type plotLayout = {
             size:number,
             color:string
         }
-    }
+    },
+    barmode?:string
 }
 
 type plotData = {
@@ -91,3 +92,5 @@ type barData = {
 }
 
 type CountMap = Record<string, number>;
+
+type stringStringNumberMap = { [subject: string]: { [license: string]: number, sum:number } }
