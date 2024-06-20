@@ -49,6 +49,9 @@ export class PortfolioComponent {
 
   modelsDisciplinesData!:barData[];
   modelsDisciplinesLayout!:plotLayout;
+
+  wileyMainDisciplData!:pieData[];
+  wileyMainDisciplLayout!:plotLayout;
   
   constructor(private dataService:DataService) { }
   
@@ -253,12 +256,36 @@ createCharts(){
     barmode: 'stack'
   }
 
+  const wileyMainDisciplines = this.dataService.countOccurrences(this.dataService.wMainDisciplines23);
+  this.dataService.reduceOccurrences(wileyMainDisciplines, 50)
+  this.wileyMainDisciplData = [{
+    labels: Object.keys(wileyMainDisciplines),
+    values: Object.values(wileyMainDisciplines),
+    type: 'pie'
+  }]
+
+  this.wileyMainDisciplLayout = {
+    width: 400, height: 290, title: 'Main Disciplines Wiley Deal', margin: {
+      t: 40,
+      r: 10, 
+      b: 10, 
+      l: 10  
+    }
+  }
+
+  console.log(this.dataService.wMainDisciplines23);
+
+
+  //sn deal charts
   this.charts[0] = new PieChart(this.chartLayout, this.chartData);
   this.charts[1] = new BarChart(this.chartLayout2, this.chartData2);
   this.charts[2] = new ScatterChart(this.chartLayout3, this.chartData3);
   this.charts[3] = new PieChart(this.donutLayout, this.donutChartData);
   this.charts[4] = new BarChart(this.licenceTypeLayout, this.licenceTypeData);
   this.charts[5] = new BarChart(this.modelsDisciplinesLayout, this.modelsDisciplinesData);
+
+  //wiley deal charts
+  this.charts[6] = new PieChart(this.wileyMainDisciplLayout, this.wileyMainDisciplData);
 
 }
 

@@ -43,6 +43,7 @@ export class DataService {
   wileyThirdObj?:Papa.ParseResult<wileyDealRows>
   //Wiley Datensatz 2023
   wileyFourthObj?:Papa.ParseResult<wileyDealRows>
+  wMainDisciplines23:string[] = [];
 
 
   eventCount:number = 0;
@@ -64,8 +65,7 @@ export class DataService {
             }
             this.countsOfDisciplines = this.countOccurrences(this.mainDisciplines);
             //counts of Discpiplines are reduced here!!
-            this.reduceOccurrences(this.countsOfDisciplines);
-            console.log(this.countsOfDisciplines);
+            this.reduceOccurrences(this.countsOfDisciplines, 100);
 
           }
           //console.log(this.firstDataObj);
@@ -103,8 +103,6 @@ export class DataService {
           }
           //console.log(this.fourthDataObj);
 
-          this.dataReady.emit(); //event is sent to the portfolio component so the charts etc. can get rendered
-          this.isProcessing = false;
           this.eventCount++;
           break;
 
@@ -123,6 +121,13 @@ export class DataService {
           break;
         case 7:
           this.wileyFourthObj = results;
+          if(this.wileyFourthObj){
+            for (let i = 0; i < this.wileyFourthObj.data.length; i++) {
+              this.wMainDisciplines23[i] = this.wileyFourthObj.data[i]["General Subject Category"];
+            }
+          }
+          this.dataReady.emit(); //event is sent to the portfolio component so the charts etc. can get rendered
+          this.isProcessing = false;
           this.eventCount++;
           break;
         default:
@@ -208,9 +213,9 @@ export class DataService {
     return counts;
   }
   //Nur wichtig für das zählen der Häufigkeiten von Disziplinen
-  reduceOccurrences(obj:CountMap) {
+  reduceOccurrences(obj:CountMap, threshold:number) {
     for (let key in obj) {
-      if(obj[key] < 100) delete obj[key];
+      if(obj[key] < threshold) delete obj[key];
     }
   }
 
