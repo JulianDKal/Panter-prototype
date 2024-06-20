@@ -37,14 +37,20 @@ export class DataService {
 
   //Wiley Datensatz 2020
   wileyFirstObj?:Papa.ParseResult<wileyDealRows>
+  wileyAPCs2020:string[] = [];
+
   //Wiley Datensatz 2021
   wileySecondObj?:Papa.ParseResult<wileyDealRows>
+  wileyAPCs2021:string[] = [];
+
   //Wiley Datensatz 2022
   wileyThirdObj?:Papa.ParseResult<wileyDealRows>
+  wileyAPCs2022:string[] = [];
+
   //Wiley Datensatz 2023
   wileyFourthObj?:Papa.ParseResult<wileyDealRows>
   wMainDisciplines23:string[] = [];
-
+  wileyAPCs2023:string[] = [];
 
   eventCount:number = 0;
   constructor(private csvService:CSVService) 
@@ -109,14 +115,29 @@ export class DataService {
           //Ab hier werden wiley Datensätze gespeichert
         case 4:
           this.wileyFirstObj = results;
+          if(this.wileyFirstObj){
+            for(let i = 0; i < this.wileyFirstObj.data.length; i++){
+              this.wileyAPCs2020[i] = this.wileyFirstObj.data[i]["EUR APC"]
+            }
+          }
           this.eventCount++;
           break;
         case 5:
           this.wileySecondObj = results;
+          if(this.wileySecondObj){
+            for(let i = 0; i < this.wileySecondObj.data.length; i++){
+              this.wileyAPCs2021[i] = this.wileySecondObj.data[i]["EUR APC"]
+            }
+          }
           this.eventCount++;
           break;
         case 6:
           this.wileyThirdObj = results;
+          if(this.wileyThirdObj){
+            for(let i = 0; i < this.wileyThirdObj.data.length; i++){
+              this.wileyAPCs2022[i] = this.wileyThirdObj.data[i]["EUR APC"]
+            }
+          }
           this.eventCount++;
           break;
         case 7:
@@ -124,6 +145,7 @@ export class DataService {
           if(this.wileyFourthObj){
             for (let i = 0; i < this.wileyFourthObj.data.length; i++) {
               this.wMainDisciplines23[i] = this.wileyFourthObj.data[i]["General Subject Category"];
+              this.wileyAPCs2023[i] = this.wileyFourthObj.data[i]["EUR APC"];
             }
           }
           this.dataReady.emit(); //event is sent to the portfolio component so the charts etc. can get rendered
@@ -142,6 +164,19 @@ export class DataService {
   //----------------------------------------------------------------------------------------
   //Methoden für Datenverarbeitung
   //----------------------------------------------------------------------------------------
+  getAvgPrice(prices:string[]):number {
+    let sum = 0;
+    let count = 0
+    prices.forEach((price) => {
+      let priceVal = parseInt(price);
+      if(!isNaN(priceVal) && priceVal != 0){
+        sum += priceVal;
+        count++;
+      }
+    })
+
+    return sum / count;
+  }
 
   //rechnet Durchschnittspreis aus für z.B. die APC preise und gibt CountMap zurück
   generateAvgPriceMap(keys:string[], values:string[]):CountMap {
@@ -218,6 +253,8 @@ export class DataService {
       if(obj[key] < threshold) delete obj[key];
     }
   }
+
+
 
 }
 

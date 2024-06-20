@@ -50,6 +50,9 @@ export class PortfolioComponent {
 
   wileyMainDisciplData!:pieData[];
   wileyMainDisciplLayout!:plotLayout;
+
+  wileyAveragePricesData!:barData[];
+  wileyAveragePricesLayout!:plotLayout;
   
   constructor(private dataService:DataService) { }
   
@@ -271,7 +274,33 @@ createCharts(){
     }
   }
 
-  console.log(this.dataService.wMainDisciplines23);
+  const avgPrices2020 = this.dataService.getAvgPrice(this.dataService.wileyAPCs2020);
+  const avgPrices2021 = this.dataService.getAvgPrice(this.dataService.wileyAPCs2021);
+  const avgPrices2022 = this.dataService.getAvgPrice(this.dataService.wileyAPCs2022);
+  const avgPrices2023 = this.dataService.getAvgPrice(this.dataService.wileyAPCs2023);
+  const years = ["2020", "2021", "2022", "2023"]
+  const avgPrices = [avgPrices2020, avgPrices2021, avgPrices2022, avgPrices2023]
+
+  this.wileyAveragePricesData = [{
+    x: years,
+    y: avgPrices,
+    type: 'bar',
+    marker: {
+      color: 'rgb(138,202,245)',
+      opacity: 0.6,
+    }
+  }]
+
+  this.wileyAveragePricesLayout = {
+    width: 400, height: 290, 
+    title: 'Average APC Prices', 
+    margin: {
+      t: 40,
+      r: 10, 
+      b: 45, 
+      l: 45
+    }
+  }
 
 
   //sn deal charts
@@ -284,6 +313,7 @@ createCharts(){
 
   //wiley deal charts
   this.charts[6] = new PieChart(this.wileyMainDisciplLayout, this.wileyMainDisciplData);
+  this.charts[7] = new BarChart(this.wileyAveragePricesLayout, this.wileyAveragePricesData);
 
 }
 
