@@ -8,6 +8,12 @@ import { NgIf } from '@angular/common';
 import { GraphContainerComponent } from '../graph-container/graph-container.component';
 import { OverviewComponentComponent } from '../overview-component/overview-component.component';
 
+enum Pages {
+  SpringerNaturePage = 0,
+  WileyPage,
+  BothPage
+}
+
 @Component({
   selector: 'app-portfolio',
   standalone: true,
@@ -16,16 +22,8 @@ import { OverviewComponentComponent } from '../overview-component/overview-compo
   styleUrl: './portfolio.component.css'
 })
 export class PortfolioComponent {
-  isMenuHidden = false;
- // Diese Variable speichert den aktuellen Zustand des Graphen
-  isGraphHovered = false;
-  // Diese Methode wird aufgerufen, wenn der Mauszeiger über den Graphen geht
-  hoverGraph(isHovering: boolean) {
-    this.isGraphHovered = isHovering;
-  }
-  toggleMenu() {
-    this.isMenuHidden = !this.isMenuHidden;
-  }
+  Pages = Pages;
+  currentPage:Pages = Pages.SpringerNaturePage;
 
   //Teil, in dem die Daten geholt werden
   private dataReadySubscription: Subscription | null = null;
@@ -288,6 +286,11 @@ createCharts(){
   this.charts[6] = new PieChart(this.wileyMainDisciplLayout, this.wileyMainDisciplData);
 
 }
+
+  togglePage(){
+    if(this.currentPage == Pages.SpringerNaturePage) this.currentPage = Pages.WileyPage
+    else this.currentPage = Pages.SpringerNaturePage
+  }
 
 }
 

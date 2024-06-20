@@ -6,21 +6,11 @@
   <app-overview-component [chartForGraph]="charts[0]">
 
   </app-overview-component>
-
-      <!-- <aside class="sidebar">
-        <button class="menu-btn" (click)="toggleMenu()">Mein Portfolio</button>
-        <nav id="menu" [class.hidden]="isMenuHidden" [class.visible]="!isMenuHidden">
-         <ul>
-            <li><a routerLink="neuesportfolio" routerLinkActive="active">Neues Portfolio erstellen</a></li>
-            <li><a routerLink="analyse" routerLinkActive="active">Analyse</a></li>
-            <li><a routerLink="portfolio" routerLinkActive="active">Portfoliosammlung</a></li>
-          </ul>
-        </nav>
-      </aside>  -->
-    
-      <div class="dashboard">
+    <button (click)="togglePage()">Toggle Dashboard</button>
+      <section class="dashboard">
         <div class="section-container">
-
+          <!-- Code für das Springer Nature Dashboard -->
+          <div *ngIf="this.currentPage == Pages.SpringerNaturePage">
             <div style="display: flex; height: 380px; gap: 20px;">
               <div style="flex: 1; height: 350px;">
                 <app-graph-container [inputCharts]="[charts[6]]" [inputTitles]="['Sections']"></app-graph-container>
@@ -41,9 +31,23 @@
   
               </div>
             </div>
-          
+          </div>
+
+          <!-- Code für das Wiley Dashboard -->
+           <div *ngIf="this.currentPage == Pages.WileyPage">
+            <div style="display: flex; height: 380px; gap: 20px;">
+              <div style="flex: 1; height: 350px;">
+                <app-graph-container [inputCharts]="[charts[6]]" [inputTitles]="['Sections']"></app-graph-container>
+  
+              </div>
+              <div style="flex: 1; height: 350px;">
+                <app-graph-container [inputCharts]="[charts[4], charts[5]]" [inputTitles]="['Development', 'Sections']"></app-graph-container>
+  
+              </div>
+            </div>
+           </div>
         </div> 
         
-      </div>      
+      </section>      
 </body>
 
