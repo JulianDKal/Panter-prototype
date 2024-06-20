@@ -1,11 +1,7 @@
 
-<app-navbar>
-    
-</app-navbar>
+<app-navbar></app-navbar>
 <body  *ngIf="!isLoading">
-  <app-overview-component [chartForGraph]="charts[8]">
-
-  </app-overview-component>
+  <app-overview-component [chartForGraph]="charts[8]"></app-overview-component>
     <button (click)="togglePage()">Toggle Dashboard</button>
       <section class="dashboard">
         <div class="section-container">
@@ -48,6 +44,7 @@
            </div>
         </div> 
         
-      </section>      
+      </section>    
 </body>
+
 

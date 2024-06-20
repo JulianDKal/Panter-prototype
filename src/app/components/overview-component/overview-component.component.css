@@ -97,7 +97,6 @@ body {
   }
   
   .inline-texts p {
-    justify-content: center;
     font-size: 10px;
     color: rgb(37, 86, 142);
     padding: 5px;

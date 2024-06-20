@@ -10,13 +10,6 @@ body {
     overflow-x: hidden;
   }
 
-  .portfolio-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-grow: 1;
-}
-
 app-overview-component {
   display: flex;
   flex-grow: 1;
