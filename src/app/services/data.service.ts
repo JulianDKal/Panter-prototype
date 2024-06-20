@@ -19,8 +19,6 @@ export class DataService {
   apcPrices:string[] = [];
   publishingModels19:string[] = [];
   licenseTypes19:string[] = [];
-
-  countsOfDisciplines?:CountMap;
   
   //Springer Datensatz 2020-04-17:
   secondDataObj?:Papa.ParseResult<snDealRows>;
@@ -69,9 +67,6 @@ export class DataService {
               this.publishingModels19[i] = this.firstDataObj.data[i]["Publishing Model"];
               this.licenseTypes19[i] = this.firstDataObj.data[i]["OA License Type"];
             }
-            this.countsOfDisciplines = this.countOccurrences(this.mainDisciplines);
-            //counts of Discpiplines are reduced here!!
-            this.reduceOccurrences(this.countsOfDisciplines, 100);
 
           }
           //console.log(this.firstDataObj);

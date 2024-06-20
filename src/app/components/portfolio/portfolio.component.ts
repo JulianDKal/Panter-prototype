@@ -54,6 +54,9 @@ export class PortfolioComponent {
   wileyAveragePricesData!:barData[];
   wileyAveragePricesLayout!:plotLayout;
   
+  overviewChart!:pieData[];
+  overViewChartLayout!:plotLayout;
+  
   constructor(private dataService:DataService) { }
   
   isLoading:boolean = true;
@@ -75,13 +78,12 @@ export class PortfolioComponent {
 
 createCharts(){
   //Daten für den ersten Chart holen und einsetzen
-  const mainDisciplines:CountMap = this.dataService.countsOfDisciplines!;
-  const keysArray = Object.keys(mainDisciplines);
-  const valuesArray = Object.values(mainDisciplines);
+  const mainDisciplines:CountMap = this.dataService.countOccurrences(this.dataService.mainDisciplines);
+  this.dataService.reduceOccurrences(mainDisciplines, 100);
 
   this.chartData = [{
-    labels: keysArray,
-    values: valuesArray,
+    labels: Object.keys(mainDisciplines),
+    values: Object.values(mainDisciplines),
     type: 'pie',
   }]
   this.chartLayout = {
@@ -184,8 +186,8 @@ createCharts(){
   }
 
   this.donutChartData = [{
-    labels: keysArray,
-    values: valuesArray,
+    labels: Object.keys(mainDisciplines),
+    values: Object.values(mainDisciplines),
     type: 'pie',
     hole: 0.5
   }]
@@ -302,6 +304,24 @@ createCharts(){
     }
   }
 
+  const newMainDisc:CountMap = this.dataService.countOccurrences(this.dataService.mainDisciplines);
+  this.dataService.reduceOccurrences(newMainDisc, 40);
+
+  this.overviewChart = [{
+    labels: Object.keys(newMainDisc),
+    values: Object.values(newMainDisc),
+    type: 'pie',
+    hole: 0.4
+  }]
+
+  this.overViewChartLayout = {
+    width: 400, height: 290, title: 'Main Disciplines', margin: {
+      t: 40,
+      r: 10, 
+      b: 10, 
+      l: 10  
+    }
+  }
 
   //sn deal charts
   this.charts[0] = new PieChart(this.chartLayout, this.chartData);
@@ -314,7 +334,7 @@ createCharts(){
   //wiley deal charts
   this.charts[6] = new PieChart(this.wileyMainDisciplLayout, this.wileyMainDisciplData);
   this.charts[7] = new BarChart(this.wileyAveragePricesLayout, this.wileyAveragePricesData);
-
+  this.charts[8] = new PieChart(this.overViewChartLayout, this.overviewChart);
 }
 
   togglePage(){
