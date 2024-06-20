@@ -6,8 +6,8 @@
         </div>
         <div id="graph3" class="graph">
           <!-- (mouseover)="hoverGraph(true)" (mouseleave)="hoverGraph(false)" [class.hovered]="isGraphHovered" -->
-            <div class="graph-content">
-              <div class="chart">
+            <div class="graph-content" >
+              <div class="chart" style="height: 420px;">
                 <app-chart-element [chart]="chartForGraph"></app-chart-element> 
               </div>
               <div class="center">
@@ -15,7 +15,7 @@
                 <div class="inline-texts">
                   <p>Hauptthemen</p>
                   <p>Journals</p>
-                  <p>USD</p>
+                  <p>EUR</p>
                 </div>
                 <div class="journal-count">
                   <p>Anzahl der gesamten Journals:</p>
@@ -24,7 +24,7 @@
                </div>
             </div>
         </div>
-        <div class="end">
+        <div class="end fixed-text">
           <div class="button-container">
             <div class="dropdown">
               <a class="btn dropdown-toggle">Themen ▼</a>
@@ -38,9 +38,24 @@
                 <a href="#">Computer Science</a>
                 <a href="#">Physics</a>
                 <a href="#">Earth Sciences</a>
+                <a href="#">Social Sciences</a>
+                <a href="#">Materials Science</a>
+                <a href="#">Economics</a>
+                <a href="#">Psychology</a>
+                <a href="#">Business and Management</a>
+                <a href="#">Education</a>
+                <a href="#">Environment</a>
+                <a href="#">Philosophy</a>
               </div>
             </div>
-            <a class="btn">Seit Kauf ▼</a>
+            <div class="dropdown">
+              <a class="btn dropdown-toggle">Deals ▼</a>
+              <div class="dropdown-menu">
+                <a href="#">Deal 1</a>
+                <a href="#">Deal 2</a>
+                <a href="#">neuen Deal erstellen</a>
+              </div>
+            </div>  
             <a class="btn share-button">Teilen  <strong>➥</strong></a>
           </div>
           <div class="text">
@@ -48,7 +63,17 @@
             <p></p>
             <p></p>
             <p>Es gibt 124 Journals zu diesem Themenbereich.</p>
-            <p>Dies sind 6,11% der gesamten Journals.</p>
+            <p>Dies sind 4,69% der gesamten Journals.</p>
+          </div>
+          <div class="text2">
+            <p><strong>durchschnittlicher APC Preis</strong></p>
+            <p>1.645 €</p>
+          </div>
+          <div>
+          <div class="text3">
+            <p><strong>Open Access Journals</strong></p>
+            <p>19.51%</p>
+          </div>
           </div>
         </div>
     </section>
