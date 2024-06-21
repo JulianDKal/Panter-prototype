@@ -53,7 +53,7 @@ type plotLayout = {
         tickangle?: number | string, //in welchem winkel steht ein label?
         tickfont?: {
             size:number,
-            color:string
+            color?:string
         }
     },
     barmode?:string

@@ -49,6 +49,7 @@ export class DataService {
   wileyFourthObj?:Papa.ParseResult<wileyDealRows>
   wMainDisciplines23:string[] = [];
   wileyAPCs2023:string[] = [];
+  wileyLicenses23:string[] = [];
 
   eventCount:number = 0;
   constructor(private csvService:CSVService) 
@@ -141,6 +142,7 @@ export class DataService {
             for (let i = 0; i < this.wileyFourthObj.data.length; i++) {
               this.wMainDisciplines23[i] = this.wileyFourthObj.data[i]["General Subject Category"];
               this.wileyAPCs2023[i] = this.wileyFourthObj.data[i]["EUR APC"];
+              this.wileyLicenses23[i] = this.wileyFourthObj.data[i]["License Type Offered"];
             }
           }
           this.dataReady.emit(); //event is sent to the portfolio component so the charts etc. can get rendered

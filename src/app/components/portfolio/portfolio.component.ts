@@ -30,6 +30,8 @@ export class PortfolioComponent {
   
   charts:Chart[] = [];
   
+  //----------------------------------------------
+  //Springer Charts
   chartData!:pieData[];
   chartLayout!:plotLayout;
   
@@ -39,20 +41,26 @@ export class PortfolioComponent {
   chartData3!:scatterData[];
   chartLayout3!:plotLayout;
 
-  donutChartData!:pieData[];
-  donutLayout!:plotLayout;
-
   licenceTypeData!:barData[];
   licenceTypeLayout!:plotLayout;
 
   modelsDisciplinesData!:barData[];
   modelsDisciplinesLayout!:plotLayout;
 
+
+  //--------------------------------------------
+  //Wiley Charts
   wileyMainDisciplData!:pieData[];
   wileyMainDisciplLayout!:plotLayout;
 
   wileyAveragePricesData!:barData[];
   wileyAveragePricesLayout!:plotLayout;
+
+  wileyDisciplinePricesData!:barData[];
+  wileyDisciplinesPricesLayout!:plotLayout;
+
+  wileyLicensesData!:barData[];
+  wileyLicenesLayout!:plotLayout;
   
   overviewChart!:pieData[];
   overViewChartLayout!:plotLayout;
@@ -185,14 +193,6 @@ createCharts(){
     }
   }
 
-  this.donutChartData = [{
-    labels: Object.keys(mainDisciplines),
-    values: Object.values(mainDisciplines),
-    type: 'pie',
-    hole: 0.5
-  }]
-  this.donutLayout = this.chartLayout;
-
   const licenseTypesMap = this.dataService.countOccurrences(this.dataService.licenseTypes19);
   delete licenseTypesMap["undefined"];
 
@@ -323,23 +323,91 @@ createCharts(){
     }
   }
 
+  // const disciplines:string[] = this.dataService.mainDisciplines;
+  // const prices:string[] = this.dataService.apcPrices;
+  
+  // const disciplinesPricesMap = this.dataService.generateAvgPriceMap(disciplines, prices); //gibt eine CountMap zurück (string, number)
+  const wileyDisciplinePricemap = this.dataService.generateAvgPriceMap(this.dataService.wMainDisciplines23, this.dataService.wileyAPCs2023);
+
+  this.wileyDisciplinePricesData = [{
+    x: Object.keys(wileyDisciplinePricemap),
+    y: Object.values(wileyDisciplinePricemap),
+    type: 'bar',
+    marker: {
+      color: 'rgb(138,202,245)',
+      opacity: 0.6,
+    }
+  }]
+
+  this.wileyDisciplinesPricesLayout = {
+    width: 400, height: 290, 
+    title: 'APC Prices by Sections', 
+    margin: {
+      t: 40,
+      r: 40, 
+      b: 70, 
+      l: 45
+    },
+    xaxis: {
+      tickfont: {
+        size: 9
+      }
+    }
+  }
+
+  const wileyLicenseData = this.dataService.countOccurrences(this.dataService.wileyLicenses23);
+  delete wileyLicenseData["undefined"];
+  delete wileyLicenseData["CC-BY only "]
+  delete wileyLicenseData["CC-BY-NC"]
+  console.log(Object.keys(wileyLicenseData));
+
+  this.wileyLicensesData = [{
+    x: Object.keys(wileyLicenseData),
+    y: Object.values(wileyLicenseData),
+    type: 'bar',
+    marker: {
+      color: 'rgb(138,202,245)',
+      opacity: 0.6,
+    }
+  }]
+
+  this.wileyLicenesLayout = {
+    width: 400, height: 290, title: 'OA Lizenztypen', 
+    margin: {
+      t: 30,
+      r: 10, 
+      b: 80, 
+      l: 45
+    }
+  }
+
+
   //sn deal charts
   this.charts[0] = new PieChart(this.chartLayout, this.chartData);
   this.charts[1] = new BarChart(this.chartLayout2, this.chartData2);
   this.charts[2] = new ScatterChart(this.chartLayout3, this.chartData3);
-  this.charts[3] = new PieChart(this.donutLayout, this.donutChartData);
+  //this.charts[3] = new PieChart(this.donutLayout, this.donutChartData);
   this.charts[4] = new BarChart(this.licenceTypeLayout, this.licenceTypeData);
   this.charts[5] = new BarChart(this.modelsDisciplinesLayout, this.modelsDisciplinesData);
 
   //wiley deal charts
   this.charts[6] = new PieChart(this.wileyMainDisciplLayout, this.wileyMainDisciplData);
   this.charts[7] = new BarChart(this.wileyAveragePricesLayout, this.wileyAveragePricesData);
+  this.charts[9] = new BarChart(this.wileyDisciplinesPricesLayout, this.wileyDisciplinePricesData);
+  this.charts[10] = new BarChart(this.wileyLicenesLayout, this.wileyLicensesData);
+  
+  
   this.charts[8] = new PieChart(this.overViewChartLayout, this.overviewChart);
 }
 
   togglePage(){
     if(this.currentPage == Pages.SpringerNaturePage) this.currentPage = Pages.WileyPage
     else this.currentPage = Pages.SpringerNaturePage
+  }
+
+  bothPage(){
+    if(this.currentPage != Pages.BothPage) this.currentPage = Pages.BothPage;
+    else this.currentPage = Pages.SpringerNaturePage;
   }
 
 }
