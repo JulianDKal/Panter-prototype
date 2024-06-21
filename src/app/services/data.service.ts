@@ -36,20 +36,24 @@ export class DataService {
   //Wiley Datensatz 2020
   wileyFirstObj?:Papa.ParseResult<wileyDealRows>
   wileyAPCs2020:string[] = [];
+  wPublishingModels20:string[] = [];
 
   //Wiley Datensatz 2021
   wileySecondObj?:Papa.ParseResult<wileyDealRows>
   wileyAPCs2021:string[] = [];
+  wPublishingModels21:string[] = [];
 
   //Wiley Datensatz 2022
   wileyThirdObj?:Papa.ParseResult<wileyDealRows>
   wileyAPCs2022:string[] = [];
+  wPublishingModels22:string[] = [];
 
   //Wiley Datensatz 2023
   wileyFourthObj?:Papa.ParseResult<wileyDealRows>
   wMainDisciplines23:string[] = [];
   wileyAPCs2023:string[] = [];
   wileyLicenses23:string[] = [];
+  wPublishingModels23:string[] = [];
 
   eventCount:number = 0;
   constructor(private csvService:CSVService) 
@@ -114,6 +118,7 @@ export class DataService {
           if(this.wileyFirstObj){
             for(let i = 0; i < this.wileyFirstObj.data.length; i++){
               this.wileyAPCs2020[i] = this.wileyFirstObj.data[i]["EUR APC"]
+              this.wPublishingModels20[i] = this.wileyFirstObj.data[i]["Revenue Model"]
             }
           }
           this.eventCount++;
@@ -123,6 +128,7 @@ export class DataService {
           if(this.wileySecondObj){
             for(let i = 0; i < this.wileySecondObj.data.length; i++){
               this.wileyAPCs2021[i] = this.wileySecondObj.data[i]["EUR APC"]
+              this.wPublishingModels21[i] = this.wileySecondObj.data[i]["Revenue Model"];
             }
           }
           this.eventCount++;
@@ -132,6 +138,7 @@ export class DataService {
           if(this.wileyThirdObj){
             for(let i = 0; i < this.wileyThirdObj.data.length; i++){
               this.wileyAPCs2022[i] = this.wileyThirdObj.data[i]["EUR APC"]
+              this.wPublishingModels22[i] = this.wileyThirdObj.data[i]["Revenue Model"];
             }
           }
           this.eventCount++;
@@ -143,6 +150,7 @@ export class DataService {
               this.wMainDisciplines23[i] = this.wileyFourthObj.data[i]["General Subject Category"];
               this.wileyAPCs2023[i] = this.wileyFourthObj.data[i]["EUR APC"];
               this.wileyLicenses23[i] = this.wileyFourthObj.data[i]["License Type Offered"];
+              this.wPublishingModels23[i] = this.wileyFourthObj.data[i]["Revenue Model"]
             }
           }
           this.dataReady.emit(); //event is sent to the portfolio component so the charts etc. can get rendered
@@ -205,11 +213,11 @@ export class DataService {
     return counts;
   }
   
-  generateDisciplinesMap(): stringStringNumberMap {
+  generateDisciplinesMap(disciplines:string[], publishingModels:string[], threshold:number): stringStringNumberMap {
     const countMap: { [subject: string]: { [license: string]: number, sum:number } } = {};
-    for(let i = 0; i < this.mainDisciplines23.length; i++) {
-      const subject = this.mainDisciplines23[i];
-      const license = this.publishingModels23[i];
+    for(let i = 0; i < disciplines.length; i++) {
+      const subject = disciplines[i];
+      const license = publishingModels[i];
       if(!countMap[subject]){
         countMap[subject] = {sum: 0};
       }
@@ -223,7 +231,7 @@ export class DataService {
     }
 
     Object.keys(countMap).forEach((key) => {
-      if(countMap[key].sum < 120) delete countMap[key];
+      if(countMap[key].sum < threshold) delete countMap[key];
     })
 
     return countMap
@@ -233,7 +241,7 @@ export class DataService {
 
   //gibt die Häufigkeiten der Einträge als oben definierter CountMap typ zurück
   //z.B. result = {"Mathematik": 345, "Physics":  124, ...}
-  countOccurrences(arr: string[]): CountMap {
+  countOccurrences(arr: string[], threshold:number): CountMap {
     const counts: CountMap = {};
     for (const item of arr) {
       if (counts[item]) {
@@ -242,16 +250,13 @@ export class DataService {
         counts[item] = 1;
       }
     }
+
+    for (let key in counts) {
+      if(counts[key] < threshold) delete counts[key];
+    }
+
     return counts;
   }
-  //Nur wichtig für das zählen der Häufigkeiten von Disziplinen
-  reduceOccurrences(obj:CountMap, threshold:number) {
-    for (let key in obj) {
-      if(obj[key] < threshold) delete obj[key];
-    }
-  }
-
-
 
 }
 

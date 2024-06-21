@@ -72,3 +72,13 @@ app-overview-component {
     border: 2px solid #2b4771;
   }
   
+.graph-box {
+  flex: 1; 
+  height: 400px;
+}
+
+.graph-row-section {
+  display: flex; 
+  height: 430px; 
+  gap: 30px;
+}

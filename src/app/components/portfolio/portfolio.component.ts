@@ -53,7 +53,7 @@ export class PortfolioComponent {
   wileyMainDisciplData!:pieData[];
   wileyMainDisciplLayout!:plotLayout;
 
-  wileyAveragePricesData!:barData[];
+  wileyAveragePricesData!:barData[]; //Preise über dieses Jahr
   wileyAveragePricesLayout!:plotLayout;
 
   wileyDisciplinePricesData!:barData[];
@@ -61,6 +61,15 @@ export class PortfolioComponent {
 
   wileyLicensesData!:barData[];
   wileyLicenesLayout!:plotLayout;
+
+  wileyLicensesSectionsData!:barData[];
+  wileyLicensesSectionsLayout!:plotLayout;
+
+  wileyPublishingModel23Data!:pieData[];
+  wileyPublishingModel23Layout!:plotLayout;
+
+  wileyPublishingModelsSectionsData!:barData[];
+  wileyPublishingModelsSectionsLayout!:plotLayout;
   
   overviewChart!:pieData[];
   overViewChartLayout!:plotLayout;
@@ -71,8 +80,6 @@ export class PortfolioComponent {
 
   ngOnInit()
   {
-    //this.isLoading = this.dataService.isProcessing;
-
     if(this.dataService.isProcessing) this.dataReadySubscription = this.dataService.dataReady.subscribe(() => {
       this.createCharts();
       this.isLoading = false;
@@ -86,8 +93,7 @@ export class PortfolioComponent {
 
 createCharts(){
   //Daten für den ersten Chart holen und einsetzen
-  const mainDisciplines:CountMap = this.dataService.countOccurrences(this.dataService.mainDisciplines);
-  this.dataService.reduceOccurrences(mainDisciplines, 100);
+  const mainDisciplines:CountMap = this.dataService.countOccurrences(this.dataService.mainDisciplines, 100);
 
   this.chartData = [{
     labels: Object.keys(mainDisciplines),
@@ -143,15 +149,10 @@ createCharts(){
     }
   }
 
-  const publishingModels19Map = this.dataService.countOccurrences(this.dataService.publishingModels19);
-  const publishingModels20Map = this.dataService.countOccurrences(this.dataService.publishingModels20);
-  const publishingModels22Map = this.dataService.countOccurrences(this.dataService.publishingModels22);
-  const publishingModels23Map = this.dataService.countOccurrences(this.dataService.publishingModels23);
-
-  delete publishingModels19Map["undefined"];
-  delete publishingModels20Map["undefined"];
-  delete publishingModels22Map["undefined"];
-  delete publishingModels23Map["undefined"];
+  const publishingModels19Map = this.dataService.countOccurrences(this.dataService.publishingModels19, 2);
+  const publishingModels20Map = this.dataService.countOccurrences(this.dataService.publishingModels20, 2);
+  const publishingModels22Map = this.dataService.countOccurrences(this.dataService.publishingModels22, 2);
+  const publishingModels23Map = this.dataService.countOccurrences(this.dataService.publishingModels23, 2);
 
   this.chartData3 = [
     {
@@ -193,7 +194,7 @@ createCharts(){
     }
   }
 
-  const licenseTypesMap = this.dataService.countOccurrences(this.dataService.licenseTypes19);
+  const licenseTypesMap = this.dataService.countOccurrences(this.dataService.licenseTypes19, 0);
   delete licenseTypesMap["undefined"];
 
   this.licenceTypeData = [{
@@ -217,7 +218,7 @@ createCharts(){
     }
   }
 
-  const disciplinesModelsMap:stringStringNumberMap = this.dataService.generateDisciplinesMap();
+  const disciplinesModelsMap:stringStringNumberMap = this.dataService.generateDisciplinesMap(this.dataService.mainDisciplines23, this.dataService.publishingModels23, 120);
 
 
   this.modelsDisciplinesData = [{
@@ -259,8 +260,7 @@ createCharts(){
     barmode: 'stack'
   }
 
-  const wileyMainDisciplines = this.dataService.countOccurrences(this.dataService.wMainDisciplines23);
-  this.dataService.reduceOccurrences(wileyMainDisciplines, 50)
+  const wileyMainDisciplines = this.dataService.countOccurrences(this.dataService.wMainDisciplines23, 50);
   this.wileyMainDisciplData = [{
     labels: Object.keys(wileyMainDisciplines),
     values: Object.values(wileyMainDisciplines),
@@ -301,11 +301,13 @@ createCharts(){
       r: 10, 
       b: 45, 
       l: 45
+    },
+    xaxis: {
+      dtick: 1
     }
   }
 
-  const newMainDisc:CountMap = this.dataService.countOccurrences(this.dataService.mainDisciplines);
-  this.dataService.reduceOccurrences(newMainDisc, 40);
+  const newMainDisc:CountMap = this.dataService.countOccurrences(this.dataService.mainDisciplines, 40);
 
   this.overviewChart = [{
     labels: Object.keys(newMainDisc),
@@ -323,10 +325,6 @@ createCharts(){
     }
   }
 
-  // const disciplines:string[] = this.dataService.mainDisciplines;
-  // const prices:string[] = this.dataService.apcPrices;
-  
-  // const disciplinesPricesMap = this.dataService.generateAvgPriceMap(disciplines, prices); //gibt eine CountMap zurück (string, number)
   const wileyDisciplinePricemap = this.dataService.generateAvgPriceMap(this.dataService.wMainDisciplines23, this.dataService.wileyAPCs2023);
 
   this.wileyDisciplinePricesData = [{
@@ -355,10 +353,11 @@ createCharts(){
     }
   }
 
-  const wileyLicenseData = this.dataService.countOccurrences(this.dataService.wileyLicenses23);
+  const wileyLicenseData = this.dataService.countOccurrences(this.dataService.wileyLicenses23, 50);
   delete wileyLicenseData["undefined"];
   delete wileyLicenseData["CC-BY only "]
   delete wileyLicenseData["CC-BY-NC"]
+  delete wileyLicenseData["CC-BY exceptions"]
   console.log(Object.keys(wileyLicenseData));
 
   this.wileyLicensesData = [{
@@ -381,6 +380,100 @@ createCharts(){
     }
   }
 
+  const wileyPublishingModels23Map = this.dataService.countOccurrences(this.dataService.wPublishingModels23, 50);
+
+  this.wileyPublishingModel23Data = [{
+    labels: Object.keys(wileyPublishingModels23Map),
+    values: Object.values(wileyPublishingModels23Map),
+    type: 'pie'
+  }]
+
+  this.wileyPublishingModel23Layout = {
+    width: 400, height: 290, title: 'Veröffentlichungstypen', margin: {
+      t: 40,
+      r: 10, 
+      b: 10, 
+      l: 10  
+    }
+  }
+
+  const wModelsSectionMap = this.dataService.generateDisciplinesMap(this.dataService.wMainDisciplines23, this.dataService.wPublishingModels23, 40);
+
+  this.wileyPublishingModelsSectionsData = [{
+    x: Object.keys(wModelsSectionMap),
+    y: Object.values(wModelsSectionMap).map(subjectObj => subjectObj["OA"]),
+    type: 'bar',
+    name: 'Open Access'
+  },
+  {
+    x: Object.keys(wModelsSectionMap),
+    y: Object.values(wModelsSectionMap).map(subjectObj => subjectObj["HOA"]),
+    type: 'bar',
+    name: 'Hybrid OA'
+  },
+  {
+    x: Object.keys(wModelsSectionMap),
+    y: Object.values(wModelsSectionMap).map(subjectObj => subjectObj["SUBS"]),
+    type: 'bar',
+    name: 'Subscription'
+  }
+]
+
+  this.wileyPublishingModelsSectionsLayout = {
+    width: 400, height: 200, title: 'Publishing Modell nach Themengebiet', 
+    margin: {
+      t: 40,
+      r: 10, 
+      b: 45, 
+      l: 45
+    }, barmode: 'stack' }
+
+    const wLicensesSectionsMap = this.dataService.generateDisciplinesMap(this.dataService.wMainDisciplines23, this.dataService.wileyLicenses23, 30);
+    console.log(wLicensesSectionsMap)
+    console.log(Object.keys(wLicensesSectionsMap))
+    console.log(Object.values(wLicensesSectionsMap))
+
+    this.wileyLicensesSectionsData = [{
+      x: Object.keys(wLicensesSectionsMap),
+      y: Object.values(wLicensesSectionsMap).map(subjectObj => subjectObj["CC-BY for all"]),
+      type: 'bar',
+      name: 'CC-BY for all'
+    },
+    {
+      x: Object.keys(wLicensesSectionsMap),
+      y: Object.values(wLicensesSectionsMap).map(subjectObj => subjectObj["TBD"]),
+      type: 'bar',
+      name: 'TBD'
+    },
+    {
+      x: Object.keys(wLicensesSectionsMap),
+      y: Object.values(wLicensesSectionsMap).map(subjectObj => subjectObj["CC-BY by mandate only"]),
+      type: 'bar',
+      name: 'CC-BY by mandate'
+    },
+    {
+      x: Object.keys(wLicensesSectionsMap),
+      y: Object.values(wLicensesSectionsMap).map(subjectObj => subjectObj["CC-BY only"]),
+      type: 'bar',
+      name: 'CC-BY only'
+    },
+    {
+      x: Object.keys(wLicensesSectionsMap),
+      y: Object.values(wLicensesSectionsMap).map(subjectObj => subjectObj["CTA"]),
+      type: 'bar',
+      name: 'CTA'
+    }
+  
+  ]
+
+    this.wileyLicensesSectionsLayout = {
+      width: 400, height: 200, title: 'Lizenztypen nach Themengebiet', 
+      margin: {
+        t: 40,
+        r: 10, 
+        b: 45, 
+        l: 45
+      }, barmode: 'stack' }
 
   //sn deal charts
   this.charts[0] = new PieChart(this.chartLayout, this.chartData);
@@ -395,6 +488,9 @@ createCharts(){
   this.charts[7] = new BarChart(this.wileyAveragePricesLayout, this.wileyAveragePricesData);
   this.charts[9] = new BarChart(this.wileyDisciplinesPricesLayout, this.wileyDisciplinePricesData);
   this.charts[10] = new BarChart(this.wileyLicenesLayout, this.wileyLicensesData);
+  this.charts[11] = new PieChart(this.wileyPublishingModel23Layout, this.wileyPublishingModel23Data);
+  this.charts[12] = new BarChart(this.wileyPublishingModelsSectionsLayout, this.wileyPublishingModelsSectionsData);
+  this.charts[13] = new BarChart(this.wileyLicensesSectionsLayout, this.wileyLicensesSectionsData)
   
   
   this.charts[8] = new PieChart(this.overViewChartLayout, this.overviewChart);

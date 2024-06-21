@@ -3,7 +3,6 @@
 <body  *ngIf="!isLoading">
   <section class="overview">
     <div>
-      <!-- Code für das Springer Nature Dashboard -->
       <div *ngIf="this.currentPage == Pages.SpringerNaturePage">
         <div style="display: flex; flex: 1; height: 420px;">
           <app-overview-component [chartForGraph]="charts[8]"></app-overview-component>
@@ -24,47 +23,46 @@
         <div class="section-container">
           <!-- Code für das Springer Nature Dashboard -->
           <div *ngIf="this.currentPage == Pages.SpringerNaturePage">
-            <div style="display: flex; height: 380px; gap: 20px;">
-              <div style="flex: 1; height: 350px;">
+            <div class="graph-row-section">
+              <div class="graph-box">
                 <app-graph-container [inputCharts]="[charts[0]]" [inputTitles]="['Sections']"></app-graph-container>
   
               </div>
-              <div style="flex: 1; height: 350px;">
+              <div class="graph-box">
                 <app-graph-container [inputCharts]="[charts[2], charts[5]]" [inputTitles]="['Development', 'Sections']"></app-graph-container>
   
               </div>
             </div>
-            <div style="display: flex; gap: 20px; height: 380px;">
-              <div style="flex: 1; height: 350px;">
+            <div class="graph-row-section">
+              <div class="graph-box">
                 <app-graph-container [inputCharts]="[charts[1]]" [inputTitles]="['Section Prices']"></app-graph-container>
   
               </div>
-              <div style="flex: 1; height: 350px;">
+              <div class="graph-box">
                 <app-graph-container [inputCharts]="[charts[4]]" [inputTitles]="['Licenses']"></app-graph-container>
-  
               </div>
             </div>
           </div>
 
           <!-- Code für das Wiley Dashboard -->
           <div *ngIf="this.currentPage == Pages.WileyPage">
-            <div style="display: flex; height: 430px; gap: 30px;">
-              <div style="flex: 1; height: 400px;">
+            <div class="graph-row-section">
+              <div class="graph-box">
                 <app-graph-container [inputCharts]="[charts[6]]" [inputTitles]="['Sections']"></app-graph-container>
   
               </div>
-              <div style="flex: 1; height: 400px;">
-                <app-graph-container [inputCharts]="[charts[7]]" [inputTitles]="['Years']"></app-graph-container>
+              <div class="graph-box">
+                <app-graph-container [inputCharts]="[charts[7], charts[9]]" [inputTitles]="['Entwicklung', 'Sektionen']"></app-graph-container>
   
               </div>
             </div>
-            <div style="display: flex; height: 430px; gap: 30px;">
-              <div style="flex: 1; height: 400px;">
-                <app-graph-container [inputCharts]="[charts[9]]" [inputTitles]="['Sections']"></app-graph-container>
+            <div class="graph-row-section">
+              <div class="graph-box">
+                <app-graph-container [inputCharts]="[charts[11], charts[12]]" [inputTitles]="['2023', 'Sektionen']"></app-graph-container>
   
               </div>
-              <div style="flex: 1; height: 400px;">
-                <app-graph-container [inputCharts]="[charts[10]]" [inputTitles]="['Years']"></app-graph-container>
+              <div class="graph-box">
+                <app-graph-container [inputCharts]="[charts[10], charts[13]]" [inputTitles]="['Years', 'Sektionen']"></app-graph-container>
   
               </div>
             </div>
