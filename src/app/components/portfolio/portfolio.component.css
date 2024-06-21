@@ -49,4 +49,26 @@ app-overview-component {
     flex-grow: 1;
   }
 
+  .toggle-button {
+    background-color: white; 
+    border: none;
+    color: rgb(37, 86, 142);
+    padding: 20px 42px;
+    border: 1px solid rgb(37, 86, 142);
+    border-radius: 7px; 
+  text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    margin-left: 45px;
+  }
+  
+  .toggle-button:hover {
+    background-color: #cfe7ff;
+    color: #2b4771;
+    border: 2px solid #2b4771;
+  }
   
