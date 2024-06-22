@@ -42,8 +42,8 @@ type plotMarkerObj = {
 }
 
 type plotLayout = {
-    width:number,
-    height:number,
+    width?:number,
+    height?:number,
     title:string,
     margin: object,
     xaxis?: {
@@ -63,7 +63,7 @@ type plotLayout = {
 type plotData = {
     type:string,
     x?: number[] | string[],
-    y?:number[],
+    y?:number[] | string[],
     text?, //can display text on individual datapoints e.g. columns of bar chart
     hoverinfo?, //determines which trace information appears on hover
     values?:number[],
@@ -76,7 +76,12 @@ type scatterData = {
     x: number[] | string[],
     y: number[],
     name?: string,
-    marker?:plotMarkerObj
+    marker?:plotMarkerObj,
+    fill?:string,
+    fillcolor?:string,
+    line?: {
+        color: string
+    }
 }
 
 type pieData = {
@@ -89,9 +94,11 @@ type pieData = {
 
 type boxData = {
     type: 'box',
-    y: number[],
+    y?: string[],
+    x?: number[]
     name?: string,
-    marker?:plotMarkerObj
+    marker?:plotMarkerObj,
+    orientation?: string
 }
 
 type barData = {

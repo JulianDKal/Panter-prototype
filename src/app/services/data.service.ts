@@ -258,5 +258,20 @@ export class DataService {
     return counts;
   }
 
+  convertToNumbers(arr:string[]): number[] {
+    const numArr:number[] = []
+    let num = 0
+    let counter = 0
+    for (let i = 0; i < arr.length; i++) {
+      num = parseInt(arr[i])
+      if(!isNaN(num)) {
+        numArr[counter] = num;
+        counter++;
+      }
+    }
+
+    return numArr;
+  }
+
 }
 

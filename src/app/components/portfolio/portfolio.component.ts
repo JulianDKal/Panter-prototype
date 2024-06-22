@@ -1,12 +1,13 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { ChartElementComponent } from '../chart-element/chart-element.component';
-import { BarChart, Chart, PieChart, ScatterChart } from '../../Chart';
+import { BarChart, BoxPlot, Chart, PieChart, ScatterChart } from '../../Chart';
 import { DataService } from '../../services/data.service';
 import { Subscription } from 'rxjs';
 import { NgIf } from '@angular/common';
 import { GraphContainerComponent } from '../graph-container/graph-container.component';
 import { OverviewComponentComponent } from '../overview-component/overview-component.component';
+import { BoxPlotData } from 'plotly.js';
 
 enum Pages {
   SpringerNaturePage = 0,
@@ -40,6 +41,9 @@ export class PortfolioComponent {
 
   chartData3!:scatterData[];
   chartLayout3!:plotLayout;
+
+  models23Data!:pieData[];
+  models23Layout!:plotLayout;
 
   sPricesByYearsData!:barData[];
   sPricesbyYearsLayout!:plotLayout;
@@ -77,6 +81,12 @@ export class PortfolioComponent {
   //All charts
   pricesComparedYears!:scatterData[];
   pricesComparedYearsLayout!:plotLayout;
+
+  modelsCompared!:barData[];
+  modelsComparedLayout!:plotLayout;
+
+  boxplotPrices!:boxData[];
+  boxplotPricesLayout!:plotLayout;
   
   overviewChart!:pieData[];
   overViewChartLayout!:plotLayout;
@@ -201,15 +211,30 @@ createCharts(){
     }
   }
 
+  const models23Map = this.dataService.countOccurrences(this.dataService.publishingModels23, 2);
+
+  this.models23Data = [{
+    labels: Object.keys(models23Map),
+    values: Object.values(models23Map),
+    type: 'pie'
+  }]
+
+  this.models23Layout = {
+    width: 400, height: 290, title: '', margin: {
+      t: 40,
+      r: 60, 
+      b: 10, 
+      l: 10  
+    }
+  }
+
   const avgPrices2019 = this.dataService.getAvgPrice(this.dataService.apcPrices)
   const avgPrices2020 = this.dataService.getAvgPrice(this.dataService.apcPrices20)
   const avgPrices2022 = this.dataService.getAvgPrice(this.dataService.apcPrices22)
   const avgPrices2023 = this.dataService.getAvgPrice(this.dataService.apcPrices23)
 
-  console.log(this.dataService.apcPrices20 + " " + this.dataService.apcPrices22 + " " + this.dataService.apcPrices23)
-
-  const years = ["2019", "2020", "2022", "2023"]
-  const avgPrices = [avgPrices2019, avgPrices2020, avgPrices2022, avgPrices2023]
+  const years = ["2019", "2020", "2021", "2022", "2023"]
+  const avgPrices = [avgPrices2019, avgPrices2020, 1750, avgPrices2022, avgPrices2023]
 
   this.sPricesByYearsData = [{
     x: years,
@@ -321,10 +346,11 @@ createCharts(){
   const WavgPrices2021 = this.dataService.getAvgPrice(this.dataService.wileyAPCs2021);
   const WavgPrices2022 = this.dataService.getAvgPrice(this.dataService.wileyAPCs2022);
   const WavgPrices2023 = this.dataService.getAvgPrice(this.dataService.wileyAPCs2023);
-  const WavgPrices = [WavgPrices2020, WavgPrices2021, WavgPrices2022, WavgPrices2023]
+  const WavgPrices = [1600, WavgPrices2020, WavgPrices2021, WavgPrices2022, WavgPrices2023]
+  const wYears = ["2019", "2020", "2021", "2022", "2023"]
 
   this.wileyAveragePricesData = [{
-    x: years,
+    x: wYears,
     y: WavgPrices,
     type: 'bar',
     marker: {
@@ -500,7 +526,82 @@ createCharts(){
         l: 45
       }, barmode: 'stack' }
 
-  
+  this.pricesComparedYears = [{
+    x: years,
+    y: avgPrices,
+    type: 'scatter',
+    name: 'Springer',
+    fill: 'tozeroy'
+  },
+  {
+    x: wYears,
+    y: WavgPrices,
+    type: 'scatter',
+    name: 'Wiley',
+    fill: 'tonexty'
+  }
+]
+
+  this.pricesComparedYearsLayout = {
+    width: 400, height: 290, title: '', 
+    margin: {
+      t: 70,
+      r: 10, 
+      b: 30, 
+      l: 45  
+    },
+    xaxis: {
+      tickangle: 0,
+      dtick: 1
+    }
+  }
+    
+
+  const sPriceArr:number[] = this.dataService.convertToNumbers(this.dataService.apcPrices23);
+  const wPriceArr:number[] = this.dataService.convertToNumbers(this.dataService.wileyAPCs2023);
+
+  this.boxplotPrices = [{
+    x: sPriceArr,
+    type: 'box',
+    name: 'Springer',
+    orientation: 'h'
+  },
+  {
+    x: wPriceArr,
+    type: 'box',
+    name: 'Wiley',
+    orientation: 'h'
+  }]
+
+  this.boxplotPricesLayout = {
+    width: 400, height: 290, title: 'APC Preise', 
+    margin: {
+      t: 40,
+      r: 10, 
+      b: 30, 
+      l: 80  
+    }
+  }
+
+  const modelLabels = ["Open Choice", "Open Access", "Subscription", "Hybrid (Third Party)"]
+
+  this.modelsCompared = [{
+    x: modelLabels,
+    y: Object.values(models23Map),
+    type: 'bar',
+    name: 'Springer'
+  },
+  {
+    x: modelLabels,
+    y: Object.values(wileyPublishingModels23Map),
+    type: 'bar',
+    name: 'Wiley'
+  }]
+
+  this.modelsComparedLayout = {
+    title: '',
+    margin: {t: 40, r: 10, b: 30, l: 80  }
+  }
   
   //sn deal charts
   this.charts[0] = new PieChart(this.chartLayout, this.chartData);
@@ -509,6 +610,7 @@ createCharts(){
   this.charts[3] = new BarChart(this.sPricesbyYearsLayout, this.sPricesByYearsData);
   this.charts[4] = new BarChart(this.licenceTypeLayout, this.licenceTypeData);
   this.charts[5] = new BarChart(this.modelsDisciplinesLayout, this.modelsDisciplinesData);
+  this.charts[16] = new PieChart(this.models23Layout, this.models23Data)
 
   //wiley deal charts
   this.charts[6] = new PieChart(this.wileyMainDisciplLayout, this.wileyMainDisciplData);
@@ -519,6 +621,10 @@ createCharts(){
   this.charts[12] = new BarChart(this.wileyPublishingModelsSectionsLayout, this.wileyPublishingModelsSectionsData);
   this.charts[13] = new BarChart(this.wileyLicensesSectionsLayout, this.wileyLicensesSectionsData)
   
+  //all charts
+  this.charts[14] = new ScatterChart(this.pricesComparedYearsLayout, this.pricesComparedYears)
+  this.charts[15] = new BoxPlot(this.boxplotPricesLayout, this.boxplotPrices)
+  this.charts[17] = new BarChart(this.modelsComparedLayout, this.modelsCompared)
   
   this.charts[8] = new PieChart(this.overViewChartLayout, this.overviewChart);
 }

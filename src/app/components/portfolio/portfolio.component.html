@@ -20,7 +20,7 @@
   
               </div>
               <div class="graph-box">
-                <app-graph-container [inputCharts]="[charts[2], charts[5]]" [inputTitles]="['Development', 'Sections']"></app-graph-container>
+                <app-graph-container [inputCharts]="[charts[2], charts[5], charts[16]]" [inputTitles]="['Development', 'Sections', '2023']"></app-graph-container>
   
               </div>
             </div>
@@ -63,7 +63,17 @@
            <div *ngIf="this.currentPage == Pages.BothPage">
             <div class="graph-row-section">
               <div class="graph-box">
-                <app-graph-container [inputCharts]="[charts[10], charts[13]]" [inputTitles]="['Years', 'Sektionen']"></app-graph-container>
+                <app-graph-container [inputCharts]="[charts[15]]" [inputTitles]="['APC Preise']"></app-graph-container>
+  
+              </div>
+              <div class="graph-box">
+                <app-graph-container [inputCharts]="[charts[14]]" [inputTitles]="['APC Preise']"></app-graph-container>
+  
+              </div>
+            </div>
+            <div class="graph-row-section">
+              <div class="graph-box">
+                <app-graph-container [inputCharts]="[charts[17]]" [inputTitles]="['Veröffentlichungsmodelle']"></app-graph-container>
   
               </div>
             </div>
