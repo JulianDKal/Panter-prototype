@@ -1,4 +1,4 @@
-<body>
+<body >
     <section class="dashboard-section">
         <div class="login-container">
           <img src="../../../assets/konto-icon.png" alt="Mein Konto Icon" class="icon">
@@ -10,18 +10,6 @@
               <div class="chart" style="height: 420px;">
                 <app-chart-element [chart]="chartForGraph"></app-chart-element> 
               </div>
-              <!--<div class="center">
-                <h3>Themenbereiche</h3>
-                <div class="inline-texts">
-                  <p>Hauptthemen</p>
-                  <p>Journals</p>
-                  <p>EUR</p>
-                </div> 
-                <div class="journal-count">
-                  <p>Anzahl der gesamten Journals:</p>
-                  <p><strong>2.029</strong></p>
-                </div>
-               </div>-->
             </div>
         </div>
         <div class="end fixed-text">
@@ -35,54 +23,36 @@
             <div class="dropdown">
               <a class="btn dropdown-toggle">Themen ▼</a>
               <div class="dropdown-menu">
-                <a href="#">Medicine & Public Health</a>
-                <a href="#">Life Sciences</a>
-                <a href="#">Engineering</a>
-                <a href="#">Biomedicine</a>
-                <a href="#">Mathematics</a>
-                <a href="#">Chemistry</a>
-                <a href="#">Computer Science</a>
-                <a href="#">Physics</a>
-                <a href="#">Earth Sciences</a>
-                <a href="#">Social Sciences</a>
-                <a href="#">Materials Science</a>
-                <a href="#">Economics</a>
-                <a href="#">Psychology</a>
-                <a href="#">Business and Management</a>
-                <a href="#">Education</a>
-                <a href="#">Environment</a>
-                <a href="#">Philosophy</a>
+                <a href="#" *ngFor="let topic of topics" (click)="onSelectTopic(topic.name, $event)">{{ topic.name }}</a>
               </div>
             </div>
             <div class="dropdown">
               <a class="btn dropdown-toggle">Deals ▼</a>
               <div class="dropdown-menu">
-                <a href="#">Deal 1</a>
-                <a href="#">Deal 2</a>
-                <a href="#">neuen Deal erstellen</a>
+                <a href="#" *ngFor="let deal of deals" (click)="onSelectDeal(deal.name, $event)">{{ deal.name }}</a>
               </div>
             </div>  
+            <a class="btn deal-button">Deal hinzufügen  <strong>+</strong> </a>
             <a class="btn share-button">Teilen  <strong>➥</strong></a>
           </div>
           <div class="text">
-            <p><strong>Physics</strong></p>
+            <p style="font-size: 12px;"><strong>{{ selectedTopic }}</strong></p>
             <p></p>
             <p></p>
-            <p>Es gibt 124 Journals zu diesem Themenbereich.</p>
-            <p>Dies sind 4,69% der gesamten Journals.</p>
+            <p [innerHTML]="getSelectedTopicInfo()"></p>
           </div>
           <div class="texte">
           <div class="text2">
-            <p><strong>durchschnittlicher APC Preis</strong></p>
+            <p><strong>durchschnittlicher APC Preis:</strong></p>
             <p>1.645 €</p>
           </div>
-          <div class="text3">
-            <p><strong>Open Access Journals</strong></p>
+          <div class="text2">
+            <p><strong>Open Access Journals:</strong></p>
             <p>19.51%</p>
           </div>
-          <div class="text4">
+          <div class="text2">
             <p><strong>Anzahl der gesamten Journals:</strong></p>
-            <p>2.029</p>
+            <p>4.635</p>
           </div>
         </div>
         </div>

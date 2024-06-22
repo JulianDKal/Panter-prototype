@@ -56,13 +56,14 @@ app-overview-component {
     padding: 20px 42px;
     border: 1px solid rgb(37, 86, 142);
     border-radius: 7px; 
-  text-align: center;
+    text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
+    margin-top: 20px;
     margin-left: 45px;
   }
   
@@ -72,13 +73,3 @@ app-overview-component {
     border: 2px solid #2b4771;
   }
   
-.graph-box {
-  flex: 1; 
-  height: 400px;
-}
-
-.graph-row-section {
-  display: flex; 
-  height: 430px; 
-  gap: 30px;
-}
