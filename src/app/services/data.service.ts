@@ -13,8 +13,6 @@ export class DataService {
 
   //Springer Datensatz 2019-12-31:
   firstDataObj?:Papa.ParseResult<snDealRows>;
-  journalIDs:number[] = [];
-  journalTitles:string[] = [];
   mainDisciplines:string[] = [];
   apcPrices:string[] = [];
   publishingModels19:string[] = [];
@@ -23,15 +21,18 @@ export class DataService {
   //Springer Datensatz 2020-04-17:
   secondDataObj?:Papa.ParseResult<snDealRows>;
   publishingModels20:string[] = [];
+  apcPrices20:string[] = [];
 
   //Springer Datensatz 2022-04-04
   thirdDataObj?:Papa.ParseResult<snDealRows>;
   publishingModels22:string[] = [];
+  apcPrices22:string[] = [];
 
   //Springer Datensatz 2023-05-04
   fourthDataObj?:Papa.ParseResult<snDealRows>;
   publishingModels23:string[] = [];
   mainDisciplines23:string[] = [];
+  apcPrices23:string[] = [];
 
   //Wiley Datensatz 2020
   wileyFirstObj?:Papa.ParseResult<wileyDealRows>
@@ -65,8 +66,6 @@ export class DataService {
               this.firstDataObj = results;
           if(this.firstDataObj){
             for (let i = 0; i < this.firstDataObj.data.length; i++) {
-              this.journalIDs[i] = this.firstDataObj.data[i]["SN Journals ID"];
-              //this.journalTitles[i] = this.firstDataObj.data[i]["Journal Title"];
               this.mainDisciplines[i] = this.firstDataObj.data[i]["Main Discipline"];
               this.apcPrices[i] = this.firstDataObj.data[i]["APC"];
               this.publishingModels19[i] = this.firstDataObj.data[i]["Publishing Model"];
@@ -82,7 +81,7 @@ export class DataService {
           if(this.secondDataObj){
             for (let i = 0; i < this.secondDataObj.data.length; i++) {
               this.publishingModels20[i] = this.secondDataObj.data[i]["Publishing Model"];
-
+              this.apcPrices20[i] = this.secondDataObj.data[i]["APC"]
             }
           }
           //console.log(this.secondDataObj);
@@ -93,7 +92,7 @@ export class DataService {
           if(this.thirdDataObj){
             for (let i = 0; i < this.thirdDataObj.data.length; i++) {
               this.publishingModels22[i] = this.thirdDataObj.data[i]["Publishing Model"];
-
+              this.apcPrices22[i] = this.thirdDataObj.data[i]["APC"]
             }
           }
           //console.log(this.thirdDataObj);
@@ -105,6 +104,7 @@ export class DataService {
             for (let i = 0; i < this.fourthDataObj.data.length; i++) {
               this.publishingModels23[i] = this.fourthDataObj.data[i]["Publishing Model"];
               this.mainDisciplines23[i] = this.fourthDataObj.data[i]["Main Discipline"];
+              this.apcPrices23[i] = this.fourthDataObj.data[i]["APC"]
             }
           }
           //console.log(this.fourthDataObj);

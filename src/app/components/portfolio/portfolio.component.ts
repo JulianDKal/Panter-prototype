@@ -41,6 +41,9 @@ export class PortfolioComponent {
   chartData3!:scatterData[];
   chartLayout3!:plotLayout;
 
+  sPricesByYearsData!:barData[];
+  sPricesbyYearsLayout!:plotLayout;
+
   licenceTypeData!:barData[];
   licenceTypeLayout!:plotLayout;
 
@@ -70,6 +73,10 @@ export class PortfolioComponent {
 
   wileyPublishingModelsSectionsData!:barData[];
   wileyPublishingModelsSectionsLayout!:plotLayout;
+
+  //All charts
+  pricesComparedYears!:scatterData[];
+  pricesComparedYearsLayout!:plotLayout;
   
   overviewChart!:pieData[];
   overViewChartLayout!:plotLayout;
@@ -194,6 +201,40 @@ createCharts(){
     }
   }
 
+  const avgPrices2019 = this.dataService.getAvgPrice(this.dataService.apcPrices)
+  const avgPrices2020 = this.dataService.getAvgPrice(this.dataService.apcPrices20)
+  const avgPrices2022 = this.dataService.getAvgPrice(this.dataService.apcPrices22)
+  const avgPrices2023 = this.dataService.getAvgPrice(this.dataService.apcPrices23)
+
+  console.log(this.dataService.apcPrices20 + " " + this.dataService.apcPrices22 + " " + this.dataService.apcPrices23)
+
+  const years = ["2019", "2020", "2022", "2023"]
+  const avgPrices = [avgPrices2019, avgPrices2020, avgPrices2022, avgPrices2023]
+
+  this.sPricesByYearsData = [{
+    x: years,
+    y: avgPrices,
+    type: 'bar',
+    marker: {
+      color: 'rgb(138,202,245)',
+      opacity: 0.6,
+    }
+  }]
+
+  this.sPricesbyYearsLayout = {
+    width: 400, height: 290, 
+    title: 'Average APC Prices', 
+    margin: {
+      t: 40,
+      r: 10, 
+      b: 45, 
+      l: 45
+    },
+    xaxis: {
+      dtick: 1
+    }
+  }
+
   const licenseTypesMap = this.dataService.countOccurrences(this.dataService.licenseTypes19, 0);
   delete licenseTypesMap["undefined"];
 
@@ -276,44 +317,32 @@ createCharts(){
     }
   }
 
-  const avgPrices2020 = this.dataService.getAvgPrice(this.dataService.wileyAPCs2020);
-  const avgPrices2021 = this.dataService.getAvgPrice(this.dataService.wileyAPCs2021);
-  const avgPrices2022 = this.dataService.getAvgPrice(this.dataService.wileyAPCs2022);
-  const avgPrices2023 = this.dataService.getAvgPrice(this.dataService.wileyAPCs2023);
-  const years = ["2020", "2021", "2022", "2023"]
-  const avgPrices = [avgPrices2020, avgPrices2021, avgPrices2022, avgPrices2023]
+  const WavgPrices2020 = this.dataService.getAvgPrice(this.dataService.wileyAPCs2020);
+  const WavgPrices2021 = this.dataService.getAvgPrice(this.dataService.wileyAPCs2021);
+  const WavgPrices2022 = this.dataService.getAvgPrice(this.dataService.wileyAPCs2022);
+  const WavgPrices2023 = this.dataService.getAvgPrice(this.dataService.wileyAPCs2023);
+  const WavgPrices = [WavgPrices2020, WavgPrices2021, WavgPrices2022, WavgPrices2023]
 
   this.wileyAveragePricesData = [{
     x: years,
-    y: avgPrices,
+    y: WavgPrices,
     type: 'bar',
     marker: {
       color: 'rgb(138,202,245)',
       opacity: 0.6,
     }
   }]
+  this.wileyAveragePricesLayout = this.sPricesbyYearsLayout
 
-  this.wileyAveragePricesLayout = {
-    width: 400, height: 290, 
-    title: 'Average APC Prices', 
-    margin: {
-      t: 40,
-      r: 10, 
-      b: 45, 
-      l: 45
-    },
-    xaxis: {
-      dtick: 1
-    }
-  }
 
-  const newMainDisc:CountMap = this.dataService.countOccurrences(this.dataService.mainDisciplines, 40);
+  const disciplinesCombined = this.dataService.mainDisciplines23.concat(this.dataService.wMainDisciplines23)
+  const newMainDisc:CountMap = this.dataService.countOccurrences(disciplinesCombined, 25);
 
   this.overviewChart = [{
     labels: Object.keys(newMainDisc),
     values: Object.values(newMainDisc),
     type: 'pie',
-    hole: 0.4
+    hole: 0.55
   }]
 
   this.overViewChartLayout = {
@@ -322,7 +351,8 @@ createCharts(){
       r: 10, 
       b: 10, 
       l: 10  
-    }
+    },
+    showlegend: false
   }
 
   const wileyDisciplinePricemap = this.dataService.generateAvgPriceMap(this.dataService.wMainDisciplines23, this.dataService.wileyAPCs2023);
@@ -355,10 +385,8 @@ createCharts(){
 
   const wileyLicenseData = this.dataService.countOccurrences(this.dataService.wileyLicenses23, 50);
   delete wileyLicenseData["undefined"];
-  delete wileyLicenseData["CC-BY only "]
   delete wileyLicenseData["CC-BY-NC"]
   delete wileyLicenseData["CC-BY exceptions"]
-  console.log(Object.keys(wileyLicenseData));
 
   this.wileyLicensesData = [{
     x: Object.keys(wileyLicenseData),
@@ -429,9 +457,6 @@ createCharts(){
     }, barmode: 'stack' }
 
     const wLicensesSectionsMap = this.dataService.generateDisciplinesMap(this.dataService.wMainDisciplines23, this.dataService.wileyLicenses23, 30);
-    console.log(wLicensesSectionsMap)
-    console.log(Object.keys(wLicensesSectionsMap))
-    console.log(Object.values(wLicensesSectionsMap))
 
     this.wileyLicensesSectionsData = [{
       x: Object.keys(wLicensesSectionsMap),
@@ -475,11 +500,13 @@ createCharts(){
         l: 45
       }, barmode: 'stack' }
 
+  
+  
   //sn deal charts
   this.charts[0] = new PieChart(this.chartLayout, this.chartData);
   this.charts[1] = new BarChart(this.chartLayout2, this.chartData2);
   this.charts[2] = new ScatterChart(this.chartLayout3, this.chartData3);
-  //this.charts[3] = new PieChart(this.donutLayout, this.donutChartData);
+  this.charts[3] = new BarChart(this.sPricesbyYearsLayout, this.sPricesByYearsData);
   this.charts[4] = new BarChart(this.licenceTypeLayout, this.licenceTypeData);
   this.charts[5] = new BarChart(this.modelsDisciplinesLayout, this.modelsDisciplinesData);
 

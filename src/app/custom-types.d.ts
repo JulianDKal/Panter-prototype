@@ -56,7 +56,8 @@ type plotLayout = {
             color?:string
         }
     },
-    barmode?:string
+    barmode?:string,
+    showlegend?:boolean
 }
 
 type plotData = {
