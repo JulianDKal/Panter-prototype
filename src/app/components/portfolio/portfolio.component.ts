@@ -118,7 +118,7 @@ createCharts(){
     type: 'pie',
   }]
   this.chartLayout = {
-    width: 400, height: 290, title: 'Main Disciplines in Portfolio', margin: {
+    width: 400, height: 290, margin: {
       t: 40,
       r: 10, 
       b: 10, 
@@ -148,7 +148,6 @@ createCharts(){
   }]
   this.chartLayout2 = {
     width: 400, height: 290, 
-    title: 'APC Prices by Disciplines (in €)', 
     margin: {
       t: 40,
       r: 10, 
@@ -199,7 +198,7 @@ createCharts(){
   ]
 
   this.chartLayout3 = {
-    width: 400, height: 290, title: 'Publishing Models', 
+    width: 400, height: 290, 
     margin: {
       t: 40,
       r: 10, 
@@ -248,7 +247,6 @@ createCharts(){
 
   this.sPricesbyYearsLayout = {
     width: 400, height: 290, 
-    title: 'Average APC Prices', 
     margin: {
       t: 40,
       r: 10, 
@@ -275,7 +273,6 @@ createCharts(){
 
   this.licenceTypeLayout = {
     width: 400, height: 290, 
-    title: 'OA License Types', 
     margin: {
       t: 40,
       r: 10, 
@@ -316,7 +313,6 @@ createCharts(){
 
   this.modelsDisciplinesLayout = {
     width: 400, height: 200,
-    title: 'Publishing Models by Subjects', 
     margin: {
       t: 40,
       r: 10, 
@@ -334,7 +330,7 @@ createCharts(){
   }]
 
   this.wileyMainDisciplLayout = {
-    width: 400, height: 290, title: 'Main Disciplines Wiley Deal', margin: {
+    width: 400, height: 290, margin: {
       t: 40,
       r: 10, 
       b: 10, 
@@ -372,7 +368,7 @@ createCharts(){
   }]
 
   this.overViewChartLayout = {
-    width: 400, height: 290, title: 'Main Disciplines', margin: {
+    width: 400, height: 290, margin: {
       t: 40,
       r: 10, 
       b: 10, 
@@ -395,7 +391,6 @@ createCharts(){
 
   this.wileyDisciplinesPricesLayout = {
     width: 400, height: 290, 
-    title: 'APC Prices by Sections', 
     margin: {
       t: 40,
       r: 40, 
@@ -425,7 +420,7 @@ createCharts(){
   }]
 
   this.wileyLicenesLayout = {
-    width: 400, height: 290, title: 'OA Lizenztypen', 
+    width: 400, height: 290, 
     margin: {
       t: 30,
       r: 10, 
@@ -443,7 +438,7 @@ createCharts(){
   }]
 
   this.wileyPublishingModel23Layout = {
-    width: 400, height: 290, title: 'Veröffentlichungstypen', margin: {
+    width: 400, height: 290, margin: {
       t: 40,
       r: 10, 
       b: 10, 
@@ -474,7 +469,7 @@ createCharts(){
 ]
 
   this.wileyPublishingModelsSectionsLayout = {
-    width: 400, height: 200, title: 'Publishing Modell nach Themengebiet', 
+    width: 400, height: 200, 
     margin: {
       t: 40,
       r: 10, 
@@ -518,7 +513,7 @@ createCharts(){
   ]
 
     this.wileyLicensesSectionsLayout = {
-      width: 400, height: 200, title: 'Lizenztypen nach Themengebiet', 
+      width: 400, height: 200,
       margin: {
         t: 40,
         r: 10, 
@@ -574,7 +569,7 @@ createCharts(){
   }]
 
   this.boxplotPricesLayout = {
-    width: 400, height: 290, title: 'APC Preise', 
+    width: 400, height: 290,
     margin: {
       t: 40,
       r: 10, 

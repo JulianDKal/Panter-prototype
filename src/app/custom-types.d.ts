@@ -44,7 +44,7 @@ type plotMarkerObj = {
 type plotLayout = {
     width?:number,
     height?:number,
-    title:string,
+    title?:string,
     margin: object,
     xaxis?: {
         autorange?: string | boolean,

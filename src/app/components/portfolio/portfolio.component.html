@@ -16,21 +16,25 @@
           <div *ngIf="this.currentPage == Pages.SpringerNaturePage">
             <div class="graph-row-section">
               <div class="graph-box">
-                <app-graph-container [inputCharts]="[charts[0]]" [inputTitles]="['Sections']"></app-graph-container>
+                <app-graph-container [inputCharts]="[charts[0]]" [inputTitles]="['Aktuell']" [HeadTitle]="'Themengebiete'"></app-graph-container>
   
               </div>
               <div class="graph-box">
-                <app-graph-container [inputCharts]="[charts[2], charts[5], charts[16]]" [inputTitles]="['Development', 'Sections', '2023']"></app-graph-container>
+                <app-graph-container [inputCharts]="[charts[2], charts[16], charts[5]]" [inputTitles]="['Entwicklung', 'Aktuell', 'Sektionell']" [HeadTitle]="'Veröffentlichungsmodelle'">
+
+                </app-graph-container>
   
               </div>
             </div>
             <div class="graph-row-section">
               <div class="graph-box">
-                <app-graph-container [inputCharts]="[charts[1], charts[3]]" [inputTitles]="['Section Prices', 'Entwicklung']"></app-graph-container>
+                <app-graph-container [inputCharts]="[charts[3], charts[1]]" [inputTitles]="['Entwicklung', 'Sektionell']" [HeadTitle]="'APC Preise'">
+
+                </app-graph-container>
   
               </div>
               <div class="graph-box">
-                <app-graph-container [inputCharts]="[charts[4]]" [inputTitles]="['Licenses']"></app-graph-container>
+                <app-graph-container [inputCharts]="[charts[4]]" [inputTitles]="['Aktuell']" [HeadTitle]="'Lizenzen'"></app-graph-container>
               </div>
             </div>
           </div>
@@ -39,21 +43,21 @@
           <div *ngIf="this.currentPage == Pages.WileyPage">
             <div class="graph-row-section">
               <div class="graph-box">
-                <app-graph-container [inputCharts]="[charts[6]]" [inputTitles]="['Sections']"></app-graph-container>
+                <app-graph-container [inputCharts]="[charts[6]]" [inputTitles]="['Aktuell']" [HeadTitle]="'Themengebiete'"></app-graph-container>
   
               </div>
               <div class="graph-box">
-                <app-graph-container [inputCharts]="[charts[7], charts[9]]" [inputTitles]="['Entwicklung', 'Sektionen']"></app-graph-container>
+                <app-graph-container [inputCharts]="[charts[7], charts[9]]" [inputTitles]="['Entwicklung', 'Sektionen']" [HeadTitle]="'APC Preise'"></app-graph-container>
   
               </div>
             </div>
             <div class="graph-row-section">
               <div class="graph-box">
-                <app-graph-container [inputCharts]="[charts[11], charts[12]]" [inputTitles]="['2023', 'Sektionen']"></app-graph-container>
+                <app-graph-container [inputCharts]="[charts[11], charts[12]]" [inputTitles]="['Aktuell', 'Sektionen']" [HeadTitle]="'Veröffentlichungsmodelle'"></app-graph-container>
   
               </div>
               <div class="graph-box">
-                <app-graph-container [inputCharts]="[charts[10], charts[13]]" [inputTitles]="['Years', 'Sektionen']"></app-graph-container>
+                <app-graph-container [inputCharts]="[charts[10], charts[13]]" [inputTitles]="['Entwicklung', 'Sektionen']" [HeadTitle]="'Lizenzen'"></app-graph-container>
   
               </div>
             </div>
@@ -63,17 +67,17 @@
            <div *ngIf="this.currentPage == Pages.BothPage">
             <div class="graph-row-section">
               <div class="graph-box">
-                <app-graph-container [inputCharts]="[charts[15]]" [inputTitles]="['APC Preise']"></app-graph-container>
+                <app-graph-container [inputCharts]="[charts[15]]" [inputTitles]="['Aktuell']" [HeadTitle]="'APC Preise'"></app-graph-container>
   
               </div>
               <div class="graph-box">
-                <app-graph-container [inputCharts]="[charts[14]]" [inputTitles]="['APC Preise']"></app-graph-container>
+                <app-graph-container [inputCharts]="[charts[14]]" [inputTitles]="['Entwicklung']" [HeadTitle]="'APC Preise'"></app-graph-container>
   
               </div>
             </div>
             <div class="graph-row-section">
               <div class="graph-box">
-                <app-graph-container [inputCharts]="[charts[17]]" [inputTitles]="['Veröffentlichungsmodelle']"></app-graph-container>
+                <app-graph-container [inputCharts]="[charts[17]]" [inputTitles]="['Veröffentlichungsmodelle']" [HeadTitle]="'Lizenzen'"></app-graph-container>
   
               </div>
             </div>
