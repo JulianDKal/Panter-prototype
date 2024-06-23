@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs';
 import { NgIf } from '@angular/common';
 import { GraphContainerComponent } from '../graph-container/graph-container.component';
 import { OverviewComponentComponent } from '../overview-component/overview-component.component';
-import * as chroma from 'chroma-js';
+import chroma from 'chroma-js';
 
 enum Pages {
   SpringerNaturePage = 0,
@@ -111,17 +111,21 @@ export class PortfolioComponent {
 createCharts(){
   //Daten für den ersten Chart holen und einsetzen
   const mainDisciplines:CountMap = this.dataService.countOccurrences(this.dataService.mainDisciplines, 100);
+  const colors = this.generateColorPalette(Object.keys(mainDisciplines).length)
 
   this.chartData = [{
     labels: Object.keys(mainDisciplines),
     values: Object.values(mainDisciplines),
-    type: 'pie'
+    type: 'pie',
+    marker: {
+      colors: colors
+    }
   }]
   this.chartLayout = {
     width: 400, height: 290, margin: {
-      t: 40,
+      t: 25,
       r: 10, 
-      b: 10, 
+      b: 25, 
       l: 10  
     }
   }
@@ -137,12 +141,8 @@ createCharts(){
     y: Object.values(disciplinesPricesMap),
     type: 'bar',
     marker: {
-      color: 'rgb(158,202,225)',
-      opacity: 0.6,
-      line: {
-        color: 'rgb(8,48,107)',
-        width: 1.5
-      }
+      color: 'rgb(138,202,245)',
+      opacity: 0.6
        
     }
   }]
@@ -156,7 +156,7 @@ createCharts(){
     },
     xaxis: {
       autorange: true,
-      dtick: 1,
+      dtick: 2,
       tickfont: {
         size: 10,
         color: '#000000'
@@ -254,9 +254,9 @@ createCharts(){
 
   this.models23Layout = {
     width: 400, height: 290, title: '', margin: {
-      t: 40,
+      t: 25,
       r: 60, 
-      b: 10, 
+      b: 25, 
       l: 10  
     }
   }
@@ -275,7 +275,7 @@ createCharts(){
     type: 'bar',
     marker: {
       color: 'rgb(138,202,245)',
-      opacity: 0.6,
+      opacity: 0.6
     }
   }]
 
@@ -300,8 +300,8 @@ createCharts(){
     y: Object.values(licenseTypesMap),
     type: 'bar',
     marker: {
-      color: 'rgb(138,202,245)',
-      opacity: 0.6,
+      color: '#538BB6',
+      opacity: 0.75,
     }
   }]
 
@@ -322,25 +322,41 @@ createCharts(){
     x: Object.keys(disciplinesModelsMap),
     y: Object.values(disciplinesModelsMap).map(subjectObj => subjectObj["Open Choice"]),
     type: 'bar',
-    name: 'Open Choice'
+    name: 'Open Choice',
+    marker: {
+      color: '#324A71',
+      opacity: 0.8
+     }
   },
   {
     x: Object.keys(disciplinesModelsMap),
     y: Object.values(disciplinesModelsMap).map(subjectObj => subjectObj["Fully Open Access"]),
     type: 'bar',
-    name: 'Fully Open Access'
+    name: 'Fully Open Access',
+    marker: {
+      color: '#64B6DC',
+      opacity: 0.8
+     }
   },
   {
     x: Object.keys(disciplinesModelsMap),
     y: Object.values(disciplinesModelsMap).map(subjectObj => subjectObj["Subscription-only"]),
     type: 'bar',
-    name: 'Subscription Only'
+    name: 'Subscription Only',
+    marker: {
+      color: '#538BB6',
+      opacity: 0.8
+     }
   },
   {
     x: Object.keys(disciplinesModelsMap),
     y: Object.values(disciplinesModelsMap).map(subjectObj => subjectObj["Hybrid (Third Party)"]),
     type: 'bar',
-    name: 'Hybrid (Third Party)'
+    name: 'Hybrid (Third Party)',
+    marker: {
+      color: '#B1C2CD',
+      opacity: 0.8
+     }
   }
 
 ]
@@ -356,18 +372,23 @@ createCharts(){
     barmode: 'stack'
   }
 
+  
   const wileyMainDisciplines = this.dataService.countOccurrences(this.dataService.wMainDisciplines23, 50);
+  const newColors = this.generateColorPalette(Object.keys(wileyMainDisciplines).length)
   this.wileyMainDisciplData = [{
     labels: Object.keys(wileyMainDisciplines),
     values: Object.values(wileyMainDisciplines),
-    type: 'pie'
+    type: 'pie',
+    marker: {
+      colors: newColors
+    }
   }]
 
   this.wileyMainDisciplLayout = {
     width: 400, height: 290, margin: {
-      t: 40,
+      t: 25,
       r: 10, 
-      b: 10, 
+      b: 25, 
       l: 10  
     }
   }
@@ -448,8 +469,8 @@ createCharts(){
     y: Object.values(wileyLicenseData),
     type: 'bar',
     marker: {
-      color: 'rgb(138,202,245)',
-      opacity: 0.6,
+      color: '#538BB6',
+      opacity: 0.75,
     }
   }]
 
@@ -466,7 +487,7 @@ createCharts(){
   const wileyPublishingModels23Map = this.dataService.countOccurrences(this.dataService.wPublishingModels23, 50);
 
   this.wileyPublishingModel23Data = [{
-    labels: Object.keys(wileyPublishingModels23Map),
+    labels: ['Hybrid Open Access', 'Open Access', 'Subscription'],
     values: Object.values(wileyPublishingModels23Map),
     type: 'pie',
     marker: {
@@ -476,10 +497,16 @@ createCharts(){
 
   this.wileyPublishingModel23Layout = {
     width: 400, height: 290, margin: {
-      t: 40,
-      r: 10, 
-      b: 10, 
-      l: 10  
+      t: 25,
+      r: 340, 
+      b: 25, 
+      l: 0 
+    },
+    legend: {
+      x: 1.05,
+      y: 0.6,
+      yanchor: 'middle',
+      orientation: 'v'
     }
   }
 
@@ -524,7 +551,8 @@ createCharts(){
       r: 10, 
       b: 45, 
       l: 45
-    }, barmode: 'stack' }
+    }, 
+    barmode: 'stack' }
 
     const wLicensesSectionsMap = this.dataService.generateDisciplinesMap(this.dataService.wMainDisciplines23, this.dataService.wileyLicenses23, 30);
 
@@ -532,31 +560,51 @@ createCharts(){
       x: Object.keys(wLicensesSectionsMap),
       y: Object.values(wLicensesSectionsMap).map(subjectObj => subjectObj["CC-BY for all"]),
       type: 'bar',
-      name: 'CC-BY for all'
+      name: 'CC-BY for all',
+      marker: {
+        color: '#324A71',
+        opacity: 0.8
+       }
     },
     {
       x: Object.keys(wLicensesSectionsMap),
       y: Object.values(wLicensesSectionsMap).map(subjectObj => subjectObj["TBD"]),
       type: 'bar',
-      name: 'TBD'
+      name: 'TBD',
+      marker: {
+        color: '#64B6DC',
+        opacity: 0.8
+       }
     },
     {
       x: Object.keys(wLicensesSectionsMap),
       y: Object.values(wLicensesSectionsMap).map(subjectObj => subjectObj["CC-BY by mandate only"]),
       type: 'bar',
-      name: 'CC-BY by mandate'
+      name: 'CC-BY by mandate',
+      marker: {
+        color: '#538BB6',
+        opacity: 0.8
+       }
     },
     {
       x: Object.keys(wLicensesSectionsMap),
       y: Object.values(wLicensesSectionsMap).map(subjectObj => subjectObj["CC-BY only"]),
       type: 'bar',
-      name: 'CC-BY only'
+      name: 'CC-BY only',
+      marker: {
+        color: '#B1C2CD',
+        opacity: 0.8
+       }
     },
     {
       x: Object.keys(wLicensesSectionsMap),
       y: Object.values(wLicensesSectionsMap).map(subjectObj => subjectObj["CTA"]),
       type: 'bar',
-      name: 'CTA'
+      name: 'CTA',
+      marker: {
+        color: '#8782ea',
+        opacity: 0.8
+      }
     }
   
   ]
@@ -684,8 +732,10 @@ createCharts(){
   }
 
   generateColorPalette(count: number): string[] {
-    const colorScale = chroma.scale(['#0000FF', '#324A71', '#64B6DC']).mode('lab').colors(count);
-    return colorScale;
+    // '#90C1D1'
+    const colorScale = chroma.scale(['#031746', '#044274', '#0685B6', '#90C1D1', '#CDDDE4' ]).mode('lab').colors(count);
+    const opacity = 0.9;
+    return colorScale.map(color => chroma(color).alpha(opacity).css());
   }
 
 }

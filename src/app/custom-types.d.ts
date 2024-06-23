@@ -60,7 +60,14 @@ type plotLayout = {
     yaxis?: {
         dtick?: number,
         title?: object
-    }
+    },
+    legend?: {
+        x: number, // zwischen 0 und 1
+        y: number, //zwischen 0 und 1
+        xanchor?: string, //'h' oder 'v'
+        yanchor?: string, 
+        orientation?: string 
+      }
     barmode?:string,
     showlegend?:boolean
 }
