@@ -39,12 +39,12 @@ body {
     display: flex;
     justify-content: flex-start;
     background-color: white;
-    height: 50vh;
+    /*height: 100vh;*/
   }
   
   .graph {
     background-color: white;
-    display: flex;
+    /*display: flex;*/
     justify-content: flex-start;
     align-items: center;
     flex-grow: 1;
@@ -95,7 +95,7 @@ h3 {
 
   .end {
     width: 50%;
-    display: flex;
+    /*display: flex;*/
     align-items: center;
     justify-content: center;
     background-color: white;
@@ -107,7 +107,7 @@ h3 {
   }
 
   .fixed-text {
-    display: flex;
+    /*display: flex;*/
     top: 10%;
     right: 0;
     width: 50%;

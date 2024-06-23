@@ -13,7 +13,7 @@ body {
 app-overview-component {
   display: flex;
   flex-grow: 1;
-  height: 420px;
+  /*height: 420px;*/
   background-color: white;
   margin-bottom: 50px; /* Abstand zum Dashboard */
 }
@@ -63,7 +63,6 @@ app-overview-component {
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
-    margin-top: 20px;
     margin-left: 45px;
   }
   
