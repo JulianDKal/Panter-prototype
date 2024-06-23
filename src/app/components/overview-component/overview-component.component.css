@@ -39,12 +39,10 @@ body {
     display: flex;
     justify-content: flex-start;
     background-color: white;
-    /*height: 100vh;*/
   }
   
   .graph {
     background-color: white;
-    /*display: flex;*/
     justify-content: flex-start;
     align-items: center;
     flex-grow: 1;
