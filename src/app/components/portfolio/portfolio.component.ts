@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs';
 import { NgIf } from '@angular/common';
 import { GraphContainerComponent } from '../graph-container/graph-container.component';
 import { OverviewComponentComponent } from '../overview-component/overview-component.component';
-import { BoxPlotData } from 'plotly.js';
+import * as chroma from 'chroma-js';
 
 enum Pages {
   SpringerNaturePage = 0,
@@ -39,7 +39,7 @@ export class PortfolioComponent {
   chartData2!:barData[];
   chartLayout2!:plotLayout;
 
-  chartData3!:scatterData[];
+  chartData3!:barData[];
   chartLayout3!:plotLayout;
 
   models23Data!:pieData[];
@@ -115,7 +115,7 @@ createCharts(){
   this.chartData = [{
     labels: Object.keys(mainDisciplines),
     values: Object.values(mainDisciplines),
-    type: 'pie',
+    type: 'pie'
   }]
   this.chartLayout = {
     width: 400, height: 290, margin: {
@@ -170,44 +170,75 @@ createCharts(){
   const publishingModels22Map = this.dataService.countOccurrences(this.dataService.publishingModels22, 2);
   const publishingModels23Map = this.dataService.countOccurrences(this.dataService.publishingModels23, 2);
 
+  const key1Values: number[] = [];
+  const key2Values: number[] = [];
+  const key3Values: number[] = [];
+  const key4Values: number[] = [];
+
+  console.log(Object.keys(publishingModels23Map))
+
+  const countMaps = [publishingModels19Map, publishingModels20Map, publishingModels22Map, publishingModels23Map]
+  countMaps.forEach(countMap => {
+    key1Values.push(countMap['Open Choice']);
+    key2Values.push(countMap['Fully Open Access']);
+    key3Values.push(countMap['Subscription-only']);
+    key4Values.push(countMap['Hybrid (Third Party)']);
+  });
+
   this.chartData3 = [
     {
-      x: Object.keys(publishingModels19Map),
-      y: Object.values(publishingModels19Map),
-      type: 'scatter',
-      name: '2019'
+      y: ['2019', '2020', '2021', '2022'],
+      x: key1Values,
+      type: 'bar',
+      name: 'Open Choice',
+       orientation: 'h',
+       marker: {
+        color: '#324A71',
+        opacity: 0.8
+       }
     },
     {
-      x: Object.keys(publishingModels20Map),
-      y: Object.values(publishingModels20Map),
-      type: 'scatter',
-      name: '2020'
+      y: ['2019', '2020', '2021', '2022'],
+      x: key2Values,
+      type: 'bar',
+      name: 'Fully Open Access',
+       orientation: 'h',
+       marker: {
+        color: '#64B6DC',
+        opacity: 0.8
+       }
     },
     {
-      x: Object.keys(publishingModels22Map),
-      y: Object.values(publishingModels22Map),
-      type: 'scatter',
-      name: '2022'
+      y: ['2019', '2020', '2021', '2022'],
+      x: key3Values,
+      type: 'bar',
+      name: 'Subscription',
+       orientation: 'h',
+       marker: {
+        color: '#538BB6',
+        opacity: 0.8
+       }
     },
     {
-      x: Object.keys(publishingModels23Map),
-      y: Object.values(publishingModels23Map),
-      type: 'scatter',
-      name: '2023'
+      y: ['2019', '2020', '2021', '2022'],
+      x: key4Values,
+      type: 'bar',
+      name: 'Hybrid (Third Party)',
+       orientation: 'h',
+       marker: {
+        color: '#B1C2CD',
+        opacity: 0.8
+       }
     }
   ]
 
   this.chartLayout3 = {
     width: 400, height: 290, 
-    margin: {
-      t: 40,
-      r: 10, 
-      b: 30, 
-      l: 45  
+    margin: { t: 40, r: 10, b: 30, l: 45  },
+    yaxis: {
+      dtick: 1
     },
-    xaxis: {
-      tickangle: 0
-    }
+    barmode: 'stack'
   }
 
   const models23Map = this.dataService.countOccurrences(this.dataService.publishingModels23, 2);
@@ -215,7 +246,10 @@ createCharts(){
   this.models23Data = [{
     labels: Object.keys(models23Map),
     values: Object.values(models23Map),
-    type: 'pie'
+    type: 'pie',
+    marker: {
+      colors: ['#324A71', '#64B6DC', '#538BB6', '#B1C2CD']
+    }
   }]
 
   this.models23Layout = {
@@ -434,7 +468,10 @@ createCharts(){
   this.wileyPublishingModel23Data = [{
     labels: Object.keys(wileyPublishingModels23Map),
     values: Object.values(wileyPublishingModels23Map),
-    type: 'pie'
+    type: 'pie',
+    marker: {
+      colors: ['#324A71', '#64B6DC', '#538BB6']
+    }
   }]
 
   this.wileyPublishingModel23Layout = {
@@ -452,19 +489,31 @@ createCharts(){
     x: Object.keys(wModelsSectionMap),
     y: Object.values(wModelsSectionMap).map(subjectObj => subjectObj["OA"]),
     type: 'bar',
-    name: 'Open Access'
+    name: 'Open Access',
+    marker: {
+      color: '#324A71',
+      opacity: 0.8
+     }
   },
   {
     x: Object.keys(wModelsSectionMap),
     y: Object.values(wModelsSectionMap).map(subjectObj => subjectObj["HOA"]),
     type: 'bar',
-    name: 'Hybrid OA'
+    name: 'Hybrid OA',
+    marker: {
+      color: '#64B6DC',
+      opacity: 0.8
+     }
   },
   {
     x: Object.keys(wModelsSectionMap),
     y: Object.values(wModelsSectionMap).map(subjectObj => subjectObj["SUBS"]),
     type: 'bar',
-    name: 'Subscription'
+    name: 'Subscription',
+    marker: {
+      color: '#538BB6',
+      opacity: 0.8
+     }
   }
 ]
 
@@ -601,7 +650,7 @@ createCharts(){
   //sn deal charts
   this.charts[0] = new PieChart(this.chartLayout, this.chartData);
   this.charts[1] = new BarChart(this.chartLayout2, this.chartData2);
-  this.charts[2] = new ScatterChart(this.chartLayout3, this.chartData3);
+  this.charts[2] = new BarChart(this.chartLayout3, this.chartData3);
   this.charts[3] = new BarChart(this.sPricesbyYearsLayout, this.sPricesByYearsData);
   this.charts[4] = new BarChart(this.licenceTypeLayout, this.licenceTypeData);
   this.charts[5] = new BarChart(this.modelsDisciplinesLayout, this.modelsDisciplinesData);
@@ -632,6 +681,11 @@ createCharts(){
   bothPage(){
     if(this.currentPage != Pages.BothPage) this.currentPage = Pages.BothPage;
     else this.currentPage = Pages.SpringerNaturePage;
+  }
+
+  generateColorPalette(count: number): string[] {
+    const colorScale = chroma.scale(['#0000FF', '#324A71', '#64B6DC']).mode('lab').colors(count);
+    return colorScale;
   }
 
 }

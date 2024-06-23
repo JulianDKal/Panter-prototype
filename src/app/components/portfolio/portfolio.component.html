@@ -16,7 +16,7 @@
           <div *ngIf="this.currentPage == Pages.SpringerNaturePage">
             <div class="graph-row-section">
               <div class="graph-box">
-                <app-graph-container [inputCharts]="[charts[0]]" [inputTitles]="['Aktuell']" [HeadTitle]="'Themengebiete'"></app-graph-container>
+                <app-graph-container [inputCharts]="[charts[0], charts[0]]" [inputTitles]="['Aktuell', 'Entwicklung']" [HeadTitle]="'Themengebiete'"></app-graph-container>
   
               </div>
               <div class="graph-box">
@@ -77,7 +77,7 @@
             </div>
             <div class="graph-row-section">
               <div class="graph-box">
-                <app-graph-container [inputCharts]="[charts[17]]" [inputTitles]="['Veröffentlichungsmodelle']" [HeadTitle]="'Lizenzen'"></app-graph-container>
+                <app-graph-container [inputCharts]="[charts[17]]" [inputTitles]="['Aktuell']" [HeadTitle]="'Veröffentlichungsmodelle'"></app-graph-container>
   
               </div>
             </div>
