@@ -12,7 +12,7 @@ import { NgFor, NgClass } from '@angular/common';
 })
 
 export class GraphContainerComponent {
-
+  @Input() HeadTitle!:string;
   @Input() inputCharts!:Chart[];
   @Input() inputTitles!:string[];
   

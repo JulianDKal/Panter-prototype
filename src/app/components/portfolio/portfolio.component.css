@@ -27,13 +27,13 @@ app-overview-component {
   
   .section-container {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     margin-bottom: 10px;
     margin-left: 45px;
     margin-right: 45px;
-    flex-direction: column;
     max-width: 88vw;
-    gap: 10px;
+    gap: 50px;
   }
   
   .section-container > section {
@@ -73,3 +73,13 @@ app-overview-component {
     border: 2px solid #2b4771;
   }
   
+.graph-box {
+  flex: 1; 
+  height: 440px;
+}
+
+.graph-row-section {
+  display: flex; 
+  height: 510px; 
+  gap: 30px;
+}

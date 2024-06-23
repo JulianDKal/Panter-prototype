@@ -33,18 +33,19 @@ type CsvParsedEventHandler = (results: ParseResult<snRowsData | wileyDealRows>) 
 
 //typen die Plotly für einen Graphen erwartet:
 type plotMarkerObj = {
-    color:string,
+    color?:string,
     opacity?:number,
     line?: {
         color:string,
         width:number
-    }
+    },
+    colors?:string[]
 }
 
 type plotLayout = {
     width?:number,
     height?:number,
-    title:string,
+    title?:string,
     margin: object,
     xaxis?: {
         autorange?: string | boolean,
@@ -56,6 +57,10 @@ type plotLayout = {
             color?:string
         }
     },
+    yaxis?: {
+        dtick?: number,
+        title?: object
+    }
     barmode?:string,
     showlegend?:boolean
 }
@@ -103,11 +108,12 @@ type boxData = {
 
 type barData = {
     type: 'bar',
-    x: string[],
-    y: number[],
+    x: string[] | number[],
+    y: number[] | string[],
     text?, //Text in der Box
     marker?:plotMarkerObj,
-    name?:string //Name in der Legende
+    name?:string, //Name in der Legende
+    orientation?:string
 }
 
 type CountMap = Record<string, number>;
