@@ -118,6 +118,8 @@ type barData = {
     x: string[] | number[],
     y: number[] | string[],
     text?, //Text in der Box
+    hoverinfo?,
+    textposition?,
     marker?:plotMarkerObj,
     name?:string, //Name in der Legende
     orientation?:string

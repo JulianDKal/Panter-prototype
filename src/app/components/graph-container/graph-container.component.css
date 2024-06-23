@@ -41,6 +41,7 @@
   
   .btn-active {
     cursor: pointer;
+    box-sizing: border-box;
     text-decoration: none;
     border: none;
     font-size: 19px;
@@ -52,7 +53,7 @@
     padding-right: 15px;
     padding-bottom: 10px;
     padding-top: 10px;
-    transition: color 0.15s ease, font-weight 0.15s ease, background-color 0.15s ease;
+    transition: color 0.2s ease, font-weight 0.15s ease, background-color 0.18s ease;
   }
 
   .btn-active::after {
@@ -79,12 +80,17 @@
     padding-right: 15px;
     padding-bottom: 8px;
     padding-top: 10px;
+    transition: color 0.2s ease;
   }
 
   .btn-active:hover{
     color: rgb(84, 131, 202);
-    font-weight: bold;
+    font-weight: 500;
     background-color: rgba(228, 228, 228, 0.31);
+  }
+
+  .btn-inactive:hover{
+    color: rgb(37, 86, 142, 0.6);
   }
   
   .graph-container {

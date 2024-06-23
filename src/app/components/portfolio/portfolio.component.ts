@@ -511,32 +511,42 @@ createCharts(){
   }
 
   const wModelsSectionMap = this.dataService.generateDisciplinesMap(this.dataService.wMainDisciplines23, this.dataService.wPublishingModels23, 40);
+  const keysForModelsSection = this.truncateStrings(Object.keys(wModelsSectionMap))
 
   this.wileyPublishingModelsSectionsData = [{
-    x: Object.keys(wModelsSectionMap),
+    x: keysForModelsSection,
     y: Object.values(wModelsSectionMap).map(subjectObj => subjectObj["OA"]),
     type: 'bar',
     name: 'Open Access',
+    text: Object.keys(wModelsSectionMap),
+    textposition: 'none',
+    hoverinfo: 'text' + ' ' + 'Object.values(wModelsSectionMap).map(subjectObj => subjectObj["OA"])',
     marker: {
       color: '#324A71',
       opacity: 0.8
      }
   },
   {
-    x: Object.keys(wModelsSectionMap),
+    x: keysForModelsSection,
     y: Object.values(wModelsSectionMap).map(subjectObj => subjectObj["HOA"]),
     type: 'bar',
     name: 'Hybrid OA',
+    text: Object.keys(wModelsSectionMap),
+    hoverinfo: 'text' + ' ' + 'Object.values(wModelsSectionMap).map(subjectObj => subjectObj["HOA"])',
+    textposition: 'none',
     marker: {
       color: '#64B6DC',
       opacity: 0.8
      }
   },
   {
-    x: Object.keys(wModelsSectionMap),
+    x: keysForModelsSection,
     y: Object.values(wModelsSectionMap).map(subjectObj => subjectObj["SUBS"]),
     type: 'bar',
     name: 'Subscription',
+    text: Object.keys(wModelsSectionMap),
+    hoverinfo: 'text' + ' ' + 'Object.values(wModelsSectionMap).map(subjectObj => subjectObj["SUBS"])',
+    textposition: 'none',
     marker: {
       color: '#538BB6',
       opacity: 0.8
@@ -552,55 +562,77 @@ createCharts(){
       b: 45, 
       l: 45
     }, 
+    xaxis: {
+      dtick: 1,
+      tickfont: {
+        size: 9
+      }
+    },
     barmode: 'stack' }
 
     const wLicensesSectionsMap = this.dataService.generateDisciplinesMap(this.dataService.wMainDisciplines23, this.dataService.wileyLicenses23, 30);
+    const wLicensesTruncated = this.truncateStrings(Object.keys(wLicensesSectionsMap))
 
     this.wileyLicensesSectionsData = [{
-      x: Object.keys(wLicensesSectionsMap),
+      x: wLicensesTruncated,
       y: Object.values(wLicensesSectionsMap).map(subjectObj => subjectObj["CC-BY for all"]),
       type: 'bar',
       name: 'CC-BY for all',
+      text: Object.keys(wLicensesSectionsMap),
+      textposition: 'none',
+      hoverinfo: 'text',
       marker: {
         color: '#324A71',
         opacity: 0.8
        }
     },
     {
-      x: Object.keys(wLicensesSectionsMap),
+      x: wLicensesTruncated,
       y: Object.values(wLicensesSectionsMap).map(subjectObj => subjectObj["TBD"]),
       type: 'bar',
       name: 'TBD',
+      text: Object.keys(wLicensesSectionsMap),
+      textposition: 'none',
+      hoverinfo: 'text',
       marker: {
         color: '#64B6DC',
         opacity: 0.8
        }
     },
     {
-      x: Object.keys(wLicensesSectionsMap),
+      x: wLicensesTruncated,
       y: Object.values(wLicensesSectionsMap).map(subjectObj => subjectObj["CC-BY by mandate only"]),
       type: 'bar',
       name: 'CC-BY by mandate',
+      text: Object.keys(wLicensesSectionsMap),
+      textposition: 'none',
+      hoverinfo: 'text',
       marker: {
         color: '#538BB6',
         opacity: 0.8
        }
     },
     {
-      x: Object.keys(wLicensesSectionsMap),
+      x: wLicensesTruncated,
       y: Object.values(wLicensesSectionsMap).map(subjectObj => subjectObj["CC-BY only"]),
       type: 'bar',
       name: 'CC-BY only',
+      text: Object.keys(wLicensesSectionsMap),
+      textposition: 'none',
+      hoverinfo: 'text',
       marker: {
         color: '#B1C2CD',
         opacity: 0.8
        }
     },
     {
-      x: Object.keys(wLicensesSectionsMap),
+      x: wLicensesTruncated,
       y: Object.values(wLicensesSectionsMap).map(subjectObj => subjectObj["CTA"]),
       type: 'bar',
       name: 'CTA',
+      text: Object.keys(wLicensesSectionsMap),
+      textposition: 'none',
+      hoverinfo: 'text',
       marker: {
         color: '#8782ea',
         opacity: 0.8
@@ -736,6 +768,16 @@ createCharts(){
     const colorScale = chroma.scale(['#031746', '#044274', '#0685B6', '#90C1D1', '#CDDDE4' ]).mode('lab').colors(count);
     const opacity = 0.9;
     return colorScale.map(color => chroma(color).alpha(opacity).css());
+  }
+
+  truncateStrings(strings: string[]): string[] {
+    return strings.map(str => {
+      if (str.length > 6) {
+        return str.substring(0, 6) + '...';
+      } else {
+        return str;
+      }
+    });
   }
 
 }
