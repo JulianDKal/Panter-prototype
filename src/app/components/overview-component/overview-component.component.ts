@@ -20,17 +20,27 @@ export class OverviewComponentComponent {
   Pages = Pages;
   @Input() currentPage: Pages = Pages.SpringerNaturePage;
   @Output() pageChange: EventEmitter<Pages> = new EventEmitter<Pages>();
+  @Output() dealSelected1: EventEmitter<string> = new EventEmitter<string>();
+
+
+  selectedDeal1: string = '';
   
   togglePage(page: Pages): void {
     this.currentPage = page;
     this.pageChange.emit(this.currentPage); // Event an Elternkomponente senden
+    this.selectedDeal1 = '';
   }
 
   bothPage(): void {
     this.currentPage = Pages.BothPage;
     this.pageChange.emit(this.currentPage); // Event an Elternkomponente senden
+    this.selectedDeal1 = '';
   }
 
+  onSelectDeal1(deal: string): void {
+    this.selectedDeal1 = deal;
+    this.dealSelected1.emit(this.selectedDeal1); // Event auslösen, um ausgewählten Deal zu übermitteln
+  }
   
    
 

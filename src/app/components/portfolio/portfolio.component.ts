@@ -25,13 +25,13 @@ enum Pages {
 export class PortfolioComponent {
   Pages = Pages;
   currentPage:Pages = Pages.SpringerNaturePage;
-  selectedDeal: string = '';
+  selectedDeal1: string = '';
   
   onPageChange(page: Pages): void {
     this.currentPage = page;
   }
-  onDealSelected(deal: string): void {
-    this.selectedDeal = deal; 
+  onDealSelected1(deal: string): void {
+    this.selectedDeal1 = deal; 
   }
 
   //Teil, in dem die Daten geholt werden
