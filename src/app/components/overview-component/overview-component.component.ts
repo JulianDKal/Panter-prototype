@@ -1,7 +1,13 @@
-import { Component,Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Chart } from '../../Chart';
 import { ChartElementComponent } from '../chart-element/chart-element.component';
 import { NgFor } from '@angular/common';
+
+enum Pages {
+  SpringerNaturePage,
+  WileyPage,
+  BothPage
+}
 
 @Component({
   selector: 'app-overview-component',
@@ -11,6 +17,23 @@ import { NgFor } from '@angular/common';
   styleUrl: './overview-component.component.css'
 })
 export class OverviewComponentComponent {
+  Pages = Pages;
+  @Input() currentPage: Pages = Pages.SpringerNaturePage;
+  @Output() pageChange: EventEmitter<Pages> = new EventEmitter<Pages>();
+  
+  togglePage(page: Pages): void {
+    this.currentPage = page;
+    this.pageChange.emit(this.currentPage); // Event an Elternkomponente senden
+  }
+
+  bothPage(): void {
+    this.currentPage = Pages.BothPage;
+    this.pageChange.emit(this.currentPage); // Event an Elternkomponente senden
+  }
+
+  
+   
+
 @Input() chartForGraph!:Chart;
 
 dropdownOpen = false;

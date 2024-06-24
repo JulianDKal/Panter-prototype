@@ -3,12 +3,11 @@
 <body  *ngIf="!isLoading">
   <section class="overview">
     <div>
-      <app-overview-component [chartForGraph]="charts[8]"></app-overview-component>
+      <app-overview-component [chartForGraph]="charts[8]" [currentPage]="currentPage" (pageChange)="onPageChange($event)" ></app-overview-component>
     </div>
   </section>
-    
-    <button class="toggle-button" (click)="togglePage()">Toggle Dashboard</button>
-    <button class="toggle-button" (click)="bothPage()">All Deals</button>
+  <!-- <h1> {{ selectedDeal }} </h1> -->
+
    
       <section class="dashboard">
         <div class="section-container">

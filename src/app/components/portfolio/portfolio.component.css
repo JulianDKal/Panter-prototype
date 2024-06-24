@@ -82,3 +82,11 @@ app-overview-component {
   height: 510px; 
   gap: 30px;
 }
+
+h1 {
+  font-size: 30px;
+  color: rgb(37, 86, 142);
+  margin: 0;
+  margin-bottom: 15px;
+  text-align: center;
+}

@@ -29,7 +29,10 @@
             <div class="dropdown">
               <a class="btn dropdown-toggle">Deals ▼</a>
               <div class="dropdown-menu">
-                <a href="#" *ngFor="let deal of deals" (click)="onSelectDeal(deal.name, $event)">{{ deal.name }}</a>
+                <a (click)="togglePage(Pages.SpringerNaturePage)" [class.active]="currentPage === Pages.SpringerNaturePage">Springer Verlag</a>
+                <a (click)="togglePage(Pages.WileyPage)" [class.active]="currentPage === Pages.WileyPage">Wiley Verlag</a>
+                <a (click)="togglePage(Pages.BothPage)" [class.active]="currentPage === Pages.BothPage">Alle Deals</a>
+                <!-- <a href="#" *ngFor="let deal of deals" (click)="onSelectDeal(deal.name, $event)">{{ deal.name }}</a> -->
               </div>
             </div>  
             <a class="btn deal-button">Deal hinzufügen  <strong>+</strong> </a>

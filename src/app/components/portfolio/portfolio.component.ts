@@ -25,6 +25,14 @@ enum Pages {
 export class PortfolioComponent {
   Pages = Pages;
   currentPage:Pages = Pages.SpringerNaturePage;
+  selectedDeal: string = '';
+  
+  onPageChange(page: Pages): void {
+    this.currentPage = page;
+  }
+  onDealSelected(deal: string): void {
+    this.selectedDeal = deal; 
+  }
 
   //Teil, in dem die Daten geholt werden
   private dataReadySubscription: Subscription | null = null;
