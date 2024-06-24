@@ -13,6 +13,7 @@
         <div class="section-container">
           <!-- Code für das Springer Nature Dashboard -->
           <div *ngIf="this.currentPage == Pages.SpringerNaturePage">
+            <h1 class="heading">Springer Deal</h1>
             <div class="graph-row-section">
               <div class="graph-box">
                 <app-graph-container [inputCharts]="[charts[0], charts[0]]" [inputTitles]="['Aktuell', 'Entwicklung']" [HeadTitle]="'Themengebiete'"></app-graph-container>
@@ -40,6 +41,7 @@
 
           <!-- Code für das Wiley Dashboard -->
           <div *ngIf="this.currentPage == Pages.WileyPage">
+            <h1 class="heading">Wiley Deal</h1>
             <div class="graph-row-section">
               <div class="graph-box">
                 <app-graph-container [inputCharts]="[charts[6]]" [inputTitles]="['Aktuell']" [HeadTitle]="'Themengebiete'"></app-graph-container>
@@ -64,6 +66,7 @@
 
            <!-- Code für das Dashboard mit allen Deals-->
            <div *ngIf="this.currentPage == Pages.BothPage">
+            <h1 class="heading">Alle Deals</h1>
             <div class="graph-row-section">
               <div class="graph-box">
                 <app-graph-container [inputCharts]="[charts[15]]" [inputTitles]="['Aktuell']" [HeadTitle]="'APC Preise'"></app-graph-container>

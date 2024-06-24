@@ -143,11 +143,15 @@ createCharts(){
   const prices:string[] = this.dataService.apcPrices;
   
   const disciplinesPricesMap = this.dataService.generateAvgPriceMap(disciplines, prices); //gibt eine CountMap zurück (string, number)
+  const disciplinesPricesKeys = this.truncateStrings(Object.keys(disciplinesPricesMap))
 
   this.chartData2 = [{
-    x: Object.keys(disciplinesPricesMap),
+    x: disciplinesPricesKeys,
     y: Object.values(disciplinesPricesMap),
     type: 'bar',
+    text: Object.keys(disciplinesPricesMap),
+    textposition: 'none',
+    hoverinfo: 'text' + ' ' + 'Object.values(disciplinesPricesMap)',
     marker: {
       color: 'rgb(138,202,245)',
       opacity: 0.6
@@ -164,7 +168,7 @@ createCharts(){
     },
     xaxis: {
       autorange: true,
-      dtick: 2,
+      dtick: 1,
       tickfont: {
         size: 10,
         color: '#000000'
@@ -324,12 +328,15 @@ createCharts(){
   }
 
   const disciplinesModelsMap:stringStringNumberMap = this.dataService.generateDisciplinesMap(this.dataService.mainDisciplines23, this.dataService.publishingModels23, 120);
-
+  const disiplineModelsKeys = this.truncateStrings(Object.keys(disciplinesModelsMap))
 
   this.modelsDisciplinesData = [{
-    x: Object.keys(disciplinesModelsMap),
+    x: disiplineModelsKeys,
     y: Object.values(disciplinesModelsMap).map(subjectObj => subjectObj["Open Choice"]),
     type: 'bar',
+    text: Object.keys(disciplinesModelsMap),
+    textposition: 'none',
+    hoverinfo: 'text' + ' ' + 'Object.values(wileyDisciplinePricemap).map(subjectObj => subjectObj["Open Choice"])',
     name: 'Open Choice',
     marker: {
       color: '#324A71',
@@ -337,19 +344,25 @@ createCharts(){
      }
   },
   {
-    x: Object.keys(disciplinesModelsMap),
+    x: disiplineModelsKeys,
     y: Object.values(disciplinesModelsMap).map(subjectObj => subjectObj["Fully Open Access"]),
     type: 'bar',
     name: 'Fully Open Access',
+    text: Object.keys(disciplinesModelsMap),
+    textposition: 'none',
+    hoverinfo: 'text' + ' ' + 'Object.values(wileyDisciplinePricemap).map(subjectObj => subjectObj["Fully Open Access"])',
     marker: {
       color: '#64B6DC',
       opacity: 0.8
      }
   },
   {
-    x: Object.keys(disciplinesModelsMap),
+    x: disiplineModelsKeys,
     y: Object.values(disciplinesModelsMap).map(subjectObj => subjectObj["Subscription-only"]),
     type: 'bar',
+    text: Object.keys(disciplinesModelsMap),
+    textposition: 'none',
+    hoverinfo: 'text' + ' ' + 'Object.values(wileyDisciplinePricemap).map(subjectObj => subjectObj["Subscription-only"])',
     name: 'Subscription Only',
     marker: {
       color: '#538BB6',
@@ -357,10 +370,13 @@ createCharts(){
      }
   },
   {
-    x: Object.keys(disciplinesModelsMap),
+    x: disiplineModelsKeys,
     y: Object.values(disciplinesModelsMap).map(subjectObj => subjectObj["Hybrid (Third Party)"]),
     type: 'bar',
     name: 'Hybrid (Third Party)',
+    text: Object.keys(disciplinesModelsMap),
+    textposition: 'none',
+    hoverinfo: 'text' + ' ' + 'Object.values(wileyDisciplinePricemap).map(subjectObj => subjectObj["Hybrid (Third Party)"])',
     marker: {
       color: '#B1C2CD',
       opacity: 0.8
@@ -441,10 +457,14 @@ createCharts(){
   }
 
   const wileyDisciplinePricemap = this.dataService.generateAvgPriceMap(this.dataService.wMainDisciplines23, this.dataService.wileyAPCs2023);
+  const wDisciplineKeys = this.truncateStrings(Object.keys(wileyDisciplinePricemap))
 
   this.wileyDisciplinePricesData = [{
-    x: Object.keys(wileyDisciplinePricemap),
+    x: wDisciplineKeys,
     y: Object.values(wileyDisciplinePricemap),
+    text: Object.keys(wileyDisciplinePricemap),
+    textposition: 'none',
+    hoverinfo: 'text' + ' ' + 'Object.values(wileyDisciplinePricemap)',
     type: 'bar',
     marker: {
       color: 'rgb(138,202,245)',
