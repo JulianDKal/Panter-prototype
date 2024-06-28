@@ -1,17 +1,92 @@
-<body>
-    <div class="container">
-        <app-navbar></app-navbar>
-        <div class="main">
-            <h1>Portfolio</h1>
-            <div class="dashboard">
-                <div id="graph1">
-                    <app-chart-element
-                    [chart]="charts[0]">
-                </app-chart-element>
-                </div>
-                <div id="graph2" style="background-color: lightblue;"></div>
-                <div id="graph3" style="background-color: lightblue; border: 5px; border-color: rgb(43, 140, 188); border-style: solid;"></div>
-            </div>
-        </div>
+
+<app-navbar></app-navbar>
+<body  *ngIf="!isLoading">
+  <section class="overview">
+    <div>
+      <app-overview-component [chartForGraph]="charts[8]" [currentPage]="currentPage" (pageChange)="onPageChange($event)" (dealSelected1)="onDealSelected1($event)"></app-overview-component>
     </div>
+  </section>
+   <!-- <h1> Verlag: {{ selectedDeal1 }} </h1> -->
+
+   
+      <section class="dashboard">
+        <div class="section-container">
+          <!-- Code für das Springer Nature Dashboard -->
+          <div *ngIf="this.currentPage == Pages.SpringerNaturePage">
+            <h1 class="heading">Springer Deal</h1>
+            <div class="graph-row-section">
+              <div class="graph-box">
+                <app-graph-container [inputCharts]="[charts[0], charts[0]]" [inputTitles]="['Aktuell', 'Entwicklung']" [HeadTitle]="'Themengebiete'"></app-graph-container>
+  
+              </div>
+              <div class="graph-box">
+                <app-graph-container [inputCharts]="[charts[2], charts[16], charts[5]]" [inputTitles]="['Entwicklung', 'Aktuell', 'Sektionell']" [HeadTitle]="'Veröffentlichungsmodelle'">
+
+                </app-graph-container>
+  
+              </div>
+            </div>
+            <div class="graph-row-section">
+              <div class="graph-box">
+                <app-graph-container [inputCharts]="[charts[3], charts[1]]" [inputTitles]="['Entwicklung', 'Sektionell']" [HeadTitle]="'APC Preise'">
+
+                </app-graph-container>
+  
+              </div>
+              <div class="graph-box">
+                <app-graph-container [inputCharts]="[charts[4]]" [inputTitles]="['Aktuell']" [HeadTitle]="'Lizenzen'"></app-graph-container>
+              </div>
+            </div>
+          </div>
+
+          <!-- Code für das Wiley Dashboard -->
+          <div *ngIf="this.currentPage == Pages.WileyPage">
+            <h1 class="heading">Wiley Deal</h1>
+            <div class="graph-row-section">
+              <div class="graph-box">
+                <app-graph-container [inputCharts]="[charts[6]]" [inputTitles]="['Aktuell']" [HeadTitle]="'Themengebiete'"></app-graph-container>
+  
+              </div>
+              <div class="graph-box">
+                <app-graph-container [inputCharts]="[charts[7], charts[9]]" [inputTitles]="['Entwicklung', 'Sektionen']" [HeadTitle]="'APC Preise'"></app-graph-container>
+  
+              </div>
+            </div>
+            <div class="graph-row-section">
+              <div class="graph-box">
+                <app-graph-container [inputCharts]="[charts[11], charts[12]]" [inputTitles]="['Aktuell', 'Sektionen']" [HeadTitle]="'Veröffentlichungsmodelle'"></app-graph-container>
+  
+              </div>
+              <div class="graph-box">
+                <app-graph-container [inputCharts]="[charts[10], charts[13]]" [inputTitles]="['Entwicklung', 'Sektionen']" [HeadTitle]="'Lizenzen'"></app-graph-container>
+  
+              </div>
+            </div>
+           </div>
+
+           <!-- Code für das Dashboard mit allen Deals-->
+           <div *ngIf="this.currentPage == Pages.BothPage">
+            <h1 class="heading">Alle Deals</h1>
+            <div class="graph-row-section">
+              <div class="graph-box">
+                <app-graph-container [inputCharts]="[charts[15]]" [inputTitles]="['Aktuell']" [HeadTitle]="'APC Preise'"></app-graph-container>
+  
+              </div>
+              <div class="graph-box">
+                <app-graph-container [inputCharts]="[charts[14]]" [inputTitles]="['Entwicklung']" [HeadTitle]="'APC Preise'"></app-graph-container>
+  
+              </div>
+            </div>
+            <div class="graph-row-section">
+              <div class="graph-box">
+                <app-graph-container [inputCharts]="[charts[17]]" [inputTitles]="['Aktuell']" [HeadTitle]="'Veröffentlichungsmodelle'"></app-graph-container>
+  
+              </div>
+            </div>
+           </div>
+        </div> 
+        
+      </section>    
 </body>
+
+

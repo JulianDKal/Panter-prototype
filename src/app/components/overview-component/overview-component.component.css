@@ -1,0 +1,244 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: white;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.login-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.login-button {
+  background-color: white;
+  color: rgb(37, 86, 142);
+  border: none;
+  padding: 10px 20px;
+  border: 1px solid rgb(37, 86, 142);
+  border-radius: 7px; 
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.2s ease;
+  }
+
+  .dashboard-section {
+    display: flex;
+    justify-content: flex-start;
+    background-color: white;
+  }
+  
+  .graph {
+    background-color: white;
+    justify-content: flex-start;
+    align-items: center;
+    flex-grow: 1;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .graph-content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    background-color: white;
+    flex-grow: 1;
+  }
+  
+  .graph.hovered {
+    transform: scale(1.1); /* Vergrößerungseffekt */
+    box-shadow: 0 0 20px #2b4771; 
+    z-index: 1; 
+  }
+
+  .chart {
+    align-items: flex-start;
+    margin-left: 5%;
+  }
+
+h3 {
+  font-size: 20px;
+  color: rgb(37, 86, 142);
+  margin: 0;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.inline-texts {
+  display: flex;
+  justify-content: center;
+  gap: 5px; 
+  margin-top: -20px;
+}
+
+.inline-texts p {
+  font-size: 10px;
+  color: rgb(37, 86, 142);
+  padding: 5px;
+  margin: 0;
+}
+
+  .end {
+    width: 50%;
+    /*display: flex;*/
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    margin: 0;
+    margin-top: 5%;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .fixed-text {
+    /*display: flex;*/
+    top: 10%;
+    right: 0;
+    width: 50%;
+    background-color: white;
+    padding: 20px;
+    gap: 10px;
+}
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px ;
+    padding: 10px;
+    gap: 10px;
+    background-color: white;
+    overflow: visible;
+    border-color: #002264;
+    border-radius: 2px;
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .btn {
+    display: inline-block;
+    text-align: center;
+    color: rgb(37, 86, 142);
+    /*border: 1px solid rgb(37, 86, 142);
+    border-radius: 7px;*/
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration-thickness: 3.5px;
+  }
+
+  .btn:hover {
+    color: #002264;
+    font-weight: bolder;
+  }
+
+ /* Dropdown Styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  background-color: white;
+  /*border: 1px solid rgb(37, 86, 142);*/
+  padding: 5px 10px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  z-index: 1;
+  border-radius: 7px;
+  border: 1px solid rgb(37, 86, 142);
+}
+
+.dropdown-menu a {
+  color: rgb(37, 86, 142);
+  font-size: 12px;
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-menu a:hover {
+  background-color: #cfe7ff;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.share-button, .deal-button {
+  background-color: white;
+  color: rgb(37, 86, 142);
+  /*border: 1px solid rgb(37, 86, 142);*/
+  padding: 5px 10px;
+  border-radius: 7px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.share-button:hover, .deal-button:hover {
+  color: #002264;
+  font-weight: bolder;
+}
+
+.text {
+  display: flex;
+  text-align: Center;
+  display: block;
+  justify-content: center;
+  gap: 5px; 
+}
+
+.text p {
+  font-size: 10px;
+  color: rgb(37, 86, 142);
+  padding: 2px;
+  margin: 0;
+}
+
+.texte {
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+ margin-top: 20px;
+}
+
+.text2 {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.text2 p {
+  font-size: 12px;
+  color: rgb(37, 86, 142);
+  padding: 10px 20px;
+  margin-top: 10px;
+  margin: 0;
+}
+

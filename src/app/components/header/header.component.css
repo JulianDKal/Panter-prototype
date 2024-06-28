@@ -1,11 +1,12 @@
    header {
-    border-top: 25px solid  rgb(37, 86, 142);
-    background-color: rgb(223, 238, 255);
+    border-top: 25px solid  #25568e;
+    background-color: #eaf3fc;
     position: fixed;
     top:0;
     width: 100%;
     z-index: 1000;
     left: 0;
+    transition: all 0.3s ease; /* Füge Übergang hinzu */
   }
   
   .header-container {
@@ -16,6 +17,24 @@
     justify-content: space-between;
     align-items: center;
     height: 100%;
+    transition: all 0.3s ease; /* Füge Übergang hinzu */
+  }
+
+  header.scrolled {
+    background-color: #eaf3fc; /* Halbtransparente Hintergrundfarbe */
+  }
+
+  .header-container.shrink {
+    padding: 5px 10px; /* Verringere die Höhe des Headers */
+  }
+
+  .header-title {
+      font-size: 1.5em;
+      transition: font-size 0.3s ease;
+  }
+
+  .header-container.shrink .header-title {
+      font-size: 1.2em; /* Verkleinere die Schriftgröße */
   }
   
   .branding {
@@ -29,6 +48,10 @@
     transition: transform 0.2s ease;
   }
   
+  .header-container.shrink .logo {
+    width: 90px; /* Verkleinere das Logo */
+  }
+
   .logo:hover {
     transform: scale(1.1);
   }
@@ -84,7 +107,30 @@
         nav .nav-link:hover {
         color: rgb(37, 86, 142);
         border-bottom: 2px solid rgb(37, 86, 142);
+        cursor: pointer;
         }
+
+  
+.account-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.icon-link {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease;
+}
+
+.icon-link:hover .icon {
+  transform: scale(1.1);
+  cursor: pointer;
+}
 
       
   

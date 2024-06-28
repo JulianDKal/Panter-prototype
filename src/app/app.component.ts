@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './components/header/header.component';
-import { TestComponent } from './components/test/test.component';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import * as Plotly from 'plotly.js-dist-min';
+import { PlotlyModule } from 'angular-plotly.js';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, TestComponent, RouterModule, HomeComponent],
+  imports: [RouterOutlet, RouterModule, HomeComponent, PlotlyModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

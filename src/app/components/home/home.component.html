@@ -3,33 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Publishing Analytics Tracker</title>
+    <title>Open Access Vergleichsportal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="home.component.css">
 </head>
+<app-header></app-header>
 <body>
+    <div class="main-background">
+        <div class="main-content">
+            <header>
+                <h1>Transparenz im Open-Access-Markt:<br>Finden Sie die beste Finanzierung und Preisentwicklung</h1>
+            </header>
+        </div>
+    </div>
+    <nav class="secondary-nav">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="#kostenanalyse" class="nav-link">Kostenanalyse</a></li>
+            <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
+            <li class="nav-item"><a href="#filterung" class="nav-link">Filterung</a></li>
+        </ul>
+    </nav>
     <main>
-        <aside>
-            <button class="menu-btn" onclick="toggleMenu()">☰</button>
-            <nav id="menu" class="menu hidden">
-                <ul>
-                    <li><a href="#">Kostenanalyse</a></li>
-                    <li><a href="#">Dashboard</a></li>
-                    <li><a href="#">Filterung</a></li>
-                    <li><a href="#">Portfolio</a></li>
-                    
-                </ul>
-            </nav>
-        </aside>
-        <section class="kostenanalyse">
-            <h2>Kostenanalyse</h2>
-            <div (click)="routeToPortfolio()" >
-                <img src="assets/chart.jpg" alt="Abonnierte Newsletter nach Kanal" class="kostenanalyse-chart">
+        <div class="section-container">
+            <section class="welcome-section">
+                <div class="welcome-text">
+                    <h2>Herzlich willkommen ...</h2>
+                    <p>auf unserem Vergleichsportal für Finanzierungsmodelle, Preise und Preisentwicklungen im Open-Access-Zeitschriftenmarkt! 
+                        Wir bieten Ihnen transparente Informationen, damit Sie die besten Entscheidungen für Ihre Publikationen treffen können. 
+                        Entdecken Sie die Vielfalt der Finanzierungsoptionen und verfolgen Sie Preisentwicklungen, um Ihre Ressourcen optimal zu nutzen. 
+                    </p>
+                </div>
+            </section>
+            <section class="topics-section">
+                <div class="topics-text">
+                    <h2>Open Access nach Themenbereich</h2>
+                    <p>Entdecken Sie unser umfassendes Verzeichnis von Open-Access-Publikationen, sortiert nach Themenbereichen. Filtern Sie gezielt nach Ihren Interessenschwerpunkten und finden Sie relevante wissenschaftliche Arbeiten schnell und einfach.</p>
+                    <button class="topics-button">Zu den Themenbereichen</button>
+                </div>
+            </section>
+        </div>
+        <section class="portfolio-section">
+            <div class="portfolio-text">    
+                <h2>Zum Portfolio</h2>
+                <a routerLink="portfolio" routerLinkActive="active">
+                    <img src="../../../assets/portfolio.jpg" alt="portfolio" style="width: 100%; height: auto;">
+                </a>
             </div>
-            <h2 class="title-dashboard">Dashboard</h2>
-            <img src="assets/dashboard.avif" alt="Dashboard" class="dashboard-chart">
         </section>
     </main>
-    <script src="dist/script.js"></script>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Kontakt</h4>
+                <p>Email: info&#64;openaccessportal.de</p>
+                <p>Telefon: +49 123 456 789</p>
+            </div>
+            <div class="footer-section">
+                <h4>Rechtliches</h4>
+                <p><a href="#impressum">Impressum</a></p>
+                <p><a href="#datenschutz">Datenschutz</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Folgen Sie uns</h4>
+                <p><a href="#facebook">Facebook</a></p>
+                <p><a href="#twitter">Twitter</a></p>
+                <p><a href="#linkedin">LinkedIn</a></p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
-

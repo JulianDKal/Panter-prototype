@@ -1,0 +1,63 @@
+<body >
+    <section class="dashboard-section">
+        <div class="login-container">
+          <img src="../../../assets/konto-icon.png" alt="Mein Konto Icon" class="icon">
+          <button class="login-button"> Login </button>
+        </div>
+        <div id="graph3" class="graph">
+          <!-- (mouseover)="hoverGraph(true)" (mouseleave)="hoverGraph(false)" [class.hovered]="isGraphHovered" -->
+            <div class="graph-content" >
+              <div class="chart" style="height: 420px;">
+                <app-chart-element [chart]="chartForGraph"></app-chart-element> 
+              </div>
+            </div>
+        </div>
+        <div class="end fixed-text">
+          <h3>Themenbereiche</h3>
+          <!-- <div class="inline-texts">
+            <p>Hauptthemen</p>
+            <p>Journals</p>
+            <p>EUR</p>
+          </div> -->
+          <div class="button-container">
+            <div class="dropdown">
+              <a class="btn dropdown-toggle">Themen ▼</a>
+              <div class="dropdown-menu">
+                <a href="#" *ngFor="let topic of topics" (click)="onSelectTopic(topic.name, $event)">{{ topic.name }}</a>
+              </div>
+            </div>
+            <div class="dropdown">
+              <a class="btn dropdown-toggle">Deals ▼</a>
+              <div class="dropdown-menu">
+                <a (click)="togglePage(Pages.SpringerNaturePage)" [class.active]="currentPage === Pages.SpringerNaturePage">Springer Verlag</a>
+                <a (click)="togglePage(Pages.WileyPage)" [class.active]="currentPage === Pages.WileyPage">Wiley Verlag</a>
+                <a (click)="togglePage(Pages.BothPage)" [class.active]="currentPage === Pages.BothPage">Alle Deals</a>
+                <!-- <a href="#" *ngFor="let deal of deals" (click)="onSelectDeal(deal.name, $event)">{{ deal.name }}</a> -->
+              </div>
+            </div>  
+            <a class="btn deal-button">Deal hinzufügen  <strong>+</strong> </a>
+            <a class="btn share-button">Teilen  <strong>➥</strong></a>
+          </div>
+          <div class="text">
+            <p style="font-size: 12px;"><strong>{{ selectedTopic }}</strong></p>
+            <p></p>
+            <p></p>
+            <p [innerHTML]="getSelectedTopicInfo()"></p>
+          </div>
+          <div class="texte">
+          <div class="text2">
+            <p><strong>durchschnittlicher APC Preis:</strong></p>
+            <p>1.645 €</p>
+          </div>
+          <div class="text2">
+            <p><strong>Open Access Journals:</strong></p>
+            <p>19.51%</p>
+          </div>
+          <div class="text2">
+            <p><strong>Anzahl der gesamten Journals:</strong></p>
+            <p>4.635</p>
+          </div>
+        </div>
+        </div>
+    </section>
+</body>

@@ -1,4 +1,40 @@
-<div class="wrapper">
+<!-- <div class="wrapper">
     <nav class="navbar"></nav>
 
-</div>
+</div> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="navbar.component.css">
+</head>
+<body>
+    <div class="sidebar">
+        <nav class="navbar">
+            <div class="sidebar-header">
+                <img src="../../../assets/panter-logo.svg" alt="Portal Logo" class="logo">
+                <h2>Publishing Analytics Tracker</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <div class="dropdown">
+                    <button class="dropdown-btn" (click)="toggleDropdown()">
+                        {{ selectedPortfolio }} 
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="dropdown-content" [class.show]="dropdownOpen">
+                        <a routerLink="/portfolio" routerLinkActive="active" (click)="selectPortfolio('Portfolio 1')">Portfolio 1</a>
+                        <a routerLink="/portfolio" routerLinkActive="active" (click)="selectPortfolio('Portfolio 2')">Portfolio 2</a>
+                        <a routerLink="/portfolio" routerLinkActive="active" (click)="selectPortfolio('Portfolio 3')">Portfolio 3</a>
+                    </div>
+                </div>
+                    <li><a routerLink="" class="nav-link"><img src="../../../assets/home-icon.svg" alt="Home Icon" class="icon">Home</a></li>
+                    <li><a routerLink="/portfolio" routerLinkActive="active"><img src="../../../assets/dashboard-icon.png" alt="Dashboard Icon" class="icon">Dashboard</a></li>
+                    <li><a href="#kostenanalyse"><img src="../../../assets/analyse-icon.png" alt="Analyse Icon" class="icon">Kostenanalyse</a></li>
+                    <li><a href="#filterung"><img src="../../../assets/filter-icon.png" alt="Filter Icon" class="icon">Filterung</a></li>
+            </ul>
+        </nav>
+    </div>
+</body>
+</html>
